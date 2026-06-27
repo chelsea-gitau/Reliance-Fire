@@ -45,6 +45,48 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .page{display:none;padding-top:72px}
 .page.active{display:block}
 
+/* ── KEN BURNS SLIDER ── */
+.hero-slide{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:0;
+  transition:opacity 1.5s ease-in-out;
+  animation:none;
+}
+.hero-slide.active{
+  opacity:1;
+  animation:kenburns 7s ease-in-out forwards;
+}
+.hero-slide.prev{
+  opacity:0;
+  transition:opacity 1.5s ease-in-out;
+}
+@keyframes kenburns{
+  0%{transform:scale(1) translate(0,0)}
+  100%{transform:scale(1.12) translate(-1%,-1%)}
+}
+.hero-slide:nth-child(2n).active{animation:kenburns2 7s ease-in-out forwards}
+.hero-slide:nth-child(3n).active{animation:kenburns3 7s ease-in-out forwards}
+@keyframes kenburns2{
+  0%{transform:scale(1.05) translate(1%,0)}
+  100%{transform:scale(1.15) translate(-1%,1%)}
+}
+@keyframes kenburns3{
+  0%{transform:scale(1) translate(-1%,1%)}
+  100%{transform:scale(1.1) translate(1%,-1%)}
+}
+/* slider dots */
+.hero-dots{
+  position:absolute;bottom:230px;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;gap:8px;
+}
+.hero-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,0.3);border:none;cursor:pointer;
+  transition:all 0.3s;padding:0;
+}
+.hero-dot.active{background:var(--red);width:20px;border-radius:3px}
+
 /* ── HERO ── */
 .hero{
   min-height:calc(100vh - 72px);
@@ -56,8 +98,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   overflow:hidden;
 }
 /* layered overlays for depth */
-.hero-overlay-1{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,6,14,0.3) 0%,rgba(5,6,14,0.1) 40%,rgba(5,6,14,0.85) 80%,rgba(5,6,14,1) 100%);z-index:1}
-.hero-overlay-2{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,6,14,0.7) 0%,transparent 60%);z-index:1}
+.hero-overlay-1{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,6,14,0.55) 0%,rgba(5,6,14,0.35) 40%,rgba(5,6,14,0.88) 80%,rgba(5,6,14,1) 100%);z-index:1}
+.hero-overlay-2{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,6,14,0.75) 0%,rgba(5,6,14,0.2) 60%);z-index:1}
 .hero-ember-line{position:absolute;bottom:220px;left:0;right:0;height:1px;background:linear-gradient(to right,transparent 0%,rgba(217,79,30,0.6) 20%,rgba(244,99,42,0.9) 50%,rgba(217,79,30,0.6) 80%,transparent 100%);z-index:2;filter:blur(0.5px)}
 .hero-ember-glow{position:absolute;bottom:210px;left:10%;right:10%;height:20px;background:radial-gradient(ellipse at center,rgba(217,79,30,0.25) 0%,transparent 70%);z-index:2;filter:blur(4px)}
 
@@ -681,14 +723,35 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 
   <!-- HERO -->
   <section class="hero">
-    <!-- VIDEO BACKGROUND -->
-    <video autoplay muted loop playsinline id="hero-video" src="hero-bg.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.55"></video>
+    <!-- KEN BURNS PHOTO SLIDER -->
+    <div id="hero-slider" style="position:absolute;inset:0;z-index:0;overflow:hidden">
+      <div class="hero-slide active" style="background-image:url('images/employees/tech-installation-1.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/employees/tech-installation-2.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/employees/tech-extinguisher-1.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/employees/tech-field-1.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/employees/tech-inspection-1.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/employees/tech-extinguisher-2.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/employees/team-group.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/employees/tech-inspection-2.jpg')"></div>
+    </div>
     <div class="hero-overlay-1"></div>
     <div class="hero-overlay-2"></div>
     <div class="hero-ember-line"></div>
     <div class="hero-ember-glow"></div>
     <div class="embers" id="embers"></div>
     <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.4"></canvas>
+
+    <!-- Slider dots -->
+    <div class="hero-dots" id="hero-dots">
+      <button class="hero-dot active" onclick="goSlide(0)"></button>
+      <button class="hero-dot" onclick="goSlide(1)"></button>
+      <button class="hero-dot" onclick="goSlide(2)"></button>
+      <button class="hero-dot" onclick="goSlide(3)"></button>
+      <button class="hero-dot" onclick="goSlide(4)"></button>
+      <button class="hero-dot" onclick="goSlide(5)"></button>
+      <button class="hero-dot" onclick="goSlide(6)"></button>
+      <button class="hero-dot" onclick="goSlide(7)"></button>
+    </div>
 
     <!-- ISO pill top-right -->
     <div class="hero-iso-pill">
@@ -1859,6 +1922,37 @@ function submitQuote(){
     vid.appendChild(src);
     vid.load();
   }
+})();
+
+// ── KEN BURNS HERO SLIDER ──
+(function(){
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let current = 0;
+  let timer;
+
+  function goSlide(n){
+    slides[current].classList.remove('active');
+    slides[current].classList.add('prev');
+    dots[current].classList.remove('active');
+    setTimeout(()=>{ slides[current].classList.remove('prev'); }, 1600);
+    current = (n !== undefined) ? n : (current + 1) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    // restart animation
+    slides[current].style.animation='none';
+    slides[current].offsetHeight; // reflow
+    slides[current].style.animation='';
+  }
+
+  window.goSlide = goSlide;
+
+  function next(){ goSlide(); }
+  timer = setInterval(next, 5000);
+
+  // pause on hover
+  document.getElementById('hero-slider').addEventListener('mouseenter', ()=> clearInterval(timer));
+  document.getElementById('hero-slider').addEventListener('mouseleave', ()=>{ timer = setInterval(next, 5000); });
 })();
 
 // ── SPARK PARTICLES ──
