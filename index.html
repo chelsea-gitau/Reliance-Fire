@@ -1381,7 +1381,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 <!-- SERVICE DETAIL MODAL -->
 <div class="svc-modal-overlay" id="svc-modal-overlay" onclick="closeSvcModal(event)">
   <div class="svc-modal" id="svc-modal-box">
-    <button class="svc-modal-close" onclick="document.getElementById('svc-modal-overlay').classList.remove('open')">×</button>
+    <button class="svc-modal-close" onclick="document.getElementById('svc-modal-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
     <img id="svc-modal-img" src="" alt="" class="svc-modal-hero">
     <div class="svc-modal-body">
       <div class="svc-modal-tag" id="svc-modal-tag"></div>
@@ -1390,7 +1390,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       <div class="svc-modal-features" id="svc-modal-features"></div>
       <div class="svc-modal-photos" id="svc-modal-photos"></div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <button class="btn-primary" onclick="showPage('quote');document.getElementById('svc-modal-overlay').classList.remove('open')">Book a Free Assessment →</button>
+        <button class="btn-primary" onclick="showPage('quote');document.getElementById('svc-modal-overlay').classList.remove('open');document.body.style.overflow=''">Book a Free Assessment →</button>
         <button class="wa-btn" onclick="window.open('https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20I%27d%20like%20to%20enquire%20about%20your%20fire%20services.','_blank')">Enquire on WhatsApp</button>
       </div>
     </div>
@@ -1400,13 +1400,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 <!-- INDUSTRY MODAL -->
 <div class="ind-modal-overlay" id="ind-modal-overlay" onclick="closeIndModal(event)">
   <div class="ind-modal" id="ind-modal-box">
-    <button class="ind-modal-close" onclick="document.getElementById('ind-modal-overlay').classList.remove('open')">×</button>
+    <button class="ind-modal-close" onclick="document.getElementById('ind-modal-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
     <div class="sec-tag" id="ind-modal-tag"></div>
     <div class="sec-title" id="ind-modal-title" style="font-size:32px"></div>
     <p style="font-size:14px;color:rgba(255,255,255,0.5);margin-top:8px" id="ind-modal-desc"></p>
     <div class="ind-company-grid" id="ind-company-grid"></div>
     <div style="margin-top:24px;display:flex;gap:12px">
-      <button class="btn-primary" onclick="showPage('quote');document.getElementById('ind-modal-overlay').classList.remove('open')">Get a Quote for Your Property →</button>
+      <button class="btn-primary" onclick="showPage('quote');document.getElementById('ind-modal-overlay').classList.remove('open');document.body.style.overflow=''">Get a Quote for Your Property →</button>
     </div>
   </div>
 </div>
@@ -1436,7 +1436,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 <div class="modal-overlay" id="port-modal" onclick="closeModal(event)">
   <div class="modal-box" id="modal-box">
     <div class="modal-box-inner">
-      <button class="modal-close" onclick="document.getElementById('port-modal').classList.remove('open')">×</button>
+      <button class="modal-close" onclick="document.getElementById('port-modal').classList.remove('open');document.body.style.overflow=''">×</button>
       <div class="modal-img" id="modal-img">🏢</div>
       <div class="modal-content">
         <div class="modal-tag-row" id="modal-tags"></div>
@@ -1448,7 +1448,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
         <div class="modal-section-h">Systems Installed</div>
         <div class="port-systems" id="modal-systems"></div>
         <div class="modal-cta" style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
-          <button class="btn-primary" onclick="showPage('quote');document.getElementById('port-modal').classList.remove('open')">Get Similar Quote →</button>
+          <button class="btn-primary" onclick="showPage('quote');document.getElementById('port-modal').classList.remove('open');document.body.style.overflow=''">Get Similar Quote →</button>
           <button class="wa-btn" onclick="window.open('https://wa.me/254777723785','_blank')">Enquire on WhatsApp</button>
         </div>
       </div>
@@ -1763,9 +1763,25 @@ function openModal(id){
   document.getElementById('modal-desc').textContent=p.desc;
   document.getElementById('modal-systems').innerHTML=p.systems.map(s=>`<span class="port-sys">${s}</span>`).join('');
   document.getElementById('port-modal').classList.add('open');
+  document.body.style.overflow='hidden';
 }
 
-function closeModal(e){if(e.target===document.getElementById('port-modal'))document.getElementById('port-modal').classList.remove('open');}
+function closeModal(e){
+  if(e.target===document.getElementById('port-modal')){
+    document.getElementById('port-modal').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+
+// ── ESCAPE KEY CLOSES ANY MODAL ──
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    ['svc-modal-overlay','ind-modal-overlay','port-modal'].forEach(id=>{
+      document.getElementById(id)?.classList.remove('open');
+    });
+    document.body.style.overflow='';
+  }
+});
 
 // ── QUOTE SYSTEM ──
 let quoteData={prop:'',buildingStatus:'',propName:'',propLoc:'',area:'',floors:'',services:[],existing:'',urgency:'',budget:'',notes:''};
