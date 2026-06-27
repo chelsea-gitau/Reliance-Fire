@@ -813,11 +813,24 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
           <div class="reason"><div class="reason-num">04</div><div><h4>Trusted by Major Companies</h4><p>A decade of successful projects has made us the preferred choice for corporate and institutional clients.</p></div></div>
         </div>
       </div>
-      <div class="stat-blocks">
-        <div class="stat-block"><span class="stat-block-num">12<span>+</span></span><p>Years of hands-on fire safety experience across East Africa</p></div>
-        <div class="stat-block"><span class="stat-block-num">500<span>+</span></span><p>Successful installations completed across the region</p></div>
-        <div class="stat-block"><span class="stat-block-num">Fast<span> ↗</span></span><p>Same-day response for maintenance contract clients</p></div>
-        <div class="stat-block"><span class="stat-block-num">100<span>%</span></span><p>ISO certified quality management on every project</p></div>
+      <div>
+        <!-- Showroom display -->
+        <div style="border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);margin-bottom:12px;position:relative">
+          <img src="images/showroom-display.jpeg" alt="Reliance Fire Safety showroom" style="width:100%;height:320px;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.1)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,6,14,0.7) 0%,transparent 50%)"></div>
+          <div style="position:absolute;bottom:16px;left:16px;right:16px">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#fff">Our Product Range</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.6)">Fire equipment supplied, installed & maintained</div>
+          </div>
+        </div>
+        <!-- Team strip -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;border-radius:8px;overflow:hidden">
+          <img src="images/employees/team-group.jpg" alt="Reliance team" style="width:100%;height:80px;object-fit:cover;filter:contrast(1.05) saturate(1.05)">
+          <img src="images/employees/tech-installation-1.jpg" alt="Installation" style="width:100%;height:80px;object-fit:cover;filter:contrast(1.05)">
+          <img src="images/employees/tech-extinguisher-1.jpg" alt="Technician" style="width:100%;height:80px;object-fit:cover;filter:contrast(1.05)">
+          <img src="images/employees/tech-field-1.jpg" alt="Field work" style="width:100%;height:80px;object-fit:cover;filter:contrast(1.05)">
+        </div>
+        <div style="text-align:center;margin-top:8px;font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1px">OUR CERTIFIED TEAM IN THE FIELD</div>
       </div>
     </div>
   </section>
@@ -1488,18 +1501,59 @@ function renderShop(cat,search){
   });
   if(items.length===0){grid.innerHTML='';empty.style.display='block';return;}
   empty.style.display='none';
-  // map category to unsplash image
-  const catImgs = {
-    extinguishers: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=400&q=80',
-    detection: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
-    panels: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=80',
-    signage: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80',
-    hose: 'https://images.unsplash.com/photo-1599248839487-3b58a9ef8f78?w=400&q=80',
-    firstaid: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=400&q=80',
+  // per-product real images — fallback to category image
+  const productImgs = {
+    // Extinguishers
+    3:  'images/EXTINGUISHERS/dry-powder-extinguisher.jpeg',
+    5:  'images/EXTINGUISHERS/dry-powder-extinguisher.jpeg',
+    6:  'images/EXTINGUISHERS/dry-powder-extinguisher.jpeg',
+    7:  'images/EXTINGUISHERS/CO2 extinguisher.jpeg',
+    8:  'images/EXTINGUISHERS/CO2 extinguisher.jpeg',
+    9:  'images/EXTINGUISHERS/foam-extinguisher.jpeg',
+    10: 'images/EXTINGUISHERS/foam-extinguisher.jpeg',
+    12: 'images/EXTINGUISHERS/wet-chemical-extinguisher.jpeg',
+    15: 'images/afc-suppression-ball.jpeg',
+    16: 'images/fire blanket.jpeg',
+    17: 'images/fire blanket.jpeg',
+    // Detection
+    20: 'images/smoke-detector-optical.jpeg',
+    21: 'images/heat-detector.jpeg',
+    22: 'images/smoke-detector-white.jpeg',
+    23: 'images/smoke-detector-white.jpeg',
+    24: 'images/heat-detector-red.jpeg',
+    26: 'images/call-point.jpg',
+    27: 'images/call-point.jpg',
+    29: 'images/alarm-sounder-wall.jpeg',
+    30: 'images/red-sounder-dome.jpeg',
+    // Panels
+    31: 'images/fire-alarm-control-panel.jpeg',
+    32: 'images/fire-alarm-control-panel.jpeg',
+    33: 'images/mounted fire-alarm-control-panel.jpeg',
+    34: 'images/lcd-control-panel.jpeg',
+    35: 'images/addressable-panel-white.jpeg',
+    36: 'images/addressable-panel-box.jpeg',
+    37: 'images/smoke-detector-optical.jpeg',
+    38: 'images/heat-detector.jpeg',
+    39: 'images/call-point.jpg',
+    // Signage
+    40: 'images/emergency-exit-light.jpeg',
+    41: 'images/fire-exit-sign.jpeg',
+    42: 'images/fire point.jpeg',
+    43: 'images/fire-safety-signage.jpeg',
+    46: 'images/fire-alarm-control-panel.jpeg',
   };
+  const catImgs = {
+    extinguishers: 'images/EXTINGUISHERS/dry-powder-extinguisher.jpeg',
+    detection:     'images/smoke-detector-optical.jpeg',
+    panels:        'images/lcd-control-panel.jpeg',
+    signage:       'images/fire-exit-sign.jpeg',
+    hose:          'images/suppression-ball-boxed.jpeg',
+    firstaid:      'images/fire-safety-signage.jpeg',
+  };
+  const getProductImg = (p) => productImgs[p.id] || catImgs[p.cat] || catImgs.extinguishers;
   grid.innerHTML=items.map(p=>`
     <div class="product-card">
-      <div class="product-img" style="background-image:url('${catImgs[p.cat]||catImgs.extinguishers}');background-size:cover;background-position:center;font-size:0">
+      <div class="product-img" style="background-image:url('${getProductImg(p)}');background-size:cover;background-position:center;font-size:0">
         ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
         <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.5))"></div>
       </div>
