@@ -284,9 +284,11 @@ section{padding:90px 5%}
 .sec-sub{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7;max-width:560px}
 
 /* ── SERVICES — rating-plate cards, real field/product photography ── */
-#services{background:var(--smoke);border-top:1px solid rgba(255,75,31,0.18);padding-top:64px}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:50px;background:var(--line,rgba(255,255,255,0.08))}
-.svc-card{background:var(--panel);position:relative;overflow:hidden;transition:transform 0.3s;cursor:pointer}
+#services{background:#100D0A;border-top:1px solid rgba(255,75,31,0.18);padding-top:64px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:50px;background:rgba(255,75,31,0.14)}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr}}
+.svc-card{background:var(--panel);position:relative;overflow:hidden;transition:transform 0.3s;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05)}
 .svc-card:hover{transform:translateY(-3px);z-index:2}
 .svc-icon{width:100%;aspect-ratio:16/11;background:var(--panel);background-size:cover;background-position:center;position:relative;overflow:hidden;filter:saturate(1.08) contrast(1.05)}
 .svc-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,11,0.95) 0%,rgba(7,8,11,0.15) 55%,rgba(7,8,11,0.35) 100%)}
