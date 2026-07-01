@@ -9,7 +9,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --red:#FF4B1F;--red-dark:#8F2609;--red-light:#FF8354;
-  --char:#07080B;--ash:#101218;--smoke:#171A22;--panel:#1E212B;
+  --char:#0D0B09;--ash:#151210;--smoke:#1C1815;--panel:#242019;
   --section-a:#0A0B0F;--section-b:#101218;--section-c:#0C0D11;
   --offwhite:#F4F0E8;--muted:#9BA1AC;--gold:#CB9A3E;
   --green:#25D366;
@@ -99,7 +99,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 /* ── HERO — split layout: solid ink panel + framed field-photo plate ── */
 .hero{
-  min-height:calc(100vh - 72px);
+  min-height:auto;
   display:flex;flex-direction:column;
   position:relative;background:var(--char);
   border-bottom:1px solid var(--line,rgba(255,255,255,0.07));
@@ -108,20 +108,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   flex:1;display:grid;grid-template-columns:1.15fr 1fr;
   position:relative;z-index:3;
 }
-.hero-main::after{ /* faint blueprint grid texture across whole hero, subject-appropriate */
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
-  background-size:44px 44px;
-  mask-image:radial-gradient(ellipse at 30% 40%,black 0%,transparent 70%);
+.hero-main::before{ /* ember glow anchored behind the photo frame */
+  content:'';position:absolute;z-index:0;pointer-events:none;
+  top:8%;right:2%;width:58%;height:84%;
+  background:radial-gradient(ellipse at center,rgba(255,75,31,0.16) 0%,rgba(255,75,31,0.06) 40%,transparent 72%);
+  filter:blur(50px);
 }
+.hero-main::after{display:none}
 
 /* LEFT — copy panel, full contrast on solid ink, no photo behind text */
 .hero-left{
   position:relative;z-index:2;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:120px 4% 60px 5%;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  padding:88px 4% 40px 5%;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:9px;width:fit-content;
@@ -188,8 +187,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 /* RIGHT — framed field-photo plate */
 .hero-right{
   position:relative;z-index:2;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:120px 5% 60px 3%;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  padding:88px 5% 40px 3%;
 }
 .hero-frame{
   position:relative;width:100%;aspect-ratio:4/5;max-height:560px;
@@ -223,21 +222,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   animation:fadeSlideUp 0.7s 0.75s both;
 }
 .hero-stat{
-  flex:1;padding:22px 5%;
+  flex:1;padding:20px 4% 18px;
   border-right:1px solid var(--line,rgba(255,255,255,0.07));
-  display:flex;align-items:center;gap:16px;
+  display:flex;flex-direction:column;align-items:flex-start;
+  min-width:0;
 }
 .hero-stat:last-child{border-right:none}
 .hs-num{
-  font-family:var(--mono);font-weight:600;font-size:34px;
+  font-family:var(--mono);font-weight:600;font-size:32px;
   color:#fff;
   line-height:1;
 }
 .hs-num sup{font-size:0.5em;color:var(--red-light)}
-.hs-text{}
-.hs-label{font-size:13px;font-weight:600;color:rgba(255,255,255,0.9);display:block;margin-bottom:2px}
-.hs-sub{font-size:11px;color:var(--text-muted);letter-spacing:0.3px}
-.hs-divider{width:1px;height:30px;background:var(--red);opacity:0.5;flex-shrink:0}
+.hs-text{min-width:0;width:100%}
+.hs-label{font-size:12.5px;font-weight:600;color:rgba(255,255,255,0.9);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hs-sub{font-size:10.5px;color:var(--text-muted);letter-spacing:0.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.hs-divider{width:16px;height:2px;background:var(--red);opacity:0.8;flex-shrink:0;margin:8px 0 6px}
 
 /* entrance animations */
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -267,9 +267,9 @@ section{padding:90px 5%}
 .sec-sub{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7;max-width:560px}
 
 /* ── SERVICES — rating-plate cards, real field/product photography ── */
-#services{background:var(--ash)}
+#services{background:var(--smoke);border-top:1px solid rgba(255,75,31,0.18);padding-top:64px}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:50px;background:var(--line,rgba(255,255,255,0.08))}
-.svc-card{background:var(--smoke);position:relative;overflow:hidden;transition:transform 0.3s;cursor:pointer}
+.svc-card{background:var(--panel);position:relative;overflow:hidden;transition:transform 0.3s;cursor:pointer}
 .svc-card:hover{transform:translateY(-3px);z-index:2}
 .svc-icon{width:100%;aspect-ratio:16/11;background:var(--panel);background-size:cover;background-position:center;position:relative;overflow:hidden;filter:saturate(1.08) contrast(1.05)}
 .svc-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,11,0.95) 0%,rgba(7,8,11,0.15) 55%,rgba(7,8,11,0.35) 100%)}
@@ -797,8 +797,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       <div class="hero-right">
         <div class="hero-frame">
           <div id="hero-slider" style="position:absolute;inset:0;z-index:0;overflow:hidden">
-            <div class="hero-slide active" style="background-image:url('images/employees/tech-installation-1.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/employees/tech-installation-2.jpg')"></div>
+            <div class="hero-slide active" style="background-image:url('images/employees/tech-installation-2.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/employees/tech-installation-1.jpg')"></div>
             <div class="hero-slide" style="background-image:url('images/employees/tech-extinguisher-1.jpg')"></div>
             <div class="hero-slide" style="background-image:url('images/employees/tech-field-1.jpg')"></div>
             <div class="hero-slide" style="background-image:url('images/employees/tech-inspection-1.jpg')"></div>
