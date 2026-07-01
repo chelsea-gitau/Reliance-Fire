@@ -120,7 +120,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-left{
   position:relative;z-index:2;
   display:flex;flex-direction:column;justify-content:flex-start;
-  padding:8px 4% 40px 5%;
+  padding:8px 4% 18px 5%;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:9px;width:fit-content;
@@ -188,7 +188,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-right{
   position:relative;z-index:2;
   display:flex;flex-direction:column;justify-content:flex-start;
-  padding:8px 5% 40px 3%;
+  padding:8px 5% 18px 3%;
 }
 .hero-frame{
   position:relative;width:100%;aspect-ratio:4/5;max-height:560px;
@@ -233,11 +233,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   color:#fff;
   line-height:1;
 }
-.hs-num sup{font-size:0.5em;color:var(--red-light)}
+.hs-num sup{font-size:0.5em;color:var(--gold)}
 .hs-text{min-width:0;width:100%}
 .hs-label{font-size:12.5px;font-weight:600;color:rgba(255,255,255,0.9);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hs-sub{font-size:10.5px;color:var(--text-muted);letter-spacing:0.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
-.hs-divider{width:16px;height:2px;background:var(--red);opacity:0.8;flex-shrink:0;margin:8px 0 6px}
+.hs-divider{width:16px;height:2px;background:var(--gold);opacity:0.9;flex-shrink:0;margin:8px 0 6px}
 
 /* entrance animations */
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -758,6 +758,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 
   <!-- HERO -->
   <section class="hero">
+    <div class="embers" id="embers"></div>
+    <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.4"></canvas>
     <div class="hero-main">
       <!-- LEFT — copy panel, solid ink, full contrast -->
       <div class="hero-left">
@@ -804,8 +806,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
             <div class="hero-slide" style="background-image:url('images/employees/tech-inspection-2.jpg')"></div>
           </div>
           <div class="hero-frame-overlay"></div>
-          <div class="embers" id="embers"></div>
-          <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.4"></canvas>
           <div class="corners"><i></i><i></i><i></i><i></i></div>
 
           <!-- ISO plate — inside top bracket -->
