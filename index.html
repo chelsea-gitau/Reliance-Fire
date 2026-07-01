@@ -4,17 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reliance Fire Safety EA Ltd | Kenya's Fire Protection Specialists</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --red:#D94F1E;--red-dark:#A8340B;--red-light:#F4632A;
-  --char:#0D0F14;--ash:#141720;--smoke:#1C1F2A;--panel:#232738;
-  --section-a:#111318;--section-b:#161922;--section-c:#0F1119;
-  --offwhite:#F0EDE8;--muted:#8A8F9E;--gold:#D4952A;
+  --red:#FF4B1F;--red-dark:#8F2609;--red-light:#FF8354;
+  --char:#07080B;--ash:#101218;--smoke:#171A22;--panel:#1E212B;
+  --section-a:#0A0B0F;--section-b:#101218;--section-c:#0C0D11;
+  --offwhite:#F4F0E8;--muted:#9BA1AC;--gold:#CB9A3E;
   --green:#25D366;
-  --text-primary:#EBE8E2;--text-secondary:rgba(235,232,226,0.65);--text-muted:rgba(235,232,226,0.4);
-  --accent-glow:rgba(217,79,30,0.18);
+  --text-primary:#F4F0E8;--text-secondary:rgba(244,240,232,0.68);--text-muted:rgba(244,240,232,0.42);
+  --accent-glow:rgba(255,75,31,0.22);
+  --mono:'IBM Plex Mono',monospace;
 }
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--char);color:var(--offwhite);overflow-x:hidden}
@@ -77,45 +78,56 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 }
 /* slider dots */
 .hero-dots{
-  position:absolute;bottom:230px;left:50%;transform:translateX(-50%);
-  z-index:3;display:flex;gap:8px;
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  z-index:6;display:flex;gap:7px;
 }
 .hero-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:rgba(255,255,255,0.3);border:none;cursor:pointer;
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(255,255,255,0.35);border:none;cursor:pointer;
   transition:all 0.3s;padding:0;
 }
-.hero-dot.active{background:var(--red);width:20px;border-radius:3px}
+.hero-dot.active{background:var(--red);width:16px;border-radius:3px}
 
-/* ── HERO ── */
+/* ── SIGNATURE: RATING-PLATE CORNER BRACKETS ── */
+.corners{position:absolute;inset:12px;pointer-events:none;z-index:6}
+.corners i{position:absolute;width:16px;height:16px;border:2px solid var(--red);font-style:normal;opacity:0.9}
+.corners i:nth-child(1){top:0;left:0;border-right:none;border-bottom:none}
+.corners i:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
+.corners i:nth-child(3){bottom:0;left:0;border-right:none;border-top:none}
+.corners i:nth-child(4){bottom:0;right:0;border-left:none;border-top:none}
+.plate-code{font-family:var(--mono);font-size:10px;letter-spacing:2.5px;color:var(--red-light);text-transform:uppercase}
+
+/* ── HERO — split layout: solid ink panel + framed field-photo plate ── */
 .hero{
   min-height:calc(100vh - 72px);
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  padding:0;
-  position:relative;
-  overflow:hidden;
+  display:flex;flex-direction:column;
+  position:relative;background:var(--char);
+  border-bottom:1px solid var(--line,rgba(255,255,255,0.07));
 }
-/* layered overlays for depth */
-.hero-overlay-1{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,6,14,0.55) 0%,rgba(5,6,14,0.35) 40%,rgba(5,6,14,0.88) 80%,rgba(5,6,14,1) 100%);z-index:1}
-.hero-overlay-2{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,6,14,0.75) 0%,rgba(5,6,14,0.2) 60%);z-index:1}
-.hero-ember-line{position:absolute;bottom:220px;left:0;right:0;height:1px;background:linear-gradient(to right,transparent 0%,rgba(217,79,30,0.6) 20%,rgba(244,99,42,0.9) 50%,rgba(217,79,30,0.6) 80%,transparent 100%);z-index:2;filter:blur(0.5px)}
-.hero-ember-glow{position:absolute;bottom:210px;left:10%;right:10%;height:20px;background:radial-gradient(ellipse at center,rgba(217,79,30,0.25) 0%,transparent 70%);z-index:2;filter:blur(4px)}
-
-/* main content area */
-.hero-body{
+.hero-main{
+  flex:1;display:grid;grid-template-columns:1.15fr 1fr;
   position:relative;z-index:3;
-  display:flex;align-items:flex-end;justify-content:space-between;
-  padding:0 5% 52px;
-  gap:40px;
 }
-.hero-content{flex:1;max-width:820px}
+.hero-main::after{ /* faint blueprint grid texture across whole hero, subject-appropriate */
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse at 30% 40%,black 0%,transparent 70%);
+}
+
+/* LEFT — copy panel, full contrast on solid ink, no photo behind text */
+.hero-left{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 4% 60px 5%;
+}
 .hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(217,79,30,0.12);border:1px solid rgba(217,79,30,0.35);
-  color:#F4845A;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-  padding:6px 16px;border-radius:100px;margin-bottom:22px;
+  display:inline-flex;align-items:center;gap:9px;width:fit-content;
+  background:rgba(255,75,31,0.1);border:1px solid rgba(255,75,31,0.4);
+  color:var(--red-light);font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  padding:7px 16px;margin-bottom:26px;
   animation:fadeSlideUp 0.7s 0.1s both;
 }
 .pulse{animation:pulse 2s infinite}
@@ -124,94 +136,108 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 /* MEGA HEADLINE */
 .hero h1{
   font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(64px,10vw,130px);
-  line-height:0.92;letter-spacing:1px;
+  font-size:clamp(56px,7vw,104px);
+  line-height:0.9;letter-spacing:0.5px;
   color:#fff;margin-bottom:0;
   animation:fadeSlideUp 0.7s 0.25s both;
 }
-.hero h1 .line-1{display:block;color:rgba(255,255,255,0.45);font-size:0.52em;letter-spacing:5px;margin-bottom:4px}
+.hero h1 .line-1{display:block;color:var(--muted);font-size:0.42em;letter-spacing:4px;margin-bottom:6px;font-family:var(--mono);text-transform:uppercase;font-weight:500;letter-spacing:3px}
 .hero h1 em{
   display:block;
   font-style:normal;
-  background:linear-gradient(90deg,#F4632A 0%,#FF8C5A 50%,#D94F1E 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  color:var(--red);
+  position:relative;
 }
 .hero h1 .line-3{display:block;color:#fff}
 
 .hero-sub{
-  font-size:15px;color:rgba(255,255,255,0.6);
-  line-height:1.7;max-width:480px;
-  margin-top:18px;margin-bottom:32px;
+  font-size:15.5px;color:var(--text-secondary);
+  line-height:1.7;max-width:460px;
+  margin-top:22px;margin-bottom:34px;
   animation:fadeSlideUp 0.7s 0.4s both;
+  border-left:2px solid var(--red);padding-left:16px;
 }
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;animation:fadeSlideUp 0.7s 0.55s both}
-.btn-primary{background:var(--red);color:#fff;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;box-shadow:0 4px 20px rgba(217,79,30,0.4)}
-.btn-primary:hover{background:var(--red-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(217,79,30,0.55)}
-.btn-outline{background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);color:rgba(255,255,255,0.85);padding:13px 28px;border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,0.15);transition:all 0.25s;cursor:pointer;font-family:'DM Sans',sans-serif}
-.btn-outline:hover{border-color:rgba(255,255,255,0.4);color:#fff;background:rgba(255,255,255,0.1)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px;animation:fadeSlideUp 0.7s 0.55s both}
+.btn-primary{background:var(--red);color:#fff;padding:14px 30px;border-radius:2px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;box-shadow:0 4px 24px rgba(255,75,31,0.35)}
+.btn-primary:hover{background:var(--red-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,75,31,0.5)}
+.btn-outline{background:transparent;color:var(--text-secondary);padding:14px 30px;border-radius:2px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,0.18);transition:all 0.25s;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-outline:hover{border-color:var(--red);color:#fff}
 
-/* quick contact card — right side */
+/* quick contact row — horizontal chips under CTAs */
 .hero-quick{
-  flex-shrink:0;
-  display:flex;flex-direction:column;gap:10px;
-  animation:fadeSlideLeft 0.7s 0.6s both;
+  display:flex;flex-wrap:wrap;gap:10px;
+  animation:fadeSlideUp 0.7s 0.65s both;
 }
 .hero-quick-card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:10px;padding:14px 18px;
-  display:flex;align-items:center;gap:12px;
-  cursor:pointer;transition:all 0.25s;min-width:210px;
+  background:var(--ash);
+  border:1px solid var(--line,rgba(255,255,255,0.08));
+  border-radius:2px;padding:11px 16px;
+  display:flex;align-items:center;gap:11px;
+  cursor:pointer;transition:all 0.25s;
   text-decoration:none;color:#fff;
 }
-.hero-quick-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.22);transform:translateX(-3px)}
-.hero-quick-card.primary-card{background:rgba(217,79,30,0.18);border-color:rgba(217,79,30,0.45)}
-.hero-quick-card.primary-card:hover{background:rgba(217,79,30,0.3)}
-.qc-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
-.qc-icon.red{background:rgba(217,79,30,0.25)}
-.qc-icon.green{background:rgba(37,211,102,0.18)}
-.qc-icon.blue{background:rgba(80,140,255,0.18)}
-.qc-label{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.5px;margin-bottom:1px}
+.hero-quick-card:hover{border-color:var(--red);background:var(--smoke)}
+.hero-quick-card.primary-card{border-color:rgba(255,75,31,0.4)}
+.qc-icon{width:30px;height:30px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.qc-icon.red{background:rgba(255,75,31,0.15)}
+.qc-icon.green{background:rgba(37,211,102,0.15)}
+.qc-icon.blue{background:rgba(80,140,255,0.15)}
+.qc-label{font-size:10px;color:var(--text-muted);letter-spacing:0.5px;margin-bottom:1px;font-family:var(--mono)}
 .qc-value{font-size:13px;font-weight:600;color:#fff}
 
-/* stats bar at the very bottom */
+/* RIGHT — framed field-photo plate */
+.hero-right{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 5% 60px 3%;
+}
+.hero-frame{
+  position:relative;width:100%;aspect-ratio:4/5;max-height:560px;
+  border:1px solid rgba(255,255,255,0.14);
+  overflow:hidden;background:var(--ash);
+  box-shadow:0 40px 90px -20px rgba(0,0,0,0.7);
+  animation:fadeSlideLeft 0.8s 0.35s both;
+}
+.hero-frame-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(5,6,10,0.92) 0%,rgba(5,6,10,0.1) 38%,transparent 60%),linear-gradient(to bottom,rgba(5,6,10,0.6) 0%,transparent 22%)}
+.hero-frame-label{position:absolute;left:24px;right:24px;bottom:20px;z-index:6}
+.hero-frame-label .fl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.hero-frame-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;color:#fff}
+.hero-frame-sub{font-size:11px;color:var(--text-muted);letter-spacing:0.3px}
+.rec-dot{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 6px var(--red);animation:pulse 1.8s infinite}
+
+/* ISO plate — top of frame, inside bracket corners */
+.hero-iso-pill{
+  position:absolute;top:24px;left:24px;right:24px;z-index:6;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.hero-iso-pill .iso-l{display:flex;align-items:center;gap:8px}
+.iso-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;box-shadow:0 0 8px rgba(203,154,62,0.9)}
+.iso-pill-text{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--gold);letter-spacing:1.5px}
+
+/* stats bar at the very bottom, full width */
 .hero-stats-bar{
   position:relative;z-index:3;
   display:flex;align-items:stretch;
-  background:rgba(255,255,255,0.04);
-  border-top:1px solid rgba(255,255,255,0.07);
-  backdrop-filter:blur(12px);
-  animation:fadeSlideUp 0.7s 0.7s both;
+  background:var(--ash);
+  border-top:1px solid var(--line,rgba(255,255,255,0.08));
+  animation:fadeSlideUp 0.7s 0.75s both;
 }
 .hero-stat{
-  flex:1;padding:20px 5%;
-  border-right:1px solid rgba(255,255,255,0.06);
+  flex:1;padding:22px 5%;
+  border-right:1px solid var(--line,rgba(255,255,255,0.07));
   display:flex;align-items:center;gap:16px;
 }
 .hero-stat:last-child{border-right:none}
 .hs-num{
-  font-family:'Bebas Neue',sans-serif;font-size:42px;
-  background:linear-gradient(135deg,#fff 0%,rgba(255,160,100,0.9) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-family:var(--mono);font-weight:600;font-size:34px;
+  color:#fff;
   line-height:1;
 }
-.hs-num sup{font-size:0.55em;vertical-align:super}
+.hs-num sup{font-size:0.5em;color:var(--red-light)}
 .hs-text{}
-.hs-label{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);display:block;margin-bottom:2px}
-.hs-sub{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.3px}
-.hs-divider{width:2px;height:32px;background:linear-gradient(to bottom,transparent,var(--red),transparent);flex-shrink:0}
-
-/* ISO pill — top right of hero */
-.hero-iso-pill{
-  position:absolute;top:32px;right:5%;z-index:3;
-  display:flex;align-items:center;gap:10px;
-  background:rgba(212,149,42,0.1);border:1px solid rgba(212,149,42,0.3);
-  border-radius:100px;padding:8px 18px 8px 12px;
-  animation:fadeSlideLeft 0.7s 0.3s both;
-}
-.iso-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;box-shadow:0 0 8px rgba(212,149,42,0.8)}
-.iso-pill-text{font-size:12px;font-weight:600;color:rgba(212,149,42,0.9);letter-spacing:1px}
+.hs-label{font-size:13px;font-weight:600;color:rgba(255,255,255,0.9);display:block;margin-bottom:2px}
+.hs-sub{font-size:11px;color:var(--text-muted);letter-spacing:0.3px}
+.hs-divider{width:1px;height:30px;background:var(--red);opacity:0.5;flex-shrink:0}
 
 /* entrance animations */
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -225,23 +251,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .iso-label,.iso-num,.iso-sub{display:none}
 .stats-row{display:none}
 
+@media(max-width:900px){
+  .hero-main{grid-template-columns:1fr}
+  .hero-left{padding:100px 6% 24px}
+  .hero-right{padding:0 6% 40px}
+  .hero-frame{aspect-ratio:16/10;max-height:340px}
+  .hero-stats-bar{flex-wrap:wrap}
+  .hero-stat{min-width:50%;border-bottom:1px solid var(--line,rgba(255,255,255,0.07))}
+}
+
 /* ── SECTION BASICS ── */
 section{padding:90px 5%}
-.sec-tag{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--red-light);margin-bottom:10px;display:inline-flex;align-items:center;gap:8px}.sec-tag::before{content:"";display:inline-block;width:24px;height:2px;background:var(--red);border-radius:1px}
+.sec-tag{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--red-light);margin-bottom:10px;display:inline-flex;align-items:center;gap:8px}.sec-tag::before{content:"";display:inline-block;width:24px;height:2px;background:var(--red);border-radius:1px}
 .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,4.5vw,54px);letter-spacing:1px;color:#fff;margin-bottom:14px}
 .sec-sub{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7;max-width:560px}
 
-/* ── SERVICES ── */
+/* ── SERVICES — rating-plate cards, real field/product photography ── */
 #services{background:var(--ash)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;margin-top:50px}
-.svc-card{background:var(--smoke);padding:32px 28px;position:relative;overflow:hidden;transition:background 0.3s;cursor:default}
-.svc-card:hover{background:#1e1828}
-.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transition:transform 0.3s;transform-origin:left}
-.svc-card:hover::before{transform:scaleX(1)}
-.svc-icon{width:100%;height:200px;background:rgba(204,34,0,0.15);border-radius:0;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px;background-size:cover;background-position:center;position:relative;overflow:hidden;margin:-32px -28px 18px -28px;width:calc(100% + 56px)}
-.svc-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,17,17,0.2),rgba(17,17,17,0.7))}
-.svc-card h3{font-size:16px;font-weight:600;color:#fff;margin-bottom:8px}
-.svc-card p{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:50px;background:var(--line,rgba(255,255,255,0.08))}
+.svc-card{background:var(--smoke);position:relative;overflow:hidden;transition:transform 0.3s;cursor:pointer}
+.svc-card:hover{transform:translateY(-3px);z-index:2}
+.svc-icon{width:100%;aspect-ratio:16/11;background:var(--panel);background-size:cover;background-position:center;position:relative;overflow:hidden;filter:saturate(1.08) contrast(1.05)}
+.svc-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,11,0.95) 0%,rgba(7,8,11,0.15) 55%,rgba(7,8,11,0.35) 100%)}
+.svc-card:hover .svc-icon{filter:saturate(1.2) contrast(1.1) brightness(1.05)}
+.svc-num{position:absolute;top:14px;right:14px;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--red-light);background:rgba(7,8,11,0.55);padding:4px 9px;border:1px solid rgba(255,75,31,0.4)}
+.svc-body{padding:22px 24px 26px;position:relative}
+.svc-body::before{content:'';position:absolute;top:0;left:24px;right:24px;height:2px;background:var(--red);transform:scaleX(0);transition:transform 0.35s;transform-origin:left}
+.svc-card:hover .svc-body::before{transform:scaleX(1)}
+.svc-card h3{font-size:16.5px;font-weight:600;color:#fff;margin-bottom:8px;letter-spacing:0.2px}
+.svc-card p{font-size:13px;color:var(--text-secondary);line-height:1.65}
 
 /* ── WHY US ── */
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
@@ -723,45 +761,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 
   <!-- HERO -->
   <section class="hero">
-    <!-- KEN BURNS PHOTO SLIDER -->
-    <div id="hero-slider" style="position:absolute;inset:0;z-index:0;overflow:hidden">
-      <div class="hero-slide active" style="background-image:url('images/employees/tech-installation-1.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('images/employees/tech-installation-2.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('images/employees/tech-extinguisher-1.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('images/employees/tech-field-1.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('images/employees/tech-inspection-1.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('images/employees/tech-extinguisher-2.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('images/employees/team-group.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('images/employees/tech-inspection-2.jpg')"></div>
-    </div>
-    <div class="hero-overlay-1"></div>
-    <div class="hero-overlay-2"></div>
-    <div class="hero-ember-line"></div>
-    <div class="hero-ember-glow"></div>
-    <div class="embers" id="embers"></div>
-    <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.4"></canvas>
-
-    <!-- Slider dots -->
-    <div class="hero-dots" id="hero-dots">
-      <button class="hero-dot active" onclick="goSlide(0)"></button>
-      <button class="hero-dot" onclick="goSlide(1)"></button>
-      <button class="hero-dot" onclick="goSlide(2)"></button>
-      <button class="hero-dot" onclick="goSlide(3)"></button>
-      <button class="hero-dot" onclick="goSlide(4)"></button>
-      <button class="hero-dot" onclick="goSlide(5)"></button>
-      <button class="hero-dot" onclick="goSlide(6)"></button>
-      <button class="hero-dot" onclick="goSlide(7)"></button>
-    </div>
-
-    <!-- ISO pill top-right -->
-    <div class="hero-iso-pill">
-      <span class="iso-dot"></span>
-      <span class="iso-pill-text">ISO 9001:2015 CERTIFIED</span>
-    </div>
-
-    <!-- MAIN BODY -->
-    <div class="hero-body">
-      <div class="hero-content">
+    <div class="hero-main">
+      <!-- LEFT — copy panel, solid ink, full contrast -->
+      <div class="hero-left">
         <div class="hero-badge"><span class="pulse">●</span> Est. 2012 · Nairobi, Kenya</div>
         <h1>
           <span class="line-1">East Africa's</span>
@@ -770,24 +772,69 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
         </h1>
         <p class="hero-sub">Design, supply, installation and maintenance of fire protection systems — protecting lives and businesses across Kenya and East Africa for over a decade.</p>
         <div class="hero-actions">
-          <button class="btn-primary" onclick="showPage('quote')">🔥 Book Free Assessment</button>
+          <button class="btn-primary" onclick="showPage('quote')">Book Free Assessment</button>
           <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Our Services ↓</button>
+        </div>
+
+        <!-- QUICK CONTACT CHIPS -->
+        <div class="hero-quick">
+          <a href="tel:+254791100310" class="hero-quick-card primary-card">
+            <div class="qc-icon red">📞</div>
+            <div><div class="qc-label">Call Us Now</div><div class="qc-value">0791 100 310</div></div>
+          </a>
+          <a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20I%27d%20like%20a%20free%20assessment." target="_blank" class="hero-quick-card">
+            <div class="qc-icon green">💬</div>
+            <div><div class="qc-label">WhatsApp</div><div class="qc-value">Chat Instantly</div></div>
+          </a>
+          <div class="hero-quick-card" onclick="showPage('quote')">
+            <div class="qc-icon blue">📋</div>
+            <div><div class="qc-label">Free Quote</div><div class="qc-value">4-Step Assessment</div></div>
+          </div>
         </div>
       </div>
 
-      <!-- QUICK CONTACT CARDS -->
-      <div class="hero-quick">
-        <a href="tel:+254791100310" class="hero-quick-card primary-card">
-          <div class="qc-icon red">📞</div>
-          <div><div class="qc-label">Call Us Now</div><div class="qc-value">0791 100 310</div></div>
-        </a>
-        <a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20I%27d%20like%20a%20free%20assessment." target="_blank" class="hero-quick-card">
-          <div class="qc-icon green">💬</div>
-          <div><div class="qc-label">WhatsApp</div><div class="qc-value">Chat Instantly</div></div>
-        </a>
-        <div class="hero-quick-card" onclick="showPage('quote')">
-          <div class="qc-icon blue">📋</div>
-          <div><div class="qc-label">Free Quote</div><div class="qc-value">4-Step Assessment</div></div>
+      <!-- RIGHT — framed field-photo plate (rating-plate signature) -->
+      <div class="hero-right">
+        <div class="hero-frame">
+          <div id="hero-slider" style="position:absolute;inset:0;z-index:0;overflow:hidden">
+            <div class="hero-slide active" style="background-image:url('images/employees/tech-installation-1.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/employees/tech-installation-2.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/employees/tech-extinguisher-1.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/employees/tech-field-1.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/employees/tech-inspection-1.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/employees/tech-extinguisher-2.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/employees/team-group.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/employees/tech-inspection-2.jpg')"></div>
+          </div>
+          <div class="hero-frame-overlay"></div>
+          <div class="embers" id="embers"></div>
+          <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.4"></canvas>
+          <div class="corners"><i></i><i></i><i></i><i></i></div>
+
+          <!-- ISO plate — inside top bracket -->
+          <div class="hero-iso-pill">
+            <div class="iso-l"><span class="iso-dot"></span><span class="iso-pill-text">ISO 9001:2015 CERTIFIED</span></div>
+            <span class="plate-code">REL·FS·01</span>
+          </div>
+
+          <!-- Frame label + slider dots -->
+          <div class="hero-frame-label">
+            <div class="fl-top">
+              <div class="hero-frame-title">Field Operations</div>
+              <span class="rec-dot" title="Live"></span>
+            </div>
+            <div class="hero-frame-sub">Certified technicians on active installation &amp; service sites</div>
+          </div>
+          <div class="hero-dots" id="hero-dots">
+            <button class="hero-dot active" onclick="goSlide(0)"></button>
+            <button class="hero-dot" onclick="goSlide(1)"></button>
+            <button class="hero-dot" onclick="goSlide(2)"></button>
+            <button class="hero-dot" onclick="goSlide(3)"></button>
+            <button class="hero-dot" onclick="goSlide(4)"></button>
+            <button class="hero-dot" onclick="goSlide(5)"></button>
+            <button class="hero-dot" onclick="goSlide(6)"></button>
+            <button class="hero-dot" onclick="goSlide(7)"></button>
+          </div>
         </div>
       </div>
     </div>
@@ -836,28 +883,34 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <p class="sec-sub">End-to-end solutions delivered by certified professionals — from design through commissioning to ongoing maintenance.</p>
     <div class="services-grid" style="margin-top:48px">
       <div class="svc-card" onclick="openSvcModal('detection')">
-        <div class="svc-icon" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=90')"></div>
-        <h3>Fire Detection Systems</h3><p>Advanced smoke, heat and multi-sensor detection for early warning and reliable performance.</p>
+        <div class="svc-icon" style="background-image:url('images/smoke-detector-optical.jpeg')"></div>
+        <span class="svc-num">SYS·01</span>
+        <div class="svc-body"><h3>Fire Detection Systems</h3><p>Advanced smoke, heat and multi-sensor detection for early warning and reliable performance.</p></div>
       </div>
       <div class="svc-card" onclick="openSvcModal('sprinkler')">
-        <div class="svc-icon" style="background-image:url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=90')"></div>
-        <h3>Sprinkler Systems</h3><p>Wet, dry and pre-action sprinkler systems for commercial and industrial properties.</p>
+        <div class="svc-icon" style="background-image:url('images/employees/tech-installation-1.jpg')"></div>
+        <span class="svc-num">SYS·02</span>
+        <div class="svc-body"><h3>Sprinkler Systems</h3><p>Wet, dry and pre-action sprinkler systems for commercial and industrial properties.</p></div>
       </div>
       <div class="svc-card" onclick="openSvcModal('suppression')">
-        <div class="svc-icon" style="background-image:url('https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=1200&q=90')"></div>
-        <h3>Fire Suppression</h3><p>Gaseous, foam and clean agent suppression for server rooms, kitchens and high-value spaces.</p>
+        <div class="svc-icon" style="background-image:url('images/EXTINGUISHERS/foam-extinguisher.jpeg')"></div>
+        <span class="svc-num">SYS·03</span>
+        <div class="svc-body"><h3>Fire Suppression</h3><p>Gaseous, foam and clean agent suppression for server rooms, kitchens and high-value spaces.</p></div>
       </div>
       <div class="svc-card" onclick="openSvcModal('alarm')">
-        <div class="svc-icon" style="background-image:url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1200&q=90')"></div>
-        <h3>Fire Alarm Systems</h3><p>Conventional and addressable alarm panels with full installation, commissioning and certification.</p>
+        <div class="svc-icon" style="background-image:url('images/fire-alarm-control-panel.jpeg')"></div>
+        <span class="svc-num">SYS·04</span>
+        <div class="svc-body"><h3>Fire Alarm Systems</h3><p>Conventional and addressable alarm panels with full installation, commissioning and certification.</p></div>
       </div>
       <div class="svc-card" onclick="openSvcModal('maintenance')">
-        <div class="svc-icon" style="background-image:url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=90')"></div>
-        <h3>Maintenance & Service</h3><p>Scheduled preventive maintenance contracts and fast response for compliance.</p>
+        <div class="svc-icon" style="background-image:url('images/employees/tech-inspection-1.jpg')"></div>
+        <span class="svc-num">SYS·05</span>
+        <div class="svc-body"><h3>Maintenance &amp; Service</h3><p>Scheduled preventive maintenance contracts and fast response for compliance.</p></div>
       </div>
       <div class="svc-card" onclick="openSvcModal('risk')">
-        <div class="svc-icon" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=90')"></div>
-        <h3>Fire Risk Assessment</h3><p>Thorough site surveys and risk assessments to identify hazards and ensure full regulatory compliance.</p>
+        <div class="svc-icon" style="background-image:url('images/employees/tech-field-1.jpg')"></div>
+        <span class="svc-num">SYS·06</span>
+        <div class="svc-body"><h3>Fire Risk Assessment</h3><p>Thorough site surveys and risk assessments to identify hazards and ensure full regulatory compliance.</p></div>
       </div>
     </div>
   </section>
