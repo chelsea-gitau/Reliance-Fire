@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Fire Safety Equipment | Reliance Fire Safety EA Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" style="cursor:pointer;display:flex;align-items:center;gap:10px;text-decoration:none">
+    <img src="images/logo-nav.png"
+         alt="Reliance Fire Safety EA Ltd"
+         style="height:42px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" id="nav-home" class="">Home</a></li>
+    <li class="nav-drop-wrap" id="services-drop-wrap">
+      <a href="#" onclick="event.preventDefault();toggleServicesDrop()">Services <span style="font-size:9px;opacity:0.7">▾</span></a>
+      <div class="nav-drop" id="services-drop">
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('detection')"><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('sprinkler')"><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('suppression')"><span class="nd-code">SYS·03</span>Fire Suppression</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('alarm')"><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('maintenance')"><span class="nd-code">SYS·05</span>Maintenance &amp; Service</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('risk')"><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+      </div>
+    </li>
+    <li><a href="shop.html" id="nav-shop" class="active">Shop</a></li>
+    <li><a href="portfolio.html" id="nav-portfolio" class="">Portfolio</a></li>
+    <li><a href="index.html#contact" id="nav-contact">Contact</a></li>
+    <li><div class="nav-cart" onclick="toggleCart()">🛒 Cart <span class="cart-badge" id="cart-badge">0</span></div></li>
+    <li style="position:relative" id="contact-dropdown-wrap">
+      <button onclick="toggleContactDrop()" style="display:flex;align-items:center;gap:8px;cursor:pointer;border:none;background:var(--red);padding:8px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;color:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(204,34,0,0.3)">
+        <span>📞</span>
+        <span>0791 100 310</span>
+        <span style="font-size:10px;opacity:0.8">▾</span>
+      </button>
+      <div id="contact-drop" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;min-width:210px;z-index:500;box-shadow:0 8px 24px rgba(0,0,0,0.5)">
+        <a href="tel:+254791100310" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+          <span style="font-size:22px">📞</span>
+          <div><div style="font-size:13px;font-weight:600">Call Us</div><div style="font-size:11px;color:#888">+254 791 100 310</div></div>
+        </a>
+        <a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20%F0%9F%91%8B%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20get%20in%20touch.%20Please%20assist%20me." target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+          <span style="font-size:22px">💬</span>
+          <div><div style="font-size:13px;font-weight:600">WhatsApp</div><div style="font-size:11px;color:#888">Chat with us instantly</div></div>
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="page active" id="page-shop">
+  <div class="shop-header" style="background:var(--section-b)">
+    <div class="shop-header-inner">
+      <div>
+        <div class="sec-tag">Fire Safety Store</div>
+        <div class="sec-title" style="font-size:clamp(28px,3.5vw,42px);margin-bottom:0">SHOP FIRE SAFETY EQUIPMENT</div>
+      </div>
+      <input class="shop-search" type="text" placeholder="🔍  Search products..." oninput="filterProducts()" id="shop-search-input">
+    </div>
+    <div class="shop-cats">
+      <button class="cat-btn active" onclick="filterCat('all',this)">All Products</button>
+      <button class="cat-btn" onclick="filterCat('extinguishers',this)">Extinguishers</button>
+      <button class="cat-btn" onclick="filterCat('detection',this)">Detection & Alarms</button>
+      <button class="cat-btn" onclick="filterCat('panels',this)">Fire Panels</button>
+      <button class="cat-btn" onclick="filterCat('signage',this)">Safety Signage</button>
+      <button class="cat-btn" onclick="filterCat('hose',this)">Hose & Hydrant</button>
+      <button class="cat-btn" onclick="filterCat('firstaid',this)">First Aid</button>
+    </div>
+  </div>
+  <div style="padding:2px 5% 80px;background:var(--char)">
+    <div class="shop-grid" id="shop-grid"></div>
+    <div id="shop-empty" style="display:none;text-align:center;padding:80px 0;color:rgba(255,255,255,0.3);font-size:15px">No products found matching your search.</div>
+  </div>
+  <footer>
+    <img src="images/logo-nav.png" alt="Reliance Fire Safety EA Ltd" style="height:36px;width:auto;object-fit:contain;opacity:0.6;filter:brightness(1.2)">
+    <p>© 2024 Reliance Fire Safety EA Ltd.</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.18)">Prices in KES. M-Pesa accepted.</p>
+  </footer>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-head">
+    <h3>🛒 Your Cart</h3>
+    <button class="cart-close" onclick="toggleCart()">×</button>
+  </div>
+  <div class="cart-items" id="cart-items-list">
+    <div class="cart-empty">Your cart is empty.<br>Browse our shop to add items.</div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span class="cart-total-label">Subtotal (after 10% discount)</span><span class="cart-total-num" id="cart-subtotal">KES 0</span></div>
+    <div class="cart-total-row"><span class="cart-total-label">VAT (16%)</span><span class="cart-total-num" id="cart-vat">KES 0</span></div>
+    <div class="cart-total-row grand"><span class="cart-total-label">Total</span><span class="cart-total-num" id="cart-total">KES 0</span></div>
+    <button class="wa-order-btn" onclick="orderViaWhatsApp()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Order via WhatsApp
+    </button>
+    <p class="cart-note">Our team will confirm your order and send<br>M-Pesa payment details within minutes.</p>
+  </div>
+</div>
+
+<!-- SERVICE DETAIL MODAL -->
+<div class="svc-modal-overlay" id="svc-modal-overlay" onclick="closeSvcModal(event)">
+  <div class="svc-modal" id="svc-modal-box">
+    <button class="svc-modal-close" onclick="document.getElementById('svc-modal-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
+    <img id="svc-modal-img" src="" alt="" class="svc-modal-hero">
+    <div class="svc-modal-body">
+      <div class="svc-modal-tag" id="svc-modal-tag"></div>
+      <div class="svc-modal-title" id="svc-modal-title"></div>
+      <p class="svc-modal-desc" id="svc-modal-desc"></p>
+      <div class="svc-modal-features" id="svc-modal-features"></div>
+      <div class="svc-modal-photos" id="svc-modal-photos"></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn-primary" onclick="goToQuote();document.getElementById('svc-modal-overlay').classList.remove('open');document.body.style.overflow=''">Book a Free Assessment →</button>
+        <button class="wa-btn" onclick="window.open('https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20I%27d%20like%20to%20enquire%20about%20your%20fire%20services.','_blank')">Enquire on WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOAT WA -->
+<a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20%F0%9F%91%8B%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20get%20in%20touch.%20Please%20assist%20me." class="float-wa" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="script.js"></script>
+<script>
+// ── PRODUCTS DATA (shop-specific) ──
+const products=[
+  // EXTINGUISHERS
+  {id:1,name:'0.5 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:1000,badge:null,desc:'Fully pressurised dry chemical powder. Ideal for vehicles and small spaces.'},
+  {id:2,name:'1 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:1900,badge:null,desc:'Compact ABC dry powder extinguisher. Suitable for offices and kitchens.'},
+  {id:3,name:'2 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:2500,badge:'Popular',desc:'Multi-purpose ABC dry powder. Ideal for workshops and general use.'},
+  {id:4,name:'4 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:3500,badge:null,desc:'4 Kg fully pressurised dry chemical powder extinguisher.'},
+  {id:5,name:'6 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:4000,badge:'Best Seller',desc:'6 Kg DCP powder — ideal for warehouses, factories and larger spaces.'},
+  {id:6,name:'9 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:4500,badge:null,desc:'Heavy duty 9 Kg dry powder for industrial and commercial use.'},
+  {id:7,name:'2 Kg CO2 Extinguisher',cat:'extinguishers',icon:'🧯',price:4200,badge:null,desc:'Safe for electrical fires. Leaves no residue — ideal for offices and server rooms.'},
+  {id:8,name:'5 Kg CO2 Extinguisher',cat:'extinguishers',icon:'🧯',price:6500,badge:null,desc:'5 Kg CO2 fully pressurised. Best for electrical panels and data centers.'},
+  {id:9,name:'6 Liters Foam Extinguisher',cat:'extinguishers',icon:'🧯',price:3900,badge:null,desc:'Class A & B fires. Effective on fuel and flammable liquid fires.'},
+  {id:10,name:'9 Liters Foam Extinguisher',cat:'extinguishers',icon:'🧯',price:4500,badge:null,desc:'9 Liters AFFF foam. Covers larger fuel and liquid fire risks.'},
+  {id:11,name:'9 Liters Water Extinguisher',cat:'extinguishers',icon:'🧯',price:4000,badge:null,desc:'Class A fires — paper, wood and textiles. Fully pressurised.'},
+  {id:12,name:'6 Liters Wet Chemical Extinguisher',cat:'extinguishers',icon:'🧯',price:8500,badge:null,desc:'Specifically designed for commercial kitchen cooking oil fires (Class F).'},
+  {id:13,name:'6 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:6000,badge:null,desc:'Self-actuating ceiling-mounted 68°C DCP. Activates automatically when heat threshold reached.'},
+  {id:14,name:'12 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:7500,badge:null,desc:'12 Kg self-actuating ceiling-mounted dry powder. For larger automatic protection areas.'},
+  {id:15,name:'Fire Ball 1.3 Kg (AFO)',cat:'extinguishers',icon:'🔴',price:5000,badge:null,desc:'Automatic Fire Orb — rolls into fire and self-activates within 3 seconds. No training needed.'},
+  {id:16,name:'Fire Blanket 1.2M x 1.2M',cat:'extinguishers',icon:'🟥',price:2000,badge:null,desc:'Fire suppression blanket for kitchen fires and personal protection.'},
+  {id:17,name:'Fire Blanket 1.8M x 1.8M',cat:'extinguishers',icon:'🟥',price:3500,badge:null,desc:'Large fire suppression blanket. Ideal for workshops and labs.'},
+  {id:18,name:'25 Kg DCP Powder Trolley',cat:'extinguishers',icon:'🧯',price:30000,badge:null,desc:'Mobile 25 Kg dry powder trolley for petrol stations and industrial areas.'},
+  {id:19,name:'25 Kg CO2 Trolley Extinguisher',cat:'extinguishers',icon:'🧯',price:48000,badge:null,desc:'Mobile 25 Kg CO2 trolley. For large electrical panels and transformer rooms.'},
+  // DETECTION
+  {id:20,name:'Conventional Smoke Detector',cat:'detection',icon:'🔴',price:3700,badge:null,desc:'Conventional optical smoke detector. EN54 compliant. Easy ceiling mount.'},
+  {id:21,name:'Conventional Heat Detector (ROR)',cat:'detection',icon:'🌡️',price:3600,badge:null,desc:'Rate-of-rise heat detector. Ideal for kitchens and boiler rooms.'},
+  {id:22,name:'Combined Smoke & Heat Detector',cat:'detection',icon:'🔴',price:3200,badge:'Popular',desc:'Conventional combined photo/thermal detector. Dual protection in one unit.'},
+  {id:23,name:'Battery Smoke Alarm Detector',cat:'detection',icon:'🔔',price:2500,badge:null,desc:'Standalone battery-operated smoke alarm. Easy install, no wiring required.'},
+  {id:24,name:'Battery Heat Alarm Detector',cat:'detection',icon:'🔔',price:2500,badge:null,desc:'Standalone battery-operated heat alarm. Suitable for kitchens and garages.'},
+  {id:25,name:'LPG Gas Detector (12V)',cat:'detection',icon:'💨',price:4100,badge:null,desc:'12V LPG gas leak alarm detector. Essential for kitchens and generator rooms.'},
+  {id:26,name:'Manual Call Point — Surface Mount',cat:'detection',icon:'🔘',price:2085,badge:null,desc:'Break-glass manual fire alarm trigger. Surface mount type, red housing.'},
+  {id:27,name:'Manual Call Point — Weatherproof',cat:'detection',icon:'🔘',price:3500,badge:null,desc:'Weatherproof manual call point for outdoor and industrial environments.'},
+  {id:28,name:'Conventional Detector Base',cat:'detection',icon:'⭕',price:1200,badge:null,desc:'Standard mounting base for conventional detectors.'},
+  {id:29,name:'Electronic Fire Alarm Sounder',cat:'detection',icon:'🚨',price:5800,badge:null,desc:'Electronic fire alarm sounder in red. High output 97dB alarm tone.'},
+  {id:30,name:'Combined Sounder & Beacon',cat:'detection',icon:'🚨',price:6500,badge:null,desc:'Electronic combined fire alarm sounder and visual strobe beacon.'},
+  // PANELS
+  {id:31,name:'2 Zone Conventional Fire Panel',cat:'panels',icon:'📟',price:35850,badge:null,desc:'2 Zone conventional fire alarm control panel. Suitable for small premises.'},
+  {id:32,name:'4 Zone Conventional Fire Panel',cat:'panels',icon:'📟',price:40560,badge:'Popular',desc:'4 Zone conventional panel. Ideal for medium-sized offices and restaurants.'},
+  {id:33,name:'8 Zone Conventional Fire Panel',cat:'panels',icon:'📟',price:78000,badge:null,desc:'8 Zone EN54 certified conventional fire alarm control panel.'},
+  {id:34,name:'16 Zone Conventional Fire Panel',cat:'panels',icon:'📟',price:108523,badge:null,desc:'16 Zone EN54 conventional panel. For large commercial buildings.'},
+  {id:35,name:'2 Loop Addressable Fire Panel',cat:'panels',icon:'🖥️',price:122069,badge:'Pro',desc:'XFP Networkable 2-Loop 32-Zone addressable fire detection and alarm panel.'},
+  {id:36,name:'4 Loop Addressable Fire Panel',cat:'panels',icon:'🖥️',price:295000,badge:null,desc:'4-Loop addressable panel for large and complex building installations.'},
+  {id:37,name:'Addressable Smoke Detector',cat:'panels',icon:'🔴',price:5300,badge:null,desc:'Addressable optical smoke detector CAP320. For use with addressable panels.'},
+  {id:38,name:'Addressable Heat Detector',cat:'panels',icon:'🌡️',price:5100,badge:null,desc:'Addressable multi-mode heat detector CAH330. Works with loop panels.'},
+  {id:39,name:'Addressable Manual Call Point',cat:'panels',icon:'🔘',price:5800,badge:null,desc:'Addressable flush-type manual call point MBG814. EN54 compliant.'},
+  // SIGNAGE
+  {id:40,name:'Fire Exit Sign — LED Illuminated',cat:'signage',icon:'🚪',price:4500,badge:'Popular',desc:'LED illuminated fire exit sign with direction arrows. BS 5499 compliant.'},
+  {id:41,name:'Fire Exit Sign — Forex Board',cat:'signage',icon:'🚪',price:1000,badge:null,desc:'Rigid forex board fire exit sign with direction arrows.'},
+  {id:42,name:'Fire Point Sign',cat:'signage',icon:'⚠️',price:1500,badge:null,desc:'Fire point assembly signage. 25cm x 15cm high-visibility red and white.'},
+  {id:43,name:'Fire Action Notice',cat:'signage',icon:'📋',price:2500,badge:null,desc:'Fire action signage showing emergency procedures for staff and visitors.'},
+  {id:44,name:'Fire Assembly Point Sign — A2',cat:'signage',icon:'🏃',price:2500,badge:null,desc:'Fire assembly point signage, size A2. For muster points and evacuation zones.'},
+  {id:45,name:'Fire Assembly Point — Standing',cat:'signage',icon:'🏃',price:5500,badge:null,desc:'Free-standing fire assembly point signage. High visibility outdoor use.'},
+  {id:46,name:'Fire Extinguisher Sign',cat:'signage',icon:'🧯',price:1100,badge:null,desc:'Wall-mounted fire extinguisher location signage.'},
+  {id:47,name:'No Smoking Sign',cat:'signage',icon:'🚭',price:1500,badge:null,desc:'Standard No Smoking signage for offices and public spaces.'},
+  {id:48,name:'Fire Hose Reel Sign',cat:'signage',icon:'🔴',price:1500,badge:null,desc:'Fire hose reel location signage.'},
+  // HOSE REELS & HYDRANT
+  {id:49,name:'Fire Hose Reel — Fixed Type',cat:'hose',icon:'🌊',price:18500,badge:null,desc:'Fixed type fire hose reel with 30M tubing. Wall-mounted installation.'},
+  {id:50,name:'Fire Hose Reel — Swing Type',cat:'hose',icon:'🌊',price:19500,badge:'Popular',desc:'Swing-arm fire hose reel for easier deployment. 30M hose included.'},
+  {id:51,name:'Hose Reel PVC Tubing 30M',cat:'hose',icon:'🔵',price:8600,badge:null,desc:'3/4 inch PVC fire hose reel tubing, 30 metres. Replacement/new install.'},
+  {id:52,name:'Sprinkler Head Unit',cat:'hose',icon:'💧',price:1500,badge:null,desc:'Standard 68°C glass bulb sprinkler head. For wet sprinkler systems.'},
+  {id:53,name:'Landing Valve — Screw Type',cat:'hose',icon:'🔧',price:14000,badge:null,desc:'Screw-type landing valve for fire hydrant systems.'},
+  {id:54,name:'Fire Hose — Canvas Red 30M',cat:'hose',icon:'🔴',price:17000,badge:null,desc:'Canvas red fire hose, 13 Bar, 65mm, 30M. For hydrant systems.'},
+  // FIRST AID
+  {id:55,name:'First Aid Kit — Metallic Case',cat:'firstaid',icon:'🏥',price:7900,badge:null,desc:'Occupational first aid kit in a durable metallic case. Fully stocked.'},
+  {id:56,name:'First Aid Kit — Plastic Orange',cat:'firstaid',icon:'🏥',price:4500,badge:'Popular',desc:'First aid kit in bright orange plastic box. Easy to locate in an emergency.'},
+  {id:57,name:'First Aid Kit — White Plastic',cat:'firstaid',icon:'🏥',price:4500,badge:null,desc:'First aid kit in white plastic box. Suitable for offices and reception areas.'},
+  {id:58,name:'First Aid Kit — Pouch Type',cat:'firstaid',icon:'🏥',price:3500,badge:null,desc:'Portable first aid pouch. Ideal for vehicles and field teams.'},
+  {id:59,name:'First Aid Kit — Small (Vehicle/Home)',cat:'firstaid',icon:'🏥',price:2800,badge:null,desc:'Compact first aid kit for vehicles and home use.'},
+];
+
+let currentCat='all';
+
+function renderShop(cat,search){
+  const grid=document.getElementById('shop-grid');
+  const empty=document.getElementById('shop-empty');
+  const q=(document.getElementById('shop-search-input')||{}).value||'';
+  let items=products.filter(p=>{
+    const catOk=!cat||cat==='all'?true:p.cat===cat;
+    const searchOk=!q||p.name.toLowerCase().includes(q.toLowerCase())||p.desc.toLowerCase().includes(q.toLowerCase());
+    return catOk&&searchOk;
+  });
+  if(items.length===0){grid.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+  // per-product real images — fallback to category image
+  const productImgs = {
+    // Extinguishers
+    3:  'images/EXTINGUISHERS/dry-powder-extinguisher.jpeg',
+    5:  'images/EXTINGUISHERS/dry-powder-extinguisher.jpeg',
+    6:  'images/EXTINGUISHERS/dry-powder-extinguisher.jpeg',
+    7:  'images/EXTINGUISHERS/CO2 extinguisher.jpeg',
+    8:  'images/EXTINGUISHERS/CO2 extinguisher.jpeg',
+    9:  'images/EXTINGUISHERS/foam-extinguisher.jpeg',
+    10: 'images/EXTINGUISHERS/foam-extinguisher.jpeg',
+    12: 'images/EXTINGUISHERS/wet-chemical-extinguisher.jpeg',
+    15: 'images/afc-suppression-ball.jpeg',
+    16: 'images/fire blanket.jpeg',
+    17: 'images/fire blanket.jpeg',
+    // Detection
+    20: 'images/smoke-detector-optical.jpeg',
+    21: 'images/heat-detector.jpeg',
+    22: 'images/smoke-detector-white.jpeg',
+    23: 'images/smoke-detector-white.jpeg',
+    24: 'images/heat-detector-red.jpeg',
+    26: 'images/call-point.jpg',
+    27: 'images/call-point.jpg',
+    29: 'images/alarm-sounder-wall.jpeg',
+    30: 'images/red-sounder-dome.jpeg',
+    // Panels
+    31: 'images/fire-alarm-control-panel.jpeg',
+    32: 'images/fire-alarm-control-panel.jpeg',
+    33: 'images/mounted fire-alarm-control-panel.jpeg',
+    34: 'images/lcd-control-panel.jpeg',
+    35: 'images/addressable-panel-white.jpeg',
+    36: 'images/addressable-panel-box.jpeg',
+    37: 'images/smoke-detector-optical.jpeg',
+    38: 'images/heat-detector.jpeg',
+    39: 'images/call-point.jpg',
+    // Signage
+    40: 'images/emergency-exit-light.jpeg',
+    41: 'images/fire-exit-sign.jpeg',
+    42: 'images/fire point.jpeg',
+    43: 'images/fire-safety-signage.jpeg',
+    46: 'images/fire-alarm-control-panel.jpeg',
+  };
+  const catImgs = {
+    extinguishers: 'images/EXTINGUISHERS/dry-powder-extinguisher.jpeg',
+    detection:     'images/smoke-detector-optical.jpeg',
+    panels:        'images/lcd-control-panel.jpeg',
+    signage:       'images/fire-exit-sign.jpeg',
+    hose:          'images/suppression-ball-boxed.jpeg',
+    firstaid:      'images/fire-safety-signage.jpeg',
+  };
+  const getProductImg = (p) => productImgs[p.id] || catImgs[p.cat] || catImgs.extinguishers;
+  grid.innerHTML=items.map(p=>`
+    <div class="product-card">
+      <div class="product-img" style="background-image:url('${getProductImg(p)}');background-size:cover;background-position:center;font-size:0">
+        ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.5))"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price-wrap">
+            <span class="product-price-original">KES ${p.price.toLocaleString()}</span>
+            <span class="product-price">KES ${discountedPrice(p).toLocaleString()}</span>
+            <span class="product-price-vat">+VAT at checkout</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+            <span class="discount-badge">10% OFF</span>
+            <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function filterCat(cat,btn){
+  currentCat=cat;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderShop(cat);
+}
+
+function filterProducts(){renderShop(currentCat);}
+
+// init
+renderShop();
+</script>
+</body>
+</html>

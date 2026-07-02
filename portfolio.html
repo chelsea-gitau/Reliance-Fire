@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Portfolio | Reliance Fire Safety EA Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" style="cursor:pointer;display:flex;align-items:center;gap:10px;text-decoration:none">
+    <img src="images/logo-nav.png"
+         alt="Reliance Fire Safety EA Ltd"
+         style="height:42px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" id="nav-home" class="">Home</a></li>
+    <li class="nav-drop-wrap" id="services-drop-wrap">
+      <a href="#" onclick="event.preventDefault();toggleServicesDrop()">Services <span style="font-size:9px;opacity:0.7">▾</span></a>
+      <div class="nav-drop" id="services-drop">
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('detection')"><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('sprinkler')"><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('suppression')"><span class="nd-code">SYS·03</span>Fire Suppression</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('alarm')"><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('maintenance')"><span class="nd-code">SYS·05</span>Maintenance &amp; Service</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('risk')"><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+      </div>
+    </li>
+    <li><a href="shop.html" id="nav-shop" class="">Shop</a></li>
+    <li><a href="portfolio.html" id="nav-portfolio" class="active">Portfolio</a></li>
+    <li><a href="index.html#contact" id="nav-contact">Contact</a></li>
+    <li><div class="nav-cart" onclick="toggleCart()">🛒 Cart <span class="cart-badge" id="cart-badge">0</span></div></li>
+    <li style="position:relative" id="contact-dropdown-wrap">
+      <button onclick="toggleContactDrop()" style="display:flex;align-items:center;gap:8px;cursor:pointer;border:none;background:var(--red);padding:8px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;color:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(204,34,0,0.3)">
+        <span>📞</span>
+        <span>0791 100 310</span>
+        <span style="font-size:10px;opacity:0.8">▾</span>
+      </button>
+      <div id="contact-drop" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;min-width:210px;z-index:500;box-shadow:0 8px 24px rgba(0,0,0,0.5)">
+        <a href="tel:+254791100310" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+          <span style="font-size:22px">📞</span>
+          <div><div style="font-size:13px;font-weight:600">Call Us</div><div style="font-size:11px;color:#888">+254 791 100 310</div></div>
+        </a>
+        <a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20%F0%9F%91%8B%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20get%20in%20touch.%20Please%20assist%20me." target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+          <span style="font-size:22px">💬</span>
+          <div><div style="font-size:13px;font-weight:600">WhatsApp</div><div style="font-size:11px;color:#888">Chat with us instantly</div></div>
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="page active" id="page-portfolio">
+  <section style="padding-bottom:0">
+    <div class="sec-tag">Our Work</div>
+    <div class="sec-title">PROJECT PORTFOLIO</div>
+    <p class="sec-sub">Over 500 successful installations across Kenya and East Africa — here are some of our landmark projects.</p>
+    <div class="portfolio-filters">
+      <button class="cat-btn active" onclick="filterPortfolio('all',this)">All Projects</button>
+      <button class="cat-btn" onclick="filterPortfolio('hotel',this)">Hotels</button>
+      <button class="cat-btn" onclick="filterPortfolio('hospital',this)">Healthcare</button>
+      <button class="cat-btn" onclick="filterPortfolio('commercial',this)">Commercial</button>
+      <button class="cat-btn" onclick="filterPortfolio('industrial',this)">Industrial</button>
+      <button class="cat-btn" onclick="filterPortfolio('education',this)">Education</button>
+    </div>
+  </section>
+  <div style="padding:2px 5% 80px">
+    <div class="portfolio-grid" id="portfolio-grid"></div>
+  </div>
+  <footer>
+    <img src="images/logo-nav.png" alt="Reliance Fire Safety EA Ltd" style="height:36px;width:auto;object-fit:contain;opacity:0.6;filter:brightness(1.2)">
+    <p>© 2024 Reliance Fire Safety EA Ltd.</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.18)">ISO 9001:2015 Certified</p>
+  </footer>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-head">
+    <h3>🛒 Your Cart</h3>
+    <button class="cart-close" onclick="toggleCart()">×</button>
+  </div>
+  <div class="cart-items" id="cart-items-list">
+    <div class="cart-empty">Your cart is empty.<br>Browse our shop to add items.</div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span class="cart-total-label">Subtotal (after 10% discount)</span><span class="cart-total-num" id="cart-subtotal">KES 0</span></div>
+    <div class="cart-total-row"><span class="cart-total-label">VAT (16%)</span><span class="cart-total-num" id="cart-vat">KES 0</span></div>
+    <div class="cart-total-row grand"><span class="cart-total-label">Total</span><span class="cart-total-num" id="cart-total">KES 0</span></div>
+    <button class="wa-order-btn" onclick="orderViaWhatsApp()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Order via WhatsApp
+    </button>
+    <p class="cart-note">Our team will confirm your order and send<br>M-Pesa payment details within minutes.</p>
+  </div>
+</div>
+
+<!-- SERVICE DETAIL MODAL -->
+<div class="svc-modal-overlay" id="svc-modal-overlay" onclick="closeSvcModal(event)">
+  <div class="svc-modal" id="svc-modal-box">
+    <button class="svc-modal-close" onclick="document.getElementById('svc-modal-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
+    <img id="svc-modal-img" src="" alt="" class="svc-modal-hero">
+    <div class="svc-modal-body">
+      <div class="svc-modal-tag" id="svc-modal-tag"></div>
+      <div class="svc-modal-title" id="svc-modal-title"></div>
+      <p class="svc-modal-desc" id="svc-modal-desc"></p>
+      <div class="svc-modal-features" id="svc-modal-features"></div>
+      <div class="svc-modal-photos" id="svc-modal-photos"></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn-primary" onclick="goToQuote();document.getElementById('svc-modal-overlay').classList.remove('open');document.body.style.overflow=''">Book a Free Assessment →</button>
+        <button class="wa-btn" onclick="window.open('https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20I%27d%20like%20to%20enquire%20about%20your%20fire%20services.','_blank')">Enquire on WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO MODAL -->
+<div class="modal-overlay" id="port-modal" onclick="closeModal(event)">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-box-inner">
+      <button class="modal-close" onclick="document.getElementById('port-modal').classList.remove('open');document.body.style.overflow=''">×</button>
+      <div class="modal-img" id="modal-img">🏢</div>
+      <div class="modal-content">
+        <div class="modal-tag-row" id="modal-tags"></div>
+        <div class="modal-h" id="modal-title"></div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:0" id="modal-client"></p>
+        <div class="modal-meta-grid" id="modal-meta"></div>
+        <div class="modal-section-h">Project Overview</div>
+        <p class="modal-p" id="modal-desc"></p>
+        <div class="modal-section-h">Systems Installed</div>
+        <div class="port-systems" id="modal-systems"></div>
+        <div class="modal-cta" style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn-primary" onclick="goToQuote();document.getElementById('port-modal').classList.remove('open');document.body.style.overflow=''">Get Similar Quote →</button>
+          <button class="wa-btn" onclick="window.open('https://wa.me/254777723785','_blank')">Enquire on WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOAT WA -->
+<a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20%F0%9F%91%8B%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20get%20in%20touch.%20Please%20assist%20me." class="float-wa" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="script.js"></script>
+<script>
+// ── PORTFOLIO DATA (portfolio-specific) ──
+const projects=[
+  {id:1,icon:'🏨',cat:'hotel',client:'Sarova Hotels Group',title:'Complete Fire Protection — 5-Star Hotel',location:'Nairobi CBD',year:'2023',area:'12,000 m²',value:'KES 4.2M',tag:'Hotel',desc:'Full fire protection overhaul for a 5-star hotel in Nairobi CBD covering 8 floors and 280 guest rooms. The project involved replacing aging detection systems, installing an addressable fire alarm panel, upgrading all suppression systems in the kitchen and laundry, and commissioning new sprinkler networks throughout. Completed in phases to avoid disruption to hotel operations.',systems:['Addressable Fire Alarm','Kitchen Suppression','Full Sprinkler Network','Emergency Lighting','Fire Risk Assessment']},
+  {id:2,icon:'🏥',cat:'hospital',client:'Aga Khan University Hospital',title:'Hospital Fire Safety Upgrade',location:'Parklands, Nairobi',year:'2022',area:'8,500 m²',value:'KES 6.8M',tag:'Healthcare',desc:'Comprehensive fire safety upgrade for a major private hospital. The project required strict adherence to healthcare fire codes, with special attention to clean agent suppression in MRI and ICU areas, integration with the hospital BMS, and zero interruption to patient services. All systems were tested and certified to NFPA 101 Life Safety Code standards.',systems:['Clean Agent Suppression','Wet Sprinklers','Voice Evacuation System','Addressable Detection','BMS Integration']},
+  {id:3,icon:'🏢',cat:'commercial',client:'Nairobi Business Park',title:'Grade-A Office Tower Fire Systems',location:'Westlands, Nairobi',year:'2023',area:'22,000 m²',value:'KES 9.1M',tag:'Commercial',desc:'End-to-end fire protection design and installation for a new 18-floor Grade-A office development in Westlands. Included a fully addressable fire detection and alarm system, wet sprinkler installation across all floors, pressurized stairwells, and a central monitoring dashboard accessible to building management. The project was completed on schedule ahead of the tower\'s opening.',systems:['Addressable Detection','Wet Sprinklers','Pressurised Stairwells','Fire Fighting Lifts','Central Monitoring']},
+  {id:4,icon:'🏭',cat:'industrial',client:'Bidco Africa Ltd',title:'Industrial Plant Fire Protection',location:'Thika, Kiambu',year:'2021',area:'35,000 m²',value:'KES 14.5M',tag:'Industrial',desc:'Large-scale fire protection project for a major FMCG manufacturing plant in Thika. The facility required high-hazard suppression systems for oil processing areas, foam deluge systems for storage tanks, heat and flame detection throughout the production floor, and a comprehensive evacuation system. All systems designed to NFPA 30 Flammable Liquids Code.',systems:['Foam Deluge System','High-Hazard Suppression','Flame Detectors','Industrial Sprinklers','Emergency Evacuation System']},
+  {id:5,icon:'🛒',cat:'commercial',client:'Two Rivers Mall',title:'Shopping Mall Fire Safety Systems',location:'Runda, Nairobi',year:'2020',area:'67,000 m²',value:'KES 22M',tag:'Retail',desc:'One of our largest projects — complete fire protection for a major shopping mall comprising 330 retail units, 5 anchor stores, a cinema, and food court. The project involved coordinating with multiple fit-out contractors and required phased installation over 14 months. Systems include atrium smoke ventilation, a multi-zone addressable alarm system, and dedicated kitchen suppression for all F&B outlets.',systems:['Multi-zone Addressable Alarm','Atrium Smoke Ventilation','Kitchen Suppression','Wet Sprinklers','Emergency Voice Comms']},
+  {id:6,icon:'🏫',cat:'education',client:'United States International University',title:'University Campus Fire Safety',location:'Kasarani, Nairobi',year:'2022',area:'18,000 m²',value:'KES 7.3M',tag:'Education',desc:'Full campus fire safety installation across 12 buildings at a major private university. Each building received an individual addressable fire alarm system networked to a central control room. Special attention was given to library and laboratory areas with targeted suppression systems, and all student dormitories received heat and smoke detection with voice evacuation capability.',systems:['Campus-wide Addressable Alarm','Lab Suppression Systems','Voice Evacuation','Wet Sprinklers','Central Monitoring']},
+];
+
+let currentPortCat='all';
+function renderPortfolio(cat){
+  const f=cat||currentPortCat;
+  const grid=document.getElementById('portfolio-grid');
+  const items=f==='all'?projects:projects.filter(p=>p.cat===f);
+  grid.innerHTML=items.map(p=>`
+    <div class="port-card" onclick="openModal(${p.id})">
+      <div class="port-img" style="font-size:64px">${p.icon}
+        <div class="port-overlay"><span class="port-tag">${p.tag}</span></div>
+      </div>
+      <div class="port-info">
+        <div class="port-client">${p.client}</div>
+        <div class="port-title">${p.title}</div>
+        <div class="port-meta"><span>📍 ${p.location}</span><span>📅 ${p.year}</span><span>📐 ${p.area}</span></div>
+        <div class="port-desc">${p.desc.substring(0,100)}...</div>
+        <div class="port-systems">${p.systems.slice(0,3).map(s=>`<span class="port-sys">${s}</span>`).join('')}</div>
+      </div>
+    </div>`).join('');
+}
+
+function filterPortfolio(cat,btn){
+  currentPortCat=cat;
+  document.querySelectorAll('.portfolio-filters .cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPortfolio(cat);
+}
+
+function openModal(id){
+  const p=projects.find(x=>x.id===id);
+  document.getElementById('modal-img').textContent=p.icon;
+  document.getElementById('modal-title').textContent=p.title;
+  document.getElementById('modal-client').textContent=p.client+' · '+p.location;
+  document.getElementById('modal-tags').innerHTML=`<span class="port-tag">${p.tag}</span>`;
+  document.getElementById('modal-meta').innerHTML=`
+    <div class="modal-meta-item"><label>Year</label><span>${p.year}</span></div>
+    <div class="modal-meta-item"><label>Floor Area</label><span>${p.area}</span></div>
+    <div class="modal-meta-item"><label>Project Value</label><span>${p.value}</span></div>`;
+  document.getElementById('modal-desc').textContent=p.desc;
+  document.getElementById('modal-systems').innerHTML=p.systems.map(s=>`<span class="port-sys">${s}</span>`).join('');
+  document.getElementById('port-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(e){
+  if(e.target===document.getElementById('port-modal')){
+    document.getElementById('port-modal').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+
+
+// init
+renderPortfolio();
+</script>
+</body>
+</html>
