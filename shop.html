@@ -149,8 +149,8 @@ const products=[
   // {id:13,name:'6 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:6000,badge:null,desc:'Self-actuating ceiling-mounted 68°C DCP. Activates automatically when heat threshold reached.'}, // HIDDEN: no photo yet
   // {id:14,name:'12 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:7500,badge:null,desc:'12 Kg self-actuating ceiling-mounted dry powder. For larger automatic protection areas.'}, // HIDDEN: no photo yet
   {id:15,name:'Fire Ball 1.3 Kg (AFO)',cat:'extinguishers',icon:'🔴',price:5000,badge:null,desc:'Automatic Fire Orb — rolls into fire and self-activates within 3 seconds. No training needed.'},
-  {id:16,name:'Fire Blanket 1.2M x 1.2M',cat:'extinguishers',icon:'🟥',price:2000,badge:null,desc:'Fire suppression blanket for kitchen fires and personal protection.'},
-  {id:17,name:'Fire Blanket 1.8M x 1.8M',cat:'extinguishers',icon:'🟥',price:3500,badge:null,desc:'Large fire suppression blanket. Ideal for workshops and labs.'},
+  {id:16,name:'Fire Blanket 1.2M x 1.2M',cat:'firstaid',icon:'🟥',price:2000,badge:null,desc:'Fire suppression blanket for kitchen fires and personal protection.'},
+  {id:17,name:'Fire Blanket 1.8M x 1.8M',cat:'firstaid',icon:'🟥',price:3500,badge:null,desc:'Large fire suppression blanket. Ideal for workshops and labs.'},
   {id:18,name:'25 Kg DCP Powder Trolley',cat:'extinguishers',icon:'🧯',price:30000,badge:null,desc:'Mobile 25 Kg dry powder trolley for petrol stations and industrial areas.'},
   {id:19,name:'25 Kg CO2 Trolley Extinguisher',cat:'extinguishers',icon:'🧯',price:48000,badge:null,desc:'Mobile 25 Kg CO2 trolley. For large electrical panels and transformer rooms.'},
   // DETECTION
@@ -196,7 +196,7 @@ const products=[
   {id:55,name:'First Aid Kit — Metallic Case',cat:'firstaid',icon:'🏥',price:7900,badge:null,desc:'Occupational first aid kit in a durable metallic case. Fully stocked.'},
   {id:56,name:'First Aid Kit — Plastic Orange',cat:'firstaid',icon:'🏥',price:4500,badge:'Popular',desc:'First aid kit in bright orange plastic box. Easy to locate in an emergency.'},
   {id:57,name:'First Aid Kit — White Plastic',cat:'firstaid',icon:'🏥',price:4500,badge:null,desc:'First aid kit in white plastic box. Suitable for offices and reception areas.'},
-  {id:58,name:'First Aid Kit — Pouch Type',cat:'firstaid',icon:'🏥',price:3500,badge:null,desc:'Portable first aid pouch. Ideal for vehicles and field teams.'},
+  // {id:58,name:'First Aid Kit — Pouch Type',cat:'firstaid',icon:'🏥',price:3500,badge:null,desc:'Portable first aid pouch. Ideal for vehicles and field teams.'}, // HIDDEN: no photo yet
   {id:59,name:'First Aid Kit — Small (Vehicle/Home)',cat:'firstaid',icon:'🏥',price:2800,badge:null,desc:'Compact first aid kit for vehicles and home use.'},
 ];
 
@@ -252,20 +252,25 @@ function renderShop(cat,search){
     38: 'images/heat-detector.jpeg',
     39: 'images/call-point.jpg',
     // Signage
-    40: 'images/emergency-exit-light.jpeg',
-    41: 'images/fire-exit-sign.jpeg',
-    42: 'images/fire point.jpeg',
-    43: 'images/fire-safety-signage.jpeg',
-    44: 'images/fire-assembly-point sign a2.jpeg',
-    45: 'images/fire-assembly-point sign a2.jpeg',
-    46: 'images/fire-extinguisher-sign.jpeg',
-    48: 'images/fire-hose-reel-sign.jpeg',
+    40: 'images/SIGNS/emergency-exit-light.jpeg',
+    41: 'images/SIGNS/fire-exit-sign.jpeg',
+    42: 'images/SIGNS/fire point.jpeg',
+    43: 'images/SIGNS/fire-safety-signage.jpeg',
+    44: 'images/SIGNS/fire-assembly-point sign a2.jfif',
+    45: 'images/SIGNS/fire-assembly-point sign a2.jfif',
+    46: 'images/SIGNS/fire-extinguisher-sign.png',
+    48: 'images/SIGNS/fire-hose-reel-sign.jfif',
+    // First Aid
+    55: 'images/FIRST-AID/first-aid-kit-metallic case.jpeg',
+    56: 'images/FIRST-AID/first-aid-kit-plastic orange.jfif',
+    57: 'images/FIRST-AID/first-aid-cabinet.jpeg',
+    59: 'images/FIRST-AID/first-aid-case-closed.jpeg',
   };
   const catImgs = {
     extinguishers: 'images/EXTINGUISHERS/6kgdcp.jpg',
     detection:     'images/smoke-detector-optical.jpeg',
     panels:        'images/lcd-control-panel.jpeg',
-    signage:       'images/fire-exit-sign.jpeg',
+    signage:       'images/SIGNS/fire-exit-sign.jpeg',
     hose:          'images/suppression-ball-boxed.jpeg',
     firstaid:      'images/fire-safety-signage.jpeg',
   };
