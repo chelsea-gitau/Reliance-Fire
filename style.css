@@ -280,17 +280,18 @@ section{padding:90px 5%}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:50px;background:rgba(255,75,31,0.14)}
 @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.services-grid{grid-template-columns:1fr}}
-.svc-card{background:var(--panel);position:relative;overflow:hidden;transition:transform 0.3s;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05)}
+.svc-card{position:relative;overflow:hidden;cursor:pointer;height:280px;transition:transform 0.3s}
 .svc-card:hover{transform:translateY(-3px);z-index:2}
-.svc-icon{width:100%;aspect-ratio:16/11;background:var(--panel);background-size:cover;background-position:center;position:relative;overflow:hidden;filter:contrast(1.25) saturate(0.8) brightness(0.85)}
-.svc-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,3,2,0.97) 0%,rgba(5,3,2,0.35) 45%,rgba(40,10,3,0.4) 100%),linear-gradient(rgba(255,75,31,0.14),rgba(255,75,31,0.14))}
-.svc-card:hover .svc-icon{filter:contrast(1.3) saturate(0.9) brightness(0.95)}
+.svc-icon{position:absolute;inset:0;background:var(--panel);background-size:cover;background-position:center;filter:contrast(1.2) saturate(0.85) brightness(0.8);transition:transform 0.5s cubic-bezier(0.23,1,0.32,1)}
+.svc-card:hover .svc-icon{transform:scale(1.06);filter:contrast(1.25) saturate(0.95) brightness(0.85)}
+.svc-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,3,2,0.95) 0%,rgba(5,3,2,0.5) 45%,rgba(20,8,4,0.15) 100%)}
+.svc-card:hover .svc-icon::after{background:linear-gradient(to top,rgba(60,12,2,0.96) 0%,rgba(40,8,2,0.55) 45%,rgba(20,8,4,0.15) 100%)}
 .svc-num{position:absolute;top:14px;right:14px;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--red-light);background:rgba(7,8,11,0.55);padding:4px 9px;border:1px solid rgba(255,75,31,0.4)}
-.svc-body{padding:22px 24px 26px;position:relative}
-.svc-body::before{content:'';position:absolute;top:0;left:24px;right:24px;height:2px;background:var(--red);transform:scaleX(0);transition:transform 0.35s;transform-origin:left}
+.svc-body{position:absolute;bottom:0;left:0;right:0;padding:20px 22px;z-index:2}
+.svc-body::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transition:transform 0.35s;transform-origin:left}
 .svc-card:hover .svc-body::before{transform:scaleX(1)}
-.svc-card h3{font-size:16.5px;font-weight:600;color:#fff;margin-bottom:8px;letter-spacing:0.2px}
-.svc-card p{font-size:13px;color:var(--text-secondary);line-height:1.65}
+.svc-card h3{font-size:16.5px;font-weight:600;color:#fff;margin-bottom:6px;letter-spacing:0.2px}
+.svc-card p{font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.55}
 
 /* ── WHY US ── */
 .why-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
@@ -661,44 +662,20 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .logo-sub{font-size:9.5px;opacity:0.6;letter-spacing:0.8px;text-transform:uppercase}
 .logo-item:hover .logo-name{color:#fff}
 
-/* ── SERVICE CARD ANIMATIONS ── */
+/* ── SERVICE CARD ENTRANCE ANIMATION ── */
 .svc-card{
   opacity:0;
-  transform:translateY(40px) scale(0.96);
-  transition:opacity 0.7s cubic-bezier(0.23,1,0.32,1),
-             transform 0.7s cubic-bezier(0.23,1,0.32,1),
-             background 0.3s, box-shadow 0.3s;
-  border-bottom:3px solid var(--red);
-  position:relative;
+  transform:translateY(30px);
+  transition:opacity 0.6s cubic-bezier(0.23,1,0.32,1),
+             transform 0.6s cubic-bezier(0.23,1,0.32,1);
 }
-.svc-card.visible{opacity:1;transform:translateY(0) scale(1)}
-.svc-card h3{color:var(--red-light)!important;font-size:17px!important}
+.svc-card.visible{opacity:1;transform:translateY(0)}
 .svc-card:nth-child(1){transition-delay:0.05s}
 .svc-card:nth-child(2){transition-delay:0.15s}
 .svc-card:nth-child(3){transition-delay:0.25s}
 .svc-card:nth-child(4){transition-delay:0.35s}
 .svc-card:nth-child(5){transition-delay:0.45s}
 .svc-card:nth-child(6){transition-delay:0.55s}
-.svc-card:hover{
-  transform:translateY(-6px) scale(1.02) !important;
-  box-shadow:0 20px 40px rgba(217,79,30,0.2), 0 0 0 1px rgba(217,79,30,0.18);
-  background:#1a1528 !important;
-  z-index:2;
-}
-.svc-icon{transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)}
-.svc-card:hover .svc-icon{transform:scale(1.2) rotate(-5deg)}
-.svc-card.visible .svc-icon{animation:icon-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards}
-@keyframes icon-pop{
-  0%{transform:scale(0.5);opacity:0}
-  60%{transform:scale(1.2)}
-  100%{transform:scale(1);opacity:1}
-}
-.svc-card:nth-child(1) .svc-icon{animation-delay:0.2s}
-.svc-card:nth-child(2) .svc-icon{animation-delay:0.3s}
-.svc-card:nth-child(3) .svc-icon{animation-delay:0.4s}
-.svc-card:nth-child(4) .svc-icon{animation-delay:0.5s}
-.svc-card:nth-child(5) .svc-icon{animation-delay:0.6s}
-.svc-card:nth-child(6) .svc-icon{animation-delay:0.7s}
 
 /* ── STAT COUNTER ANIMATION ── */
 .stat-num, .stat-block-num{transition:color 0.3s}
