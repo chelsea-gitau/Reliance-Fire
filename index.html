@@ -21,17 +21,17 @@
     <li class="nav-drop-wrap" id="services-drop-wrap">
       <a href="#" onclick="event.preventDefault();toggleServicesDrop()">Services <span style="font-size:9px;opacity:0.7">▾</span></a>
       <div class="nav-drop" id="services-drop">
-        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('detection')"><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
-        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('sprinkler')"><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
-        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('suppression')"><span class="nd-code">SYS·03</span>Fire Suppression</a>
-        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('alarm')"><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
-        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('maintenance')"><span class="nd-code">SYS·05</span>Maintenance &amp; Service</a>
-        <a href="#" onclick="event.preventDefault();closeServicesDrop();openSvcModal('risk')"><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+        <a href="#" onclick="window.location.href='services/fire-detection.html'"><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
+        <a href="#" onclick="window.location.href='services/sprinkler-systems.html'"><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
+        <a href="#" onclick="window.location.href='services/fire-suppression.html'"><span class="nd-code">SYS·03</span>Fire Suppression</a>
+        <a href="#" onclick="window.location.href='services/fire-alarm.html'"><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
+        <a href="#" onclick="window.location.href='services/maintenance.html'"><span class="nd-code">SYS·05</span>Maintenance &amp; Service</a>
+        <a href="#" onclick="window.location.href='services/fire-risk-assessment.html'"><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
       </div>
     </li>
     <li><a href="shop.html" id="nav-shop" class="">Shop</a></li>
     <li><a href="portfolio.html" id="nav-portfolio" class="">Portfolio</a></li>
-    <li><a href="index.html#contact" id="nav-contact">Contact</a></li>
+    <li><a href="contact.html" id="nav-contact">Contact</a></li>
     <li><div class="nav-cart" onclick="toggleCart()">🛒 Cart <span class="cart-badge" id="cart-badge">0</span></div></li>
     <li style="position:relative" id="contact-dropdown-wrap">
       <button onclick="toggleContactDrop()" style="display:flex;align-items:center;gap:8px;cursor:pointer;border:none;background:var(--red);padding:8px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;color:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(204,34,0,0.3)">
@@ -1083,5 +1083,48 @@ document.addEventListener('DOMContentLoaded', function(){
   if(window.location.hash==='#contact'){ setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300); }
 });
 </script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner">
+  <p>We use cookies to run this site and, with your permission, to understand how it's used. Necessary cookies are always on. Nothing else runs until you choose. See our <a href="cookies.html">Cookie Policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn" onclick="openCookieModal()">Manage Preferences</button>
+    <button class="cookie-btn" onclick="rejectNonEssentialCookies()">Reject Non-Essential</button>
+    <button class="cookie-btn primary" onclick="acceptAllCookies()">Accept All</button>
+  </div>
+</div>
+
+<!-- COOKIE PREFERENCES MODAL -->
+<div id="cookie-modal-overlay">
+  <div class="cookie-modal">
+    <h3>Cookie Preferences</h3>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <h4>Necessary</h4>
+        <label class="cookie-toggle"><input type="checkbox" checked disabled><span class="slider"></span></label>
+      </div>
+      <p>Required for the site to function — cart, navigation, security. Cannot be turned off.</p>
+    </div>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <h4>Analytics</h4>
+        <label class="cookie-toggle"><input type="checkbox" id="cookie-toggle-analytics"><span class="slider"></span></label>
+      </div>
+      <p>Helps us understand how visitors use the site so we can improve it. No data is sold.</p>
+    </div>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <h4>Marketing</h4>
+        <label class="cookie-toggle"><input type="checkbox" id="cookie-toggle-marketing"><span class="slider"></span></label>
+      </div>
+      <p>Used for retargeting and measuring ad performance. Off by default.</p>
+    </div>
+    <div class="cookie-modal-actions">
+      <button class="cookie-btn" onclick="closeCookieModal()">Cancel</button>
+      <button class="cookie-btn primary" onclick="saveCookiePreferences()">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fire Alarm Systems | Reliance Fire Safety EA Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.svc-checks a{display:flex;align-items:center;gap:10px;padding:10px 14px;color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;border-radius:5px;transition:background 0.2s}
+.svc-checks a:hover{background:rgba(255,255,255,0.05);color:#fff}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" style="cursor:pointer;display:flex;align-items:center;gap:10px;text-decoration:none">
+    <img src="../images/logo-nav.png"
+         alt="Reliance Fire Safety EA Ltd"
+         style="height:42px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))">
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html" id="nav-home" class="">Home</a></li>
+    <li class="nav-drop-wrap" id="services-drop-wrap">
+      <a href="#" onclick="event.preventDefault();toggleServicesDrop()">Services <span style="font-size:9px;opacity:0.7">▾</span></a>
+      <div class="nav-drop" id="services-drop">
+        <a href="#" onclick="window.location.href='fire-detection.html'"><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
+        <a href="#" onclick="window.location.href='sprinkler-systems.html'"><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
+        <a href="#" onclick="window.location.href='fire-suppression.html'"><span class="nd-code">SYS·03</span>Fire Suppression</a>
+        <a href="#" onclick="event.preventDefault();closeServicesDrop();void(0)"><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
+        <a href="#" onclick="window.location.href='maintenance.html'"><span class="nd-code">SYS·05</span>Maintenance &amp; Service</a>
+        <a href="#" onclick="window.location.href='fire-risk-assessment.html'"><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+      </div>
+    </li>
+    <li><a href="../shop.html" id="nav-shop" class="">Shop</a></li>
+    <li><a href="../portfolio.html" id="nav-portfolio" class="">Portfolio</a></li>
+    <li><a href="../contact.html" id="nav-contact">Contact</a></li>
+    <li><div class="nav-cart" onclick="toggleCart()">🛒 Cart <span class="cart-badge" id="cart-badge">0</span></div></li>
+    <li style="position:relative" id="contact-dropdown-wrap">
+      <button onclick="toggleContactDrop()" style="display:flex;align-items:center;gap:8px;cursor:pointer;border:none;background:var(--red);padding:8px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;color:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(204,34,0,0.3)">
+        <span>📞</span>
+        <span>0791 100 310</span>
+        <span style="font-size:10px;opacity:0.8">▾</span>
+      </button>
+      <div id="contact-drop" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;min-width:210px;z-index:500;box-shadow:0 8px 24px rgba(0,0,0,0.5)">
+        <a href="tel:+254791100310" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+          <span style="font-size:22px">📞</span>
+          <div><div style="font-size:13px;font-weight:600">Call Us</div><div style="font-size:11px;color:#888">+254 791 100 310</div></div>
+        </a>
+        <a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20%F0%9F%91%8B%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20get%20in%20touch.%20Please%20assist%20me." target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+          <span style="font-size:22px">💬</span>
+          <div><div style="font-size:13px;font-weight:600">WhatsApp</div><div style="font-size:11px;color:#888">Chat with us instantly</div></div>
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+
+<section class="svc-page-hero" style="position:relative;height:52vh;min-height:380px;overflow:hidden">
+  <img src="../images/employees/tech-inspection-1.jpg" alt="FIRE ALARM SYSTEMS" style="width:100%;height:100%;object-fit:cover">
+  <div style="position:absolute;inset:0;background:linear-gradient(0deg,var(--char) 5%,rgba(13,11,9,0.55) 55%,rgba(13,11,9,0.25) 100%)"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;padding:0 5% 44px">
+    <div class="sec-tag">SYS·04 · Fire Alarms</div>
+    <div class="sec-title" style="font-size:clamp(36px,6vw,64px)">FIRE ALARM SYSTEMS</div>
+  </div>
+</section>
+
+<section style="padding:60px 5% 40px;max-width:900px">
+  <p style="font-size:16px;line-height:1.9;color:rgba(255,255,255,0.85)">A reliable fire alarm system is the backbone of any building fire safety strategy. We install both conventional and fully addressable fire alarm panels, complete with detectors, manual call points, sounders, beacons and remote monitoring capability. All systems are commissioned, tested and certified.</p>
+  <button class="btn-primary" style="margin-top:28px" onclick="window.location.href='../contact.html'">Request a Quote →</button>
+</section>
+
+<section style="padding:20px 5% 80px">
+  <div class="svc-checks" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px">
+    <div class="svc-feature"><h4>Conventional Panels</h4><p>Cost-effective zone-based systems for smaller buildings.</p></div><div class="svc-feature"><h4>Addressable Panels</h4><p>Each device has a unique address — precise fault and fire location.</p></div><div class="svc-feature"><h4>Networked Systems</h4><p>Multiple panels linked across large campuses or multi-site estates.</p></div><div class="svc-feature"><h4>Voice Evacuation</h4><p>Integrated PA/VA systems for clear emergency announcements.</p></div><div class="svc-feature"><h4>Remote Monitoring</h4><p>24-hour monitoring with automatic dispatch capability.</p></div><div class="svc-feature"><h4>BS EN 54 Certified</h4><p>All equipment meets European fire alarm standards.</p></div>
+  </div>
+</section>
+
+<section style="padding:0 5% 90px">
+  <div class="corners" style="position:relative;padding:32px;background:var(--panel);border-radius:6px;max-width:1100px">
+    <i style="top:-2px;left:-2px;border-right:none;border-bottom:none"></i>
+    <i style="top:-2px;right:-2px;border-left:none;border-bottom:none"></i>
+    <i style="bottom:-2px;left:-2px;border-right:none;border-top:none"></i>
+    <i style="bottom:-2px;right:-2px;border-left:none;border-top:none"></i>
+    <span class="plate-code">EXPLORE · OTHER SYSTEMS</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px;margin-top:18px">
+      <a href="fire-detection.html" class=""><span class="nd-code">SYS·01</span>Fire Detection Systems</a><a href="sprinkler-systems.html" class=""><span class="nd-code">SYS·02</span>Sprinkler Systems</a><a href="fire-suppression.html" class=""><span class="nd-code">SYS·03</span>Fire Suppression</a><a href="maintenance.html" class=""><span class="nd-code">SYS·05</span>Maintenance & Service</a><a href="fire-risk-assessment.html" class=""><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+    <img src="../images/logo-nav.png" alt="Reliance Fire Safety EA Ltd" style="height:36px;width:auto;object-fit:contain;opacity:0.6;filter:brightness(1.2)">
+    <p>© 2024 Reliance Fire Safety EA Ltd. All rights reserved.</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.18)">ISO 9001:2015 Certified</p>
+    <p style="font-size:11px;margin-top:10px"><a href="../terms.html" style="color:var(--muted);text-decoration:none">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="../privacy.html" style="color:var(--muted);text-decoration:none">Privacy Policy</a> &nbsp;·&nbsp; <a href="../cookies.html" style="color:var(--muted);text-decoration:none">Cookie Policy</a></p>
+  </footer>
+
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner">
+  <p>We use cookies to run this site and, with your permission, to understand how it's used. Necessary cookies are always on. Nothing else runs until you choose. See our <a href="../cookies.html">Cookie Policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn" onclick="openCookieModal()">Manage Preferences</button>
+    <button class="cookie-btn" onclick="rejectNonEssentialCookies()">Reject Non-Essential</button>
+    <button class="cookie-btn primary" onclick="acceptAllCookies()">Accept All</button>
+  </div>
+</div>
+
+<!-- COOKIE PREFERENCES MODAL -->
+<div id="cookie-modal-overlay">
+  <div class="cookie-modal">
+    <h3>Cookie Preferences</h3>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <h4>Necessary</h4>
+        <label class="cookie-toggle"><input type="checkbox" checked disabled><span class="slider"></span></label>
+      </div>
+      <p>Required for the site to function — cart, navigation, security. Cannot be turned off.</p>
+    </div>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <h4>Analytics</h4>
+        <label class="cookie-toggle"><input type="checkbox" id="cookie-toggle-analytics"><span class="slider"></span></label>
+      </div>
+      <p>Helps us understand how visitors use the site so we can improve it. No data is sold.</p>
+    </div>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <h4>Marketing</h4>
+        <label class="cookie-toggle"><input type="checkbox" id="cookie-toggle-marketing"><span class="slider"></span></label>
+      </div>
+      <p>Used for retargeting and measuring ad performance. Off by default.</p>
+    </div>
+    <div class="cookie-modal-actions">
+      <button class="cookie-btn" onclick="closeCookieModal()">Cancel</button>
+      <button class="cookie-btn primary" onclick="saveCookiePreferences()">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="../script.js"></script>
+</body>
+</html>

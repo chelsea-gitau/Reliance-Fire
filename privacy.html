@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Reliance Fire Safety EA Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" style="cursor:pointer;display:flex;align-items:center;gap:10px;text-decoration:none">
+    <img src="images/logo-nav.png"
+         alt="Reliance Fire Safety EA Ltd"
+         style="height:42px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" id="nav-home" class="">Home</a></li>
+    <li class="nav-drop-wrap" id="services-drop-wrap">
+      <a href="#" onclick="event.preventDefault();toggleServicesDrop()">Services <span style="font-size:9px;opacity:0.7">▾</span></a>
+      <div class="nav-drop" id="services-drop">
+        <a href="#" onclick="window.location.href='services/fire-detection.html'"><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
+        <a href="#" onclick="window.location.href='services/sprinkler-systems.html'"><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
+        <a href="#" onclick="window.location.href='services/fire-suppression.html'"><span class="nd-code">SYS·03</span>Fire Suppression</a>
+        <a href="#" onclick="window.location.href='services/fire-alarm.html'"><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
+        <a href="#" onclick="window.location.href='services/maintenance.html'"><span class="nd-code">SYS·05</span>Maintenance &amp; Service</a>
+        <a href="#" onclick="window.location.href='services/fire-risk-assessment.html'"><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+      </div>
+    </li>
+    <li><a href="shop.html" id="nav-shop" class="">Shop</a></li>
+    <li><a href="portfolio.html" id="nav-portfolio" class="">Portfolio</a></li>
+    <li><a href="contact.html" id="nav-contact">Contact</a></li>
+    <li><div class="nav-cart" onclick="toggleCart()">🛒 Cart <span class="cart-badge" id="cart-badge">0</span></div></li>
+    <li style="position:relative" id="contact-dropdown-wrap">
+      <button onclick="toggleContactDrop()" style="display:flex;align-items:center;gap:8px;cursor:pointer;border:none;background:var(--red);padding:8px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;color:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(204,34,0,0.3)">
+        <span>📞</span>
+        <span>0791 100 310</span>
+        <span style="font-size:10px;opacity:0.8">▾</span>
+      </button>
+      <div id="contact-drop" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;min-width:210px;z-index:500;box-shadow:0 8px 24px rgba(0,0,0,0.5)">
+        <a href="tel:+254791100310" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+          <span style="font-size:22px">📞</span>
+          <div><div style="font-size:13px;font-weight:600">Call Us</div><div style="font-size:11px;color:#888">+254 791 100 310</div></div>
+        </a>
+        <a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20%F0%9F%91%8B%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20get%20in%20touch.%20Please%20assist%20me." target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+          <span style="font-size:22px">💬</span>
+          <div><div style="font-size:13px;font-weight:600">WhatsApp</div><div style="font-size:11px;color:#888">Chat with us instantly</div></div>
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+
+<section class="legal-hero">
+  <div class="sec-tag">Legal</div>
+  <div class="sec-title">PRIVACY POLICY</div>
+</section>
+<section class="legal-body">
+  <p class="legal-updated">Last Updated: July 2026</p>
+  <p>Reliance Fire Safety EA Ltd ("we", "us", "our") respects your privacy. This Privacy Policy explains what personal data we collect through this website, how we use it, and your rights regarding it, in line with the Kenya Data Protection Act, 2019, and, where applicable, the UK/EU General Data Protection Regulation (GDPR).</p>
+
+  <h2>1. What We Collect</h2>
+  <ul>
+    <li><strong>Contact form submissions:</strong> name, company, email, phone number, and message content.</li>
+    <li><strong>Shop orders:</strong> name, contact details, and delivery information needed to fulfil your order.</li>
+    <li><strong>Cart data:</strong> stored locally in your browser (localStorage) — not transmitted to us until you complete an order.</li>
+    <li><strong>Analytics data</strong> (only if you consent via our cookie banner): pages visited, general location, device/browser type.</li>
+  </ul>
+
+  <h2>2. How We Use Your Data</h2>
+  <ul>
+    <li>To respond to enquiries and quotation requests</li>
+    <li>To process and fulfil Shop orders</li>
+    <li>To improve our website and services (analytics, only with consent)</li>
+    <li>To comply with legal obligations</li>
+  </ul>
+  <p>We do not sell your personal data to third parties.</p>
+
+  <h2>3. Legal Basis for Processing</h2>
+  <p>We process your data based on your consent (e.g. submitting a form, accepting analytics cookies), the necessity of processing to fulfil a contract (e.g. an order), or our legitimate business interests (e.g. responding to enquiries).</p>
+
+  <h2>4. Cookies</h2>
+  <p>We use cookies as described in our <a href="cookies.html" style="color:var(--red-light)">Cookie Policy</a>. Non-essential cookies (analytics, marketing) only run after you give consent via our cookie banner.</p>
+
+  <h2>5. Third-Party Services</h2>
+  <p>We may use trusted third-party services to operate this site (such as form handling or WhatsApp Business messaging). These providers only receive the data necessary to perform their function and are bound by their own privacy terms.</p>
+
+  <h2>6. Data Retention</h2>
+  <p>We retain personal data only as long as necessary to fulfil the purposes described above, or as required by Kenyan law (e.g. for tax or contractual records).</p>
+
+  <h2>7. Your Rights</h2>
+  <p>Depending on applicable law, you may have the right to access, correct, delete, or restrict the use of your personal data, and to withdraw consent at any time. To exercise these rights, contact us at info@reliancefireea.com.</p>
+
+  <h2>8. Data Security</h2>
+  <p>We take reasonable technical and organisational measures to protect your data. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+
+  <h2>9. Children's Privacy</h2>
+  <p>This site is intended for business and adult use. We do not knowingly collect personal data from children.</p>
+
+  <h2>10. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. The "Last Updated" date above reflects the most recent revision.</p>
+
+  <h2>11. Contact Us</h2>
+  <p>For any privacy-related questions or requests, email info@reliancefireea.com or visit our <a href="contact.html" style="color:var(--red-light)">Contact page</a>.</p>
+</section>
+
+
+<footer>
+    <img src="images/logo-nav.png" alt="Reliance Fire Safety EA Ltd" style="height:36px;width:auto;object-fit:contain;opacity:0.6;filter:brightness(1.2)">
+    <p>© 2024 Reliance Fire Safety EA Ltd. All rights reserved.</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.18)">ISO 9001:2015 Certified</p>
+    <p style="font-size:11px;margin-top:10px"><a href="terms.html" style="color:var(--muted);text-decoration:none">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="privacy.html" style="color:var(--muted);text-decoration:none">Privacy Policy</a> &nbsp;·&nbsp; <a href="cookies.html" style="color:var(--muted);text-decoration:none">Cookie Policy</a></p>
+  </footer>
+
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner">
+  <p>We use cookies to run this site and, with your permission, to understand how it's used. Necessary cookies are always on. Nothing else runs until you choose. See our <a href="cookies.html">Cookie Policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn" onclick="openCookieModal()">Manage Preferences</button>
+    <button class="cookie-btn" onclick="rejectNonEssentialCookies()">Reject Non-Essential</button>
+    <button class="cookie-btn primary" onclick="acceptAllCookies()">Accept All</button>
+  </div>
+</div>
+
+<!-- COOKIE PREFERENCES MODAL -->
+<div id="cookie-modal-overlay">
+  <div class="cookie-modal">
+    <h3>Cookie Preferences</h3>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <h4>Necessary</h4>
+        <label class="cookie-toggle"><input type="checkbox" checked disabled><span class="slider"></span></label>
+      </div>
+      <p>Required for the site to function — cart, navigation, security. Cannot be turned off.</p>
+    </div>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <h4>Analytics</h4>
+        <label class="cookie-toggle"><input type="checkbox" id="cookie-toggle-analytics"><span class="slider"></span></label>
+      </div>
+      <p>Helps us understand how visitors use the site so we can improve it. No data is sold.</p>
+    </div>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <h4>Marketing</h4>
+        <label class="cookie-toggle"><input type="checkbox" id="cookie-toggle-marketing"><span class="slider"></span></label>
+      </div>
+      <p>Used for retargeting and measuring ad performance. Off by default.</p>
+    </div>
+    <div class="cookie-modal-actions">
+      <button class="cookie-btn" onclick="closeCookieModal()">Cancel</button>
+      <button class="cookie-btn primary" onclick="saveCookiePreferences()">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
