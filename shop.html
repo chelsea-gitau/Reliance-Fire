@@ -144,10 +144,10 @@ const products=[
   {id:8,name:'5 Kg CO2 Extinguisher',cat:'extinguishers',icon:'🧯',price:6500,badge:null,desc:'5 Kg CO2 fully pressurised. Best for electrical panels and data centers.'},
   {id:9,name:'6 Liters Foam Extinguisher',cat:'extinguishers',icon:'🧯',price:3900,badge:null,desc:'Class A & B fires. Effective on fuel and flammable liquid fires.'},
   {id:10,name:'9 Liters Foam Extinguisher',cat:'extinguishers',icon:'🧯',price:4500,badge:null,desc:'9 Liters AFFF foam. Covers larger fuel and liquid fire risks.'},
-  {id:11,name:'9 Liters Water Extinguisher',cat:'extinguishers',icon:'🧯',price:4000,badge:null,desc:'Class A fires — paper, wood and textiles. Fully pressurised.'},
+  // {id:11,name:'9 Liters Water Extinguisher',cat:'extinguishers',icon:'🧯',price:4000,badge:null,desc:'Class A fires — paper, wood and textiles. Fully pressurised.'}, // HIDDEN: no photo yet
   {id:12,name:'6 Liters Wet Chemical Extinguisher',cat:'extinguishers',icon:'🧯',price:8500,badge:null,desc:'Specifically designed for commercial kitchen cooking oil fires (Class F).'},
-  {id:13,name:'6 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:6000,badge:null,desc:'Self-actuating ceiling-mounted 68°C DCP. Activates automatically when heat threshold reached.'},
-  {id:14,name:'12 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:7500,badge:null,desc:'12 Kg self-actuating ceiling-mounted dry powder. For larger automatic protection areas.'},
+  // {id:13,name:'6 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:6000,badge:null,desc:'Self-actuating ceiling-mounted 68°C DCP. Activates automatically when heat threshold reached.'}, // HIDDEN: no photo yet
+  // {id:14,name:'12 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:7500,badge:null,desc:'12 Kg self-actuating ceiling-mounted dry powder. For larger automatic protection areas.'}, // HIDDEN: no photo yet
   {id:15,name:'Fire Ball 1.3 Kg (AFO)',cat:'extinguishers',icon:'🔴',price:5000,badge:null,desc:'Automatic Fire Orb — rolls into fire and self-activates within 3 seconds. No training needed.'},
   {id:16,name:'Fire Blanket 1.2M x 1.2M',cat:'extinguishers',icon:'🟥',price:2000,badge:null,desc:'Fire suppression blanket for kitchen fires and personal protection.'},
   {id:17,name:'Fire Blanket 1.8M x 1.8M',cat:'extinguishers',icon:'🟥',price:3500,badge:null,desc:'Large fire suppression blanket. Ideal for workshops and labs.'},
@@ -183,7 +183,7 @@ const products=[
   {id:44,name:'Fire Assembly Point Sign — A2',cat:'signage',icon:'🏃',price:2500,badge:null,desc:'Fire assembly point signage, size A2. For muster points and evacuation zones.'},
   {id:45,name:'Fire Assembly Point — Standing',cat:'signage',icon:'🏃',price:5500,badge:null,desc:'Free-standing fire assembly point signage. High visibility outdoor use.'},
   {id:46,name:'Fire Extinguisher Sign',cat:'signage',icon:'🧯',price:1100,badge:null,desc:'Wall-mounted fire extinguisher location signage.'},
-  {id:47,name:'No Smoking Sign',cat:'signage',icon:'🚭',price:1500,badge:null,desc:'Standard No Smoking signage for offices and public spaces.'},
+  // {id:47,name:'No Smoking Sign',cat:'signage',icon:'🚭',price:1500,badge:null,desc:'Standard No Smoking signage for offices and public spaces.'}, // HIDDEN: no photo yet
   {id:48,name:'Fire Hose Reel Sign',cat:'signage',icon:'🔴',price:1500,badge:null,desc:'Fire hose reel location signage.'},
   // HOSE REELS & HYDRANT
   {id:49,name:'Fire Hose Reel — Fixed Type',cat:'hose',icon:'🌊',price:18500,badge:null,desc:'Fixed type fire hose reel with 30M tubing. Wall-mounted installation.'},
@@ -256,7 +256,10 @@ function renderShop(cat,search){
     41: 'images/fire-exit-sign.jpeg',
     42: 'images/fire point.jpeg',
     43: 'images/fire-safety-signage.jpeg',
-    46: 'images/fire-alarm-control-panel.jpeg',
+    44: 'images/fire-assembly-point sign a2.jpeg',
+    45: 'images/fire-assembly-point sign a2.jpeg',
+    46: 'images/fire-extinguisher-sign.jpeg',
+    48: 'images/fire-hose-reel-sign.jpeg',
   };
   const catImgs = {
     extinguishers: 'images/EXTINGUISHERS/6kgdcp.jpg',
