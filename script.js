@@ -605,7 +605,7 @@ function animateStatCounters(){
 
   const runCounter = (el) => {
     const target = parseInt(el.getAttribute('data-target'), 10);
-    const duration = 1400;
+    const duration = 1500;
     const start = performance.now();
 
     function tick(now){
@@ -626,11 +626,16 @@ function animateStatCounters(){
   const statsBar = document.querySelector('.hero-stats-bar');
   if(!statsBar) return;
 
+  const statBlocks = document.querySelectorAll('.hero-stat');
+
   let hasRun = false;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting && !hasRun){
         hasRun = true;
+        statBlocks.forEach((block, i) => {
+          setTimeout(() => block.classList.add('in-view'), i * 120);
+        });
         counters.forEach((el, i) => {
           setTimeout(() => runCounter(el), i * 120); // slight stagger per stat
         });
@@ -642,4 +647,12 @@ function animateStatCounters(){
   observer.observe(statsBar);
 }
 
-document.addEventListener('DOMContentLoaded', animateStatCounters);
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    animateStatCounters();
+  }catch(e){
+    // safety net: if animation fails for any reason, just reveal stats plainly
+    document.querySelectorAll('.hero-stat').forEach(b=>b.classList.add('in-view'));
+    document.querySelectorAll('.hs-count').forEach(el=>{el.textContent=el.getAttribute('data-target');});
+  }
+});
