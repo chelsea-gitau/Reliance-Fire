@@ -593,3 +593,53 @@ function sendContactRequest(){
   ['cf-name','cf-company','cf-email','cf-phone','cf-message'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('cf-service').selectedIndex = 0;
 }
+
+// ── STATS COUNT-UP ANIMATION ──
+// Triggers once when the stats bar scrolls into view, animates each number
+// from 0 to its target using an eased curve rather than a linear tick.
+function animateStatCounters(){
+  const counters = document.querySelectorAll('.hs-count');
+  if(!counters.length) return;
+
+  const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
+
+  const runCounter = (el) => {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    const duration = 1400;
+    const start = performance.now();
+
+    function tick(now){
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutQuart(progress);
+      const current = Math.round(eased * target);
+      el.textContent = current;
+      if(progress < 1){
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = target;
+      }
+    }
+    requestAnimationFrame(tick);
+  };
+
+  const statsBar = document.querySelector('.hero-stats-bar');
+  if(!statsBar) return;
+
+  let hasRun = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting && !hasRun){
+        hasRun = true;
+        counters.forEach((el, i) => {
+          setTimeout(() => runCounter(el), i * 120); // slight stagger per stat
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(statsBar);
+}
+
+document.addEventListener('DOMContentLoaded', animateStatCounters);

@@ -186,10 +186,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 }
 .hero-quick-card:hover{border-color:var(--red);background:var(--smoke)}
 .hero-quick-card.primary-card{border-color:rgba(206,53,17,0.4)}
-.qc-icon{width:30px;height:30px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.qc-icon.red{background:rgba(206,53,17,0.15)}
-.qc-icon.green{background:rgba(37,211,102,0.15)}
-.qc-icon.blue{background:rgba(80,140,255,0.15)}
+.qc-icon{width:30px;height:30px;border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.qc-icon.red{background:rgba(206,53,17,0.15);color:var(--red-light)}
+.qc-icon.green{background:rgba(37,211,102,0.15);color:var(--green)}
+.qc-icon.blue{background:rgba(80,140,255,0.15);color:#5C8CFF}
 .qc-label{font-size:10px;color:var(--text-muted);letter-spacing:0.5px;margin-bottom:1px;font-family:var(--mono)}
 .qc-value{font-size:13px;font-weight:600;color:#fff}
 
@@ -226,7 +226,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-stats-bar{
   position:relative;z-index:3;
   display:flex;align-items:stretch;
-  background:linear-gradient(90deg,#1A0E0A 0%,#170C09 50%,#1A0E0A 100%);
+  background:linear-gradient(90deg,var(--ash) 0%,var(--section-b) 50%,var(--ash) 100%);
   border-top:1px solid rgba(206,53,17,0.25);
   animation:fadeSlideUp 0.7s 0.75s both;
 }
