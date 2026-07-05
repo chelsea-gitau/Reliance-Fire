@@ -765,7 +765,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 }
 
 /* ===== SERVICE PAGE "EXPLORE OTHER SYSTEMS" LINKS ===== */
-.svc-checks a{
+.svc-checks a, .svc-other-links a{
   display:flex;align-items:center;gap:10px;
   padding:12px 16px;border-radius:6px;
   color:rgba(255,255,255,0.8)!important;
@@ -775,5 +775,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   border:1px solid rgba(255,255,255,0.08);
   transition:all 0.2s;
 }
-.svc-checks a:hover{background:rgba(255,75,31,0.08);border-color:var(--red);color:#fff!important}
+.svc-checks a:hover, .svc-other-links a:hover{background:rgba(255,75,31,0.08);border-color:var(--red);color:#fff!important}
 .svc-checks .nd-code{font-family:var(--mono);color:var(--red-light);font-size:11px;font-weight:600;flex-shrink:0}
+
+/* ===== FOOTER LEGAL LINKS ===== */
+.footer-legal-links{font-size:11px;margin-top:10px}
+.footer-legal-links a{color:var(--muted)!important;text-decoration:none!important}
+.footer-legal-links a:hover{color:var(--red-light)!important}

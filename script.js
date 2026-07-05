@@ -458,3 +458,138 @@ function goToQuote(){
     window.location.href = 'index.html?openQuote=1';
   }
 }
+
+// ══════════════════════════════════════════════════════
+// COOKIE CONSENT — with real blocking of non-essential scripts
+// ══════════════════════════════════════════════════════
+//
+// HOW TO GATE A SCRIPT (e.g. Google Analytics, Tawk.to, Meta Pixel):
+// Instead of:   <script src="https://example.com/tracker.js"></script>
+// Use:          <script type="text/plain" data-cookie-category="analytics" data-src="https://example.com/tracker.js"></script>
+// Or for inline code:
+//               <script type="text/plain" data-cookie-category="analytics">
+//                 gtag('config', 'G-XXXXXXX');
+//               </script>
+// data-cookie-category must be one of: "analytics", "marketing"
+// (type="text/plain" means the browser will NOT execute it until we activate it below)
+
+const COOKIE_CONSENT_KEY = 'reliance_cookie_consent';
+
+function getCookieConsent(){
+  try{
+    const raw = localStorage.getItem(COOKIE_CONSENT_KEY);
+    return raw ? JSON.parse(raw) : null;
+  }catch(e){ return null; }
+}
+
+function setCookieConsent(prefs){
+  localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify({
+    necessary:true,
+    analytics:!!prefs.analytics,
+    marketing:!!prefs.marketing,
+    timestamp:new Date().toISOString()
+  }));
+  activateGatedScripts(prefs);
+  hideCookieBanner();
+  closeCookieModal();
+}
+
+function activateGatedScripts(prefs){
+  document.querySelectorAll('script[type="text/plain"][data-cookie-category]').forEach(oldScript=>{
+    const cat = oldScript.getAttribute('data-cookie-category');
+    if((cat==='analytics' && prefs.analytics) || (cat==='marketing' && prefs.marketing)){
+      const newScript = document.createElement('script');
+      Array.from(oldScript.attributes).forEach(attr=>{
+        if(attr.name!=='type') newScript.setAttribute(attr.name, attr.value);
+      });
+      const src = oldScript.getAttribute('data-src');
+      if(src){ newScript.src = src; }
+      else { newScript.textContent = oldScript.textContent; }
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    }
+  });
+}
+
+function showCookieBanner(){
+  const b = document.getElementById('cookie-banner');
+  if(b){ b.classList.add('show'); }
+}
+function hideCookieBanner(){
+  const b = document.getElementById('cookie-banner');
+  if(b){ b.classList.remove('show'); }
+}
+
+function acceptAllCookies(){
+  setCookieConsent({analytics:true, marketing:true});
+}
+function rejectNonEssentialCookies(){
+  setCookieConsent({analytics:false, marketing:false});
+}
+function openCookieModal(){
+  const existing = getCookieConsent();
+  document.getElementById('cookie-toggle-analytics').checked = existing ? existing.analytics : false;
+  document.getElementById('cookie-toggle-marketing').checked = existing ? existing.marketing : false;
+  document.getElementById('cookie-modal-overlay').classList.add('open');
+}
+function closeCookieModal(){
+  document.getElementById('cookie-modal-overlay').classList.remove('open');
+}
+function saveCookiePreferences(){
+  setCookieConsent({
+    analytics: document.getElementById('cookie-toggle-analytics').checked,
+    marketing: document.getElementById('cookie-toggle-marketing').checked
+  });
+}
+
+// On load: if consent already given, activate scripts silently. Otherwise show banner.
+document.addEventListener('DOMContentLoaded', function(){
+  const existing = getCookieConsent();
+  if(existing){
+    activateGatedScripts(existing);
+  } else {
+    setTimeout(showCookieBanner, 600);
+  }
+});
+
+// ── CONTACT FORM (shared across index.html and contact.html) ──
+function sendContactRequest(){
+  const name = document.getElementById('cf-name').value.trim();
+  const company = document.getElementById('cf-company').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const phone = document.getElementById('cf-phone').value.trim();
+  const service = document.getElementById('cf-service').value;
+  const message = document.getElementById('cf-message').value.trim();
+
+  if(!name || !email || !phone){
+    alert('Please fill in your name, email and phone number.');
+    return;
+  }
+
+  const waMsg = encodeURIComponent(
+    '📩 *NEW CONTACT FORM REQUEST*\n\n' +
+    '*Name:* ' + name + '\n' +
+    (company ? '*Company:* ' + company + '\n' : '') +
+    '*Email:* ' + email + '\n' +
+    '*Phone:* ' + phone + '\n' +
+    (service ? '*Service:* ' + service + '\n' : '') +
+    (message ? '*Message:* ' + message : '')
+  );
+  window.open('https://wa.me/254777723785?text=' + waMsg, '_blank');
+
+  const subject = encodeURIComponent('New Enquiry from ' + name + ' — Reliance Fire Safety Website');
+  const body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Company: ' + (company || 'N/A') + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + phone + '\n' +
+    'Service Required: ' + (service || 'N/A') + '\n\n' +
+    'Message:\n' + (message || 'N/A')
+  );
+  setTimeout(()=>{
+    window.location.href = 'mailto:info@reliancefireea.com?subject=' + subject + '&body=' + body;
+  }, 800);
+
+  document.getElementById('cf-sent').style.display = 'block';
+  ['cf-name','cf-company','cf-email','cf-phone','cf-message'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('cf-service').selectedIndex = 0;
+}
