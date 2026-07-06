@@ -103,7 +103,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .corners i:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
 .corners i:nth-child(3){bottom:0;left:0;border-right:none;border-top:none}
 .corners i:nth-child(4){bottom:0;right:0;border-left:none;border-top:none}
-.hero-frame:hover .corners i,.showroom-slider:hover .corners i,.corners:hover i,.port-card:hover .corners i,.svc-hero-frame:hover .corners i{width:28px;height:28px;opacity:1;filter:drop-shadow(0 0 8px rgba(232,93,4,0.7))}
+.hero-frame:hover .corners i,.showroom-slider:hover .corners i,.corners:hover i,.port-card:hover .corners i,.svc-hero-frame:hover .corners i,.stats-panel:hover .corners i{width:28px;height:28px;opacity:1;filter:drop-shadow(0 0 8px rgba(232,93,4,0.7))}
 .plate-code{font-family:var(--mono);font-size:10px;letter-spacing:2.5px;color:var(--red-light);text-transform:uppercase}
 
 /* ── HERO — split layout: solid ink panel + framed field-photo plate ── */
@@ -248,24 +248,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   position:relative;
   background:#171717;
   border-radius:20px;
-  border:1px solid rgba(242,92,5,0.15);
+  border:1px solid rgba(242,92,5,0.12);
   box-shadow:0 20px 40px rgba(0,0,0,0.45);
-  padding:44px 20px 12px;
+  padding:26px 20px 12px;
   transition:box-shadow 0.4s ease,border-color 0.4s ease;
 }
 .stats-panel:hover{
-  border-color:rgba(242,92,5,0.28);
+  border-color:rgba(242,92,5,0.24);
   box-shadow:0 24px 48px rgba(0,0,0,0.5),0 0 32px rgba(242,92,5,0.08);
 }
 .stats-tech-label{
-  position:absolute;top:18px;left:26px;
+  position:relative;top:0;margin-bottom:2px;
   display:flex;flex-direction:column;gap:3px;
   font-family:var(--mono);
+  padding-left:6px;
 }
 .stl-line{font-size:9.5px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(242,92,5,0.5)}
 .stl-main{color:rgba(242,92,5,0.7);font-weight:600}
 .stl-status{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.4)}
-.stl-dot{width:5px;height:5px;border-radius:50%;background:#3ECF6E;display:inline-block;box-shadow:0 0 6px rgba(62,207,110,0.7);animation:pulse 2s infinite}
+.stl-dot{width:5px;height:5px;border-radius:50%;background:#3ECF6E;display:inline-block;box-shadow:0 0 5px rgba(62,207,110,0.55);animation:pulse 2s infinite}
 .hero-stats-bar{
   position:relative;
   display:flex;align-items:stretch;
@@ -276,13 +277,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   display:flex;flex-direction:column;align-items:flex-start;
   min-width:0;
   opacity:0;transform:translateY(14px);
-  transition:opacity 0.6s ease,transform 0.6s ease;
+  transition:opacity 0.6s ease,transform 0.6s ease,background 0.3s ease,box-shadow 0.3s ease;
   cursor:default;
+  border-radius:10px;
 }
 .hero-stat.in-view{opacity:1;transform:translateY(0)}
 .hero-stat:last-child{border-right:none}
-.hero-stat:hover .hs-icon{transform:scale(1.05);filter:grayscale(0) drop-shadow(0 0 14px rgba(242,92,5,0.5))}
-.hero-stat:hover .hs-divider{box-shadow:0 0 8px rgba(242,92,5,0.6)}
+.hero-stat:hover{
+  background:rgba(255,255,255,0.02);
+  box-shadow:0 0 28px rgba(242,92,5,0.12);
+}
+.hero-stat:hover .hs-icon{transform:rotate(3deg);filter:grayscale(0) drop-shadow(0 0 14px rgba(242,92,5,0.5))}
+.hero-stat:hover .hs-num{transform:scale(1.03)}
+.hero-stat:hover .hs-divider{width:56px;box-shadow:0 0 8px rgba(242,92,5,0.6);transition:width 0.3s ease,box-shadow 0.3s ease}
 .hs-icon{
   color:var(--red-light);
   margin-bottom:20px;
@@ -296,6 +303,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   color:#fff;
   line-height:1;
   margin-bottom:6px;
+  transition:transform 0.3s ease;
+  transform-origin:left center;
 }
 .hs-num sup{font-size:0.4em;color:var(--red-light);margin-left:2px}
 .hs-text{min-width:0;width:100%;margin-top:18px}
@@ -306,7 +315,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   flex-shrink:0;margin:16px 0 0;
   transition:width 1.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s ease;
 }
-.hero-stat.in-view .hs-divider{width:40px}
+.hero-stat.in-view .hs-divider{width:48px}
 
 /* entrance animations */
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
