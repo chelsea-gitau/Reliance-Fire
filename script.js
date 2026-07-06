@@ -119,8 +119,24 @@ function initScrollAnimations(){
     });
   }, {threshold: 0.12, rootMargin:'0px 0px -30px 0px'});
 
-  // Service cards
-  document.querySelectorAll('.svc-card').forEach(el => observer.observe(el));
+  // Service cards — staggered cascade (0,80,160,240,320,400ms) triggered once as a group
+  const svcGrid = document.querySelector('.services-grid');
+  if(svcGrid){
+    const svcCards = svcGrid.querySelectorAll('.svc-card');
+    let svcHasRun = false;
+    const svcObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting && !svcHasRun){
+          svcHasRun = true;
+          svcCards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('visible'), i * 80);
+          });
+          svcObserver.disconnect();
+        }
+      });
+    }, {threshold: 0.1, rootMargin:'0px 0px -30px 0px'});
+    svcObserver.observe(svcGrid);
+  }
 
   // Reasons slide in from left
   document.querySelectorAll('.reason').forEach(el => observer.observe(el));
