@@ -136,20 +136,20 @@
     <li><a href="shop.html" id="nav-shop" class="">Shop</a></li>
     <li><a href="portfolio.html" id="nav-portfolio" class="">Portfolio</a></li>
     <li><a href="contact.html" id="nav-contact">Contact</a></li>
-    <li><div class="nav-cart" onclick="toggleCart()">🛒 Cart <span class="cart-badge" id="cart-badge">0</span></div></li>
+    <li><div class="nav-cart" onclick="toggleCart()"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> Cart <span class="cart-badge" id="cart-badge">0</span></div></li>
     <li style="position:relative" id="contact-dropdown-wrap">
       <button onclick="toggleContactDrop()" style="display:flex;align-items:center;gap:8px;cursor:pointer;border:none;background:var(--red);padding:8px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;color:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(204,34,0,0.3)">
-        <span>📞</span>
+        <span style="display:flex"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 16.985 15H19a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2.015a2 2 0 0 1-.732 1.583l-.465.355a1 1 0 0 0-.302 1.213 14.35 14.35 0 0 0 6.331 6.402Z"/></svg></span>
         <span>0791 100 310</span>
         <span style="font-size:10px;opacity:0.8">▾</span>
       </button>
       <div id="contact-drop" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;min-width:210px;z-index:500;box-shadow:0 8px 24px rgba(0,0,0,0.5)">
         <a href="tel:+254791100310" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
-          <span style="font-size:22px">📞</span>
+          <img src="images/ICONS/icons8-call-48.png" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain" loading="lazy" decoding="async">
           <div><div style="font-size:13px;font-weight:600">Call Us</div><div style="font-size:11px;color:#888">+254 791 100 310</div></div>
         </a>
         <a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20%F0%9F%91%8B%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20get%20in%20touch.%20Please%20assist%20me." target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
-          <span style="font-size:22px">💬</span>
+          <img src="images/ICONS/icons8-whatsapp-logo-48.png" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain" loading="lazy" decoding="async">
           <div><div style="font-size:13px;font-weight:600">WhatsApp</div><div style="font-size:11px;color:#888">Chat with us instantly</div></div>
         </a>
       </div>

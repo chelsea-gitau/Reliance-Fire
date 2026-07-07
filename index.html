@@ -66,20 +66,20 @@
     <li><a href="shop.html" id="nav-shop" class="">Shop</a></li>
     <li><a href="portfolio.html" id="nav-portfolio" class="">Portfolio</a></li>
     <li><a href="contact.html" id="nav-contact">Contact</a></li>
-    <li><div class="nav-cart" onclick="toggleCart()">🛒 Cart <span class="cart-badge" id="cart-badge">0</span></div></li>
+    <li><div class="nav-cart" onclick="toggleCart()"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> Cart <span class="cart-badge" id="cart-badge">0</span></div></li>
     <li style="position:relative" id="contact-dropdown-wrap">
       <button onclick="toggleContactDrop()" style="display:flex;align-items:center;gap:8px;cursor:pointer;border:none;background:var(--red);padding:8px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;color:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(204,34,0,0.3)">
-        <span>📞</span>
+        <span style="display:flex"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 16.985 15H19a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2.015a2 2 0 0 1-.732 1.583l-.465.355a1 1 0 0 0-.302 1.213 14.35 14.35 0 0 0 6.331 6.402Z"/></svg></span>
         <span>0791 100 310</span>
         <span style="font-size:10px;opacity:0.8">▾</span>
       </button>
       <div id="contact-drop" style="display:none;position:absolute;top:calc(100% + 10px);right:0;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;min-width:210px;z-index:500;box-shadow:0 8px 24px rgba(0,0,0,0.5)">
         <a href="tel:+254791100310" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
-          <span style="font-size:22px">📞</span>
+          <img src="images/ICONS/icons8-call-48.png" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain" loading="lazy" decoding="async">
           <div><div style="font-size:13px;font-weight:600">Call Us</div><div style="font-size:11px;color:#888">+254 791 100 310</div></div>
         </a>
         <a href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20%F0%9F%91%8B%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20get%20in%20touch.%20Please%20assist%20me." target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#fff;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
-          <span style="font-size:22px">💬</span>
+          <img src="images/ICONS/icons8-whatsapp-logo-48.png" alt="" aria-hidden="true" style="width:22px;height:22px;object-fit:contain" loading="lazy" decoding="async">
           <div><div style="font-size:13px;font-weight:600">WhatsApp</div><div style="font-size:11px;color:#888">Chat with us instantly</div></div>
         </a>
       </div>
@@ -118,7 +118,7 @@
             <div class="qc-icon-wrap green"><div class="qc-icon green"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 2C6.578 2 2.157 6.336 2.157 11.892c0 2.096.547 4.142 1.588 5.945L2.057 22.5l4.756-1.238a9.9 9.9 0 0 0 5.237 1.42h.005c5.471 0 9.892-4.336 9.895-9.893A9.825 9.825 0 0 0 19.038 5.4 9.847 9.847 0 0 0 12.05 2"/></svg></div></div>
             <div><div class="qc-micro">Messaging</div><div class="qc-value">WhatsApp</div><div class="qc-sub">Chat Instantly</div></div>
           </a>
-          <div class="hero-quick-card featured-card" onclick="showPage('quote')">
+          <div class="hero-quick-card featured-card" onclick="showPage('quote')" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showPage('quote')}">
             <div class="qc-icon-wrap red"><div class="qc-icon red"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div></div>
             <div><div class="qc-micro">Get Started</div><div class="qc-value">Free Quote</div><div class="qc-sub">4-Step Assessment</div></div>
           </div>
@@ -509,10 +509,10 @@
         <div class="sec-tag">Get In Touch</div>
         <h2 class="sec-title">LET'S PROTECT YOUR BUSINESS</h2>
         <p class="sec-sub" style="margin-bottom:36px">Reach out for a free consultation, site assessment or quotation. Our team responds within 24 hours.</p>
-        <div class="contact-item"><div class="c-icon">📍</div><div><h4>Location</h4><p>Nairobi, Kenya — serving all of East Africa</p></div></div>
-        <div class="contact-item"><div class="c-icon">📞</div><div><h4>Phone</h4><p>+254 791 100 310</p></div></div>
-        <div class="contact-item"><div class="c-icon">✉️</div><div><h4>Email</h4><p>info@reliancefireea.com</p></div></div>
-        <div class="contact-item"><div class="c-icon">⏰</div><div><h4>Working Hours</h4><p>Mon – Fri: 8am – 5pm | Sat: 8am – 1pm</p></div></div>
+        <div class="contact-item"><div class="c-icon"><img src="images/ICONS/icons8-building-80.png" alt="" aria-hidden="true" style="width:20px;height:20px;object-fit:contain" loading="lazy" decoding="async"></div><div><h4>Location</h4><p>Nairobi, Kenya — serving all of East Africa</p></div></div>
+        <div class="contact-item"><div class="c-icon"><img src="images/ICONS/icons8-call-48.png" alt="" aria-hidden="true" style="width:20px;height:20px;object-fit:contain" loading="lazy" decoding="async"></div><div><h4>Phone</h4><p>+254 791 100 310</p></div></div>
+        <div class="contact-item"><div class="c-icon"><img src="images/ICONS/icons8-document-48.png" alt="" aria-hidden="true" style="width:20px;height:20px;object-fit:contain" loading="lazy" decoding="async"></div><div><h4>Email</h4><p>info@reliancefireea.com</p></div></div>
+        <div class="contact-item"><div class="c-icon"><img src="images/ICONS/icons8-clock-50.png" alt="" aria-hidden="true" style="width:20px;height:20px;object-fit:contain" loading="lazy" decoding="async"></div><div><h4>Working Hours</h4><p>Mon – Fri: 8am – 5pm | Sat: 8am – 1pm</p></div></div>
         <button class="wa-btn" onclick="window.open('https://wa.me/254777723785','_blank')">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Chat on WhatsApp
@@ -820,7 +820,7 @@
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
 <div class="cart-sidebar" id="cart-sidebar">
   <div class="cart-head">
-    <h3>🛒 Your Cart</h3>
+    <h3><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg> Your Cart</h3>
     <button class="cart-close" onclick="toggleCart()">×</button>
   </div>
   <div class="cart-items" id="cart-items-list">
