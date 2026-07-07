@@ -1016,3 +1016,39 @@ body.mm-locked{overflow:hidden}
 .faq-answer{padding:0 22px 22px 22px}
 .faq-answer p{font-size:14px;line-height:1.9;color:rgba(255,255,255,0.75);border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;max-width:720px}
 @media(max-width:560px){.faq-item summary{padding:16px 16px;font-size:14.5px}.faq-answer{padding:0 16px 18px}}
+
+
+/* ═══ HOMEPAGE & FOOTER DESIGN PASS ═══ */
+
+/* Status semantics: two colors only — green = live/ready, gold = certified */
+.dot-blue{background:#3ECF6E;box-shadow:0 0 5px rgba(62,207,110,0.6)}
+
+/* Hero ISO plate: legible over any photo */
+.hero-iso-pill .iso-l{background:rgba(13,6,4,0.82);backdrop-filter:blur(6px);padding:7px 12px;border-radius:4px;border:1px solid rgba(196,164,100,0.35)}
+
+/* Industries: disciplined 3x3, no orphan holes */
+.ind-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;margin-top:40px}
+.ind-grid .ind-card{height:260px}
+@media(max-width:900px){.ind-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.ind-grid{grid-template-columns:1fr}.ind-grid .ind-card{height:220px}}
+
+/* Tighter section rhythm — 110px gaps read as dead air on long pages */
+section{padding:96px 5%}
+
+/* ═══ PREMIUM FOOTER ═══ */
+footer{display:block;background:#0B0503;border-top:1px solid rgba(232,93,4,0.28);padding:0}
+.ft-grid{display:grid;grid-template-columns:1.6fr 1fr 0.8fr 1.1fr;gap:48px;padding:64px 5% 48px;max-width:1400px;margin:0 auto}
+.ft-logo{height:40px;width:auto;object-fit:contain;opacity:0.9;margin-bottom:16px}
+.ft-tagline{font-size:13px;line-height:1.8;color:rgba(244,240,232,0.45);max-width:340px;margin-bottom:18px}
+.ft-iso{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--gold);border:1px solid rgba(196,164,100,0.3);border-radius:4px;padding:7px 12px}
+.ft-iso-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px rgba(196,164,100,0.8)}
+.ft-head{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--red-light);margin-bottom:18px}
+.ft-col{display:flex;flex-direction:column;gap:0}
+.ft-col a,.ft-col .ft-plain{font-size:13.5px;color:rgba(244,240,232,0.55);text-decoration:none;padding:6px 0;display:flex;align-items:center;gap:10px;transition:color 0.2s,padding-left 0.2s;width:fit-content}
+.ft-col a:hover,.ft-col a:focus-visible{color:#fff;padding-left:4px}
+.ft-code{font-family:var(--mono);font-size:10px;color:rgba(232,93,4,0.65);flex-shrink:0}
+.ft-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:20px 5%;border-top:1px solid rgba(255,255,255,0.06);max-width:1400px;margin:0 auto}
+.ft-bar p{font-size:11.5px;color:rgba(244,240,232,0.3);margin:0}
+.ft-bar .footer-legal-links{margin:0;font-size:11.5px}
+@media(max-width:1000px){.ft-grid{grid-template-columns:1fr 1fr;gap:40px 32px;padding:52px 5% 40px}}
+@media(max-width:560px){.ft-grid{grid-template-columns:1fr;gap:36px}.ft-bar{flex-direction:column;text-align:center}}
