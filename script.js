@@ -672,3 +672,61 @@ document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('.hs-count').forEach(el=>{el.textContent=el.getAttribute('data-target');});
   }
 });
+
+
+/* ═══ MOBILE NAVIGATION — injected on all pages ═══ */
+(function initMobileNav(){
+  const nav = document.querySelector('nav');
+  if(!nav || document.getElementById('mobile-menu')) return;
+
+  const here = (location.pathname.split('/').pop() || 'index.html');
+  const cur = (h) => h === here ? ' aria-current="page"' : '';
+
+  const burger = document.createElement('button');
+  burger.className = 'nav-burger';
+  burger.setAttribute('aria-label','Open menu');
+  burger.setAttribute('aria-expanded','false');
+  burger.setAttribute('aria-controls','mobile-menu');
+  burger.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(burger);
+
+  const menu = document.createElement('div');
+  menu.id = 'mobile-menu';
+  menu.innerHTML = `
+    <a class="mm-link" href="index.html"${cur('index.html')}>Home</a>
+    <div class="mm-plate">Services · SYS 01–06</div>
+    <a class="mm-sub" href="fire-detection.html"${cur('fire-detection.html')}><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
+    <a class="mm-sub" href="sprinkler-systems.html"${cur('sprinkler-systems.html')}><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
+    <a class="mm-sub" href="fire-suppression.html"${cur('fire-suppression.html')}><span class="nd-code">SYS·03</span>Fire Suppression</a>
+    <a class="mm-sub" href="fire-alarm.html"${cur('fire-alarm.html')}><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
+    <a class="mm-sub" href="maintenance.html"${cur('maintenance.html')}><span class="nd-code">SYS·05</span>Maintenance & Service</a>
+    <a class="mm-sub" href="fire-risk-assessment.html"${cur('fire-risk-assessment.html')}><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+    <div class="mm-plate">Explore</div>
+    <a class="mm-link" href="shop.html"${cur('shop.html')}>Shop</a>
+    <a class="mm-link" href="portfolio.html"${cur('portfolio.html')}>Portfolio</a>
+    <a class="mm-link" href="contact.html"${cur('contact.html')}>Contact</a>
+    <a class="mm-link" href="faq.html"${cur('faq.html')}>FAQs</a>
+    <div class="mm-actions">
+      <a class="mm-call" href="tel:+254791100310">📞 Call Us</a>
+      <a class="mm-wa" href="https://wa.me/254777723785?text=Hi%20Reliance%20Fire%20Safety!%20%F0%9F%91%8B%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20get%20in%20touch.%20Please%20assist%20me." target="_blank" rel="noopener">💬 WhatsApp</a>
+      <button class="mm-cart" type="button" onclick="closeMobileMenu();toggleCart()">🛒 View Cart</button>
+    </div>`;
+  document.body.appendChild(menu);
+
+  window.closeMobileMenu = function(){
+    menu.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-label','Open menu');
+    document.body.classList.remove('mm-locked');
+  };
+
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('mm-locked', open);
+  });
+
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', window.closeMobileMenu));
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && menu.classList.contains('open')){ window.closeMobileMenu(); burger.focus(); } });
+})();

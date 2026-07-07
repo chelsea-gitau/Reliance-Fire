@@ -4,10 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Us | Reliance Fire Safety EA Ltd</title>
+<meta name="description" content="Contact Reliance Fire Safety EA Ltd for a free fire safety consultation, site assessment or quotation. Call +254 791 100 310 or WhatsApp us — we respond within 24 hours.">
+<link rel="canonical" href="https://chelsea-gitau.github.io/Reliance-Fire/contact.html">
+<meta name="theme-color" content="#0D0B09">
+<link rel="icon" type="image/png" href="images/logo-nav.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reliance Fire Safety EA Ltd">
+<meta property="og:title" content="Contact Us | Reliance Fire Safety EA Ltd">
+<meta property="og:description" content="Contact Reliance Fire Safety EA Ltd for a free fire safety consultation, site assessment or quotation. Call +254 791 100 310 or WhatsApp us — we respond within 24 hours.">
+<meta property="og:url" content="https://chelsea-gitau.github.io/Reliance-Fire/contact.html">
+<meta property="og:image" content="https://chelsea-gitau.github.io/Reliance-Fire/images/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Contact Us | Reliance Fire Safety EA Ltd">
+<meta name="twitter:description" content="Contact Reliance Fire Safety EA Ltd for a free fire safety consultation, site assessment or quotation. Call +254 791 100 310 or WhatsApp us — we respond within 24 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- NAV -->
 <nav>
@@ -21,12 +37,12 @@
     <li class="nav-drop-wrap" id="services-drop-wrap">
       <a href="#" onclick="event.preventDefault();toggleServicesDrop()">Services <span style="font-size:9px;opacity:0.7">▾</span></a>
       <div class="nav-drop" id="services-drop">
-        <a href="#" onclick="window.location.href='fire-detection.html'"><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
-        <a href="#" onclick="window.location.href='sprinkler-systems.html'"><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
-        <a href="#" onclick="window.location.href='fire-suppression.html'"><span class="nd-code">SYS·03</span>Fire Suppression</a>
-        <a href="#" onclick="window.location.href='fire-alarm.html'"><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
-        <a href="#" onclick="window.location.href='maintenance.html'"><span class="nd-code">SYS·05</span>Maintenance &amp; Service</a>
-        <a href="#" onclick="window.location.href='fire-risk-assessment.html'"><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+        <a href="fire-detection.html"><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
+        <a href="sprinkler-systems.html"><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
+        <a href="fire-suppression.html"><span class="nd-code">SYS·03</span>Fire Suppression</a>
+        <a href="fire-alarm.html"><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
+        <a href="maintenance.html"><span class="nd-code">SYS·05</span>Maintenance &amp; Service</a>
+        <a href="fire-risk-assessment.html"><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
       </div>
     </li>
     <li><a href="shop.html" id="nav-shop" class="">Shop</a></li>
@@ -54,9 +70,9 @@
 </nav>
 
 
-<section style="padding:140px 5% 90px;background:var(--section-a)">
+<section id="main-content" style="padding:140px 5% 90px;background:var(--section-a)">
   <div class="sec-tag">Get In Touch</div>
-  <div class="sec-title">LET'S PROTECT YOUR BUSINESS</div>
+  <h1 class="sec-title">LET'S PROTECT YOUR BUSINESS</h1>
   <p class="sec-sub" style="max-width:600px;margin-bottom:50px">Reach out for a free consultation, site assessment or quotation. Our team responds within 24 hours.</p>
 
   <div class="contact-grid">
@@ -81,10 +97,10 @@
     </div>
 
     <div>
-      <div class="form-group form-row"><input type="text" id="cf-name" placeholder="Full Name"><input type="text" id="cf-company" placeholder="Company Name"></div>
-      <div class="form-group form-row"><input type="email" id="cf-email" placeholder="Email Address"><input type="tel" id="cf-phone" placeholder="Phone Number"></div>
-      <div class="form-group"><select id="cf-service"><option value="" disabled selected>Service Required</option><option>Fire Detection System</option><option>Sprinkler System</option><option>Fire Suppression System</option><option>Fire Alarm System</option><option>Maintenance Contract</option><option>Fire Risk Assessment</option><option>Shop / Product Enquiry</option><option>Other</option></select></div>
-      <div class="form-group"><textarea id="cf-message" placeholder="Tell us about your project or requirements..."></textarea></div>
+      <div class="form-group form-row"><input type="text" id="cf-name" placeholder="Full Name" aria-label="Full name" autocomplete="name" required><input type="text" id="cf-company" placeholder="Company Name" aria-label="Company name" autocomplete="organization"></div>
+      <div class="form-group form-row"><input type="email" id="cf-email" placeholder="Email Address" aria-label="Email address" autocomplete="email" required><input type="tel" id="cf-phone" placeholder="Phone Number" aria-label="Phone number" autocomplete="tel" required></div>
+      <div class="form-group"><select id="cf-service" aria-label="Service required"><option value="" disabled selected>Service Required</option><option>Fire Detection System</option><option>Sprinkler System</option><option>Fire Suppression System</option><option>Fire Alarm System</option><option>Maintenance Contract</option><option>Fire Risk Assessment</option><option>Shop / Product Enquiry</option><option>Other</option></select></div>
+      <div class="form-group"><textarea id="cf-message" placeholder="Tell us about your project or requirements..." aria-label="Your message"></textarea></div>
       <button class="btn-primary" style="width:100%;justify-content:center" onclick="sendContactRequest()">Send Request →</button>
       <p id="cf-sent" style="display:none;text-align:center;color:#25D366;font-size:13px;margin-top:12px;font-weight:600">✅ Message sent! We'll be in touch within 24 hours.</p>
     </div>
@@ -93,10 +109,10 @@
 
 
 <footer>
-    <img src="images/logo-nav.png" alt="Reliance Fire Safety EA Ltd" style="height:36px;width:auto;object-fit:contain;opacity:0.6;filter:brightness(1.2)">
-    <p>© 2024 Reliance Fire Safety EA Ltd. All rights reserved.</p>
+    <img src="images/logo-nav.png" alt="Reliance Fire Safety EA Ltd" style="height:36px;width:auto;object-fit:contain;opacity:0.6;filter:brightness(1.2)" loading="lazy" decoding="async">
+    <p>© 2026 Reliance Fire Safety EA Ltd. All rights reserved.</p>
     <p style="font-size:11px;color:rgba(255,255,255,0.18)">ISO 9001:2015 Certified</p>
-    <p class="footer-legal-links"><a href="terms.html">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="cookies.html">Cookie Policy</a></p>
+    <p class="footer-legal-links"><a href="faq.html">FAQs</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="cookies.html">Cookie Policy</a></p>
   </footer>
 
 

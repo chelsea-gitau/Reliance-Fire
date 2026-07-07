@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chelsea-gitau.github.io/Reliance-Fire/sitemap.xml
