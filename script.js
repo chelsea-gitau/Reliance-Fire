@@ -747,3 +747,21 @@ document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('video[autoplay]').forEach(v=>{ v.removeAttribute('autoplay'); v.pause(); });
   }
 })();
+
+
+/* ── Click-to-play hero video (replaces autoplay to save data + avoid an
+     out-of-context loop reading as unpolished on first view) ── */
+function playHeroVideo(btn){
+  const frame = btn.closest('.hero-frame');
+  if(!frame) return;
+  const img = frame.querySelector('img');
+  const src = btn.getAttribute('data-src') || 'videos/extinguisher-service.mp4';
+  const video = document.createElement('video');
+  video.src = src;
+  video.controls = true;
+  video.autoplay = true;
+  video.playsInline = true;
+  video.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:center center';
+  if(img) img.replaceWith(video); else frame.prepend(video);
+  btn.remove();
+}

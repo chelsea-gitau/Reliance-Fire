@@ -1141,3 +1141,9 @@ footer{display:block;background:#0B0503;border-top:1px solid rgba(232,93,4,0.28)
 .hero-slide video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-slide.video-slide{animation:none !important}
 .hero-slide.video-slide.active{animation:none !important}
+
+
+/* ═══ Click-to-play hero video button ═══ */
+.hero-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;background:rgba(13,6,4,0.75);backdrop-filter:blur(6px);border:1.5px solid rgba(255,255,255,0.4);color:#fff;padding:14px 24px 14px 18px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s,border-color 0.2s,transform 0.2s;z-index:3}
+.hero-play-btn:hover,.hero-play-btn:focus-visible{background:var(--red-dark);border-color:var(--red-light);transform:translate(-50%,-50%) scale(1.04)}
+.hero-play-btn svg{flex-shrink:0}
