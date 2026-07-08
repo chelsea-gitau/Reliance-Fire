@@ -739,3 +739,11 @@ document.addEventListener('DOMContentLoaded', function(){
     pages.forEach(function(p){ p.style.display = p.classList.contains('active') ? 'block' : 'none'; });
   }
 });
+
+
+/* ── Respect prefers-reduced-motion for autoplay videos ── */
+(function(){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video[autoplay]').forEach(v=>{ v.removeAttribute('autoplay'); v.pause(); });
+  }
+})();

@@ -131,7 +131,7 @@
           <div id="hero-slider" style="position:absolute;inset:0;z-index:0;overflow:hidden">
             <div class="hero-slide active" style="background-image:url('images/employees/tech-installation-2.jpg')"></div>
             <div class="hero-slide" style="background-image:url('images/employees/tech-installation-1.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/employees/tech-extinguisher-1.jpg')"></div>
+            <div class="hero-slide video-slide"><video muted loop playsinline preload="metadata" poster="videos/workshop-poster.jpg" aria-label="Inside the Reliance Fire Safety workshop"><source src="videos/workshop.mp4" type="video/mp4"></video></div>
             <div class="hero-slide" style="background-image:url('images/employees/tech-field-1.jpg')"></div>
             <div class="hero-slide" style="background-image:url('images/employees/tech-inspection-1.jpg')"></div>
             <div class="hero-slide" style="background-image:url('images/employees/tech-field-2.jpg')"></div>
@@ -1017,6 +1017,8 @@ function submitQuote(){
     current = (n !== undefined) ? n : (current + 1) % slides.length;
     slides[current].classList.add('active');
     dots[current].classList.add('active');
+    // video slides: play only while active, pause otherwise (saves battery + bandwidth)
+    slides.forEach((s,i)=>{ const v=s.querySelector('video'); if(v){ if(i===current && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.play().catch(()=>{}); } else { v.pause(); } } });
     // restart animation
     slides[current].style.animation='none';
     slides[current].offsetHeight; // reflow
