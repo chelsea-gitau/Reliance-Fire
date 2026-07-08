@@ -1077,3 +1077,53 @@ footer{display:block;background:#0B0503;border-top:1px solid rgba(232,93,4,0.28)
 
 /* ═══ Service card title icons — icons8, sized to match the SVG they replaced ═══ */
 .svc-title-icon{width:18px;height:18px;object-fit:contain;vertical-align:-3px;margin-right:8px;flex-shrink:0}
+
+
+/* ═══ SERVICE PAGE REDESIGN v2 — richer, differentiated template ═══ */
+
+/* Hero: kill the dead-space centering, give the copy column real content weight */
+.svc-hero-split{align-items:flex-start;min-height:0;padding-top:150px;padding-bottom:70px}
+.svc-hero-copy{padding-top:8px}
+.svc-hero-intro{font-size:15px;line-height:1.85;color:rgba(255,255,255,0.7);max-width:480px;margin-top:18px}
+.svc-stat-row{display:flex;gap:0;margin-top:32px;border-top:1px solid rgba(255,255,255,0.08)}
+.svc-stat-chip{flex:1;padding:16px 18px 0;border-right:1px solid rgba(255,255,255,0.08)}
+.svc-stat-chip:last-child{border-right:none}
+.svc-stat-chip .ssc-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--red-light);letter-spacing:0.5px;line-height:1}
+.svc-stat-chip .ssc-label{font-family:var(--mono);font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:6px;display:block}
+
+/* Applications strip — who this service is for */
+.svc-applications{padding:44px 5%;background:var(--section-b);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)}
+.svc-app-label{font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:18px}
+.svc-app-row{display:flex;flex-wrap:wrap;gap:12px}
+.svc-app-pill{display:flex;align-items:center;gap:9px;padding:9px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:100px;font-size:13px;color:rgba(255,255,255,0.75)}
+.svc-app-pill img{width:16px;height:16px;object-fit:contain;flex-shrink:0}
+
+/* Feature cards v2 — numbered plate badge + accent, richer than plain text */
+.svc-feature-v2{position:relative;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:22px 20px 20px;transition:border-color 0.2s,transform 0.2s}
+.svc-feature-v2:hover{border-color:rgba(232,93,4,0.4);transform:translateY(-2px)}
+.svc-feature-v2 .sf-num{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--red-light);opacity:0.7;display:block;margin-bottom:10px}
+.svc-feature-v2 h4{font-size:14.5px;font-weight:600;color:#fff;margin-bottom:6px}
+.svc-feature-v2 p{font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.6}
+
+/* Process strip — mirrors the quote-wizard stepper language */
+.svc-process-wrap{padding:70px 5%;background:var(--section-c)}
+.svc-process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1100px;margin-top:44px;position:relative}
+.svc-process-step{position:relative;padding:0 20px 0 0;text-align:left}
+.svc-process-step:not(:last-child)::after{content:'';position:absolute;top:20px;left:52px;right:0;height:1px;background:repeating-linear-gradient(to right,rgba(232,93,4,0.35) 0 6px,transparent 6px 12px)}
+.sps-num{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--red);color:var(--red-light);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:18px;margin-bottom:16px;background:var(--section-c);position:relative;z-index:2}
+.svc-process-step h4{font-size:14.5px;font-weight:600;color:#fff;margin-bottom:5px}
+.svc-process-step p{font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:220px}
+@media(max-width:900px){.svc-process-grid{grid-template-columns:repeat(2,1fr);gap:32px 20px}.svc-process-step:not(:last-child)::after{display:none}}
+@media(max-width:560px){.svc-process-grid{grid-template-columns:1fr}}
+
+/* Standards badges */
+.svc-standards-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.svc-standard-badge{font-family:var(--mono);font-size:10.5px;letter-spacing:1px;color:var(--gold);border:1px solid rgba(196,164,100,0.35);border-radius:4px;padding:7px 12px;background:rgba(196,164,100,0.05)}
+
+/* Related systems v2 — thumbnail cards instead of bare text pills */
+.svc-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
+.svc-related-card{display:block;text-decoration:none;position:relative;height:130px;border-radius:8px;overflow:hidden;background-size:cover;background-position:center}
+.svc-related-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,4,2,0.92) 10%,rgba(10,4,2,0.35) 60%,transparent 100%)}
+.svc-related-card .src-code{position:absolute;top:10px;left:12px;font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--red-light);z-index:2}
+.svc-related-card .src-title{position:absolute;bottom:12px;left:12px;right:12px;color:#fff;font-size:13.5px;font-weight:600;z-index:2}
+.svc-related-card:hover{outline:1px solid rgba(232,93,4,0.5)}
