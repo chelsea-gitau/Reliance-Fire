@@ -730,3 +730,12 @@ document.addEventListener('DOMContentLoaded', function(){
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', window.closeMobileMenu));
   document.addEventListener('keydown', e => { if(e.key === 'Escape' && menu.classList.contains('open')){ window.closeMobileMenu(); burger.focus(); } });
 })();
+
+
+/* Defensive page-visibility sync: only the active page may render, regardless of stylesheet state */
+document.addEventListener('DOMContentLoaded', function(){
+  var pages = document.querySelectorAll('.page');
+  if(pages.length > 1){
+    pages.forEach(function(p){ p.style.display = p.classList.contains('active') ? 'block' : 'none'; });
+  }
+});
