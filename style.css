@@ -113,6 +113,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 /* ── SIGNATURE: RATING-PLATE CORNER BRACKETS ── */
 .corners{position:absolute;inset:12px;pointer-events:none;z-index:6}
+/* pointer-events is inherited — any real link/button nested inside a decorative
+   .corners box (bracket frame) was silently inheriting none and going dead.
+   Re-enable clicks for actual interactive content while keeping the bracket
+   decorations themselves click-through. */
+.corners a,.corners button,.corners iframe{pointer-events:auto}
 .corners i{position:absolute;width:22px;height:22px;border:2px solid var(--red);font-style:normal;opacity:0.9;transition:all 0.4s ease;filter:drop-shadow(0 0 0 rgba(232,93,4,0))}
 .corners i:nth-child(1){top:0;left:0;border-right:none;border-bottom:none}
 .corners i:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
