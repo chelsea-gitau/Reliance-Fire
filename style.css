@@ -1121,9 +1121,17 @@ footer{display:block;background:#0B0503;border-top:1px solid rgba(232,93,4,0.28)
 .svc-standard-badge{font-family:var(--mono);font-size:10.5px;letter-spacing:1px;color:var(--gold);border:1px solid rgba(196,164,100,0.35);border-radius:4px;padding:7px 12px;background:rgba(196,164,100,0.05)}
 
 /* Related systems v2 — thumbnail cards instead of bare text pills */
-.svc-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
+.svc-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
 .svc-related-card{display:block;text-decoration:none;position:relative;height:130px;border-radius:8px;overflow:hidden;background-size:cover;background-position:center}
 .svc-related-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,4,2,0.92) 10%,rgba(10,4,2,0.35) 60%,transparent 100%)}
 .svc-related-card .src-code{position:absolute;top:10px;left:12px;font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--red-light);z-index:2}
 .svc-related-card .src-title{position:absolute;bottom:12px;left:12px;right:12px;color:#fff;font-size:13.5px;font-weight:600;z-index:2}
-.svc-related-card:hover{outline:1px solid rgba(232,93,4,0.5)}
+.svc-related-card:hover,.svc-related-card:focus-visible{outline:1px solid rgba(232,93,4,0.5)}
+@media(max-width:900px){.svc-related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.svc-related-grid{grid-template-columns:1fr}.svc-related-card{height:110px}}
+
+
+/* Shop search — real icon instead of emoji-in-placeholder */
+.shop-search-wrap{position:relative;display:inline-block}
+.shop-search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.4);pointer-events:none}
+.shop-search-wrap .shop-search{padding-left:38px}

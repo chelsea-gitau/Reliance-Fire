@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════
-// SHARED SCRIPT — loaded on every page
+// SHARED SCRIPT, loaded on every page
 // ═══════════════════════════════════════
 
 // ── CART (persisted via localStorage) ──
@@ -52,7 +52,7 @@ function updateCartUI(){
   if(cart.length===0){list.innerHTML='<div class="cart-empty">Your cart is empty.<br>Browse our shop to add items.</div>';return;}
   list.innerHTML=cart.map(item=>`
     <div class="cart-item">
-      <div class="cart-item-icon">${item.icon}</div>
+      <div class="cart-item-icon" style="background-image:url('${item.img||"images/EXTINGUISHERS/6kgdcp.jpg"}');background-size:cover;background-position:center"></div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
         <div class="cart-item-price">KES ${discountedPrice(item).toLocaleString()} × ${item.qty} <span style="color:var(--muted);font-size:11px;text-decoration:line-through;margin-left:4px">KES ${item.price.toLocaleString()}</span></div>
@@ -62,7 +62,7 @@ function updateCartUI(){
           <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
         </div>
       </div>
-      <button class="cart-remove" onclick="removeFromCart(${item.id})">✕</button>
+      <button class="cart-remove" onclick="removeFromCart(${item.id})" aria-label="Remove item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
     </div>`).join('');
 }
 
@@ -76,8 +76,8 @@ function orderViaWhatsApp(){
   const subtotal=cart.reduce((s,x)=>s+(discountedPrice(x)*x.qty),0);
   const vat=Math.round(subtotal*VAT);
   const total=subtotal+vat;
-  let lines=cart.map(item=>`• ${item.qty}x ${item.name} — KES ${(discountedPrice(item)*item.qty).toLocaleString()}`).join('%0A');
-  const msg=`Hello Reliance Fire Safety! 👋%0A%0AI'd like to place the following order:%0A%0A${lines}%0A%0ASubtotal (after 10% discount): KES ${subtotal.toLocaleString()}%0AVAT (16%): KES ${vat.toLocaleString()}%0A*Total: KES ${total.toLocaleString()}*%0A%0APlease confirm availability and send payment details. Thank you!`;
+  let lines=cart.map(item=>`• ${item.qty}x ${item.name}, KES ${(discountedPrice(item)*item.qty).toLocaleString()}`).join('%0A');
+  const msg=`Hello Reliance Fire Safety!%0A%0AI'd like to place the following order:%0A%0A${lines}%0A%0ASubtotal (after 10% discount): KES ${subtotal.toLocaleString()}%0AVAT (16%): KES ${vat.toLocaleString()}%0A*Total: KES ${total.toLocaleString()}*%0A%0APlease confirm availability and send payment details. Thank you!`;
   window.open(`https://wa.me/254777723785?text=${msg}`,'_blank');
 }
 
@@ -119,7 +119,7 @@ function initScrollAnimations(){
     });
   }, {threshold: 0.12, rootMargin:'0px 0px -30px 0px'});
 
-  // Service cards — staggered cascade (0,80,160,240,320,400ms) triggered once as a group
+  // Service cards, staggered cascade (0,80,160,240,320,400ms) triggered once as a group
   const svcGrid = document.querySelector('.services-grid');
   if(svcGrid){
     const svcCards = svcGrid.querySelectorAll('.svc-card');
@@ -173,7 +173,7 @@ const svcData = {
     tag:'Fire Detection',
     title:'FIRE DETECTION SYSTEMS',
     img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85',
-    desc:'Our fire detection systems use the latest optical, thermal and multi-sensor technology to detect fire at the earliest possible stage. We design, supply, install and commission detection systems for all building types across Kenya and East Africa — from small offices to large industrial complexes.',
+    desc:'Our fire detection systems use the latest optical, thermal and multi-sensor technology to detect fire at the earliest possible stage. We design, supply, install and commission detection systems for all building types across Kenya and East Africa, from small offices to large industrial complexes.',
     features:[
       {h:'Optical Smoke Detectors',p:'Highly sensitive photoelectric detectors for early smoke detection.'},
       {h:'Heat Detectors',p:'Fixed temperature and rate-of-rise heat detectors for kitchens and plant rooms.'},
@@ -194,9 +194,9 @@ const svcData = {
     img:'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=900&q=85',
     desc:'Sprinkler systems are the most effective automatic fire suppression method available. We design and install wet pipe, dry pipe and pre-action systems tailored to your building type, occupancy and risk level. All installations are fully compliant with BS EN 12845 and NFPA 13 standards.',
     features:[
-      {h:'Wet Pipe Systems',p:'Always charged with water — fastest response for most commercial buildings.'},
+      {h:'Wet Pipe Systems',p:'Always charged with water, fastest response for most commercial buildings.'},
       {h:'Dry Pipe Systems',p:'For unheated spaces where pipes could freeze.'},
-      {h:'Pre-Action Systems',p:'Two-step activation — ideal for data centres and archives.'},
+      {h:'Pre-Action Systems',p:'Two-step activation, ideal for data centres and archives.'},
       {h:'Deluge Systems',p:'Open head systems for high-hazard industrial areas.'},
       {h:'Sprinkler Heads',p:'Upright, pendent and concealed heads to suit all aesthetics.'},
       {h:'Hydraulic Design',p:'Full hydraulic calculations and documentation provided.'},
@@ -213,7 +213,7 @@ const svcData = {
     img:'https://images.unsplash.com/photo-1599248839487-3b58a9ef8f78?w=900&q=85',
     desc:'For environments where water-based systems could cause damage, we supply and install gaseous, foam and clean agent suppression systems. These are ideal for server rooms, generator rooms, commercial kitchens and any area containing sensitive equipment or high-value assets.',
     features:[
-      {h:'FM-200 Clean Agent',p:'Zero residue — safe for electronics, server rooms and occupied spaces.'},
+      {h:'FM-200 Clean Agent',p:'Zero residue, safe for electronics, server rooms and occupied spaces.'},
       {h:'CO2 Suppression',p:'Total flooding systems for electrical and industrial hazards.'},
       {h:'Foam Systems',p:'AFFF foam for fuel storage, aircraft hangars and petrochemical plants.'},
       {h:'Kitchen Suppression',p:'Wet chemical systems for commercial kitchen hoods and deep fryers.'},
@@ -233,7 +233,7 @@ const svcData = {
     desc:'A reliable fire alarm system is the backbone of any building fire safety strategy. We install both conventional and fully addressable fire alarm panels, complete with detectors, manual call points, sounders, beacons and remote monitoring capability. All systems are commissioned, tested and certified.',
     features:[
       {h:'Conventional Panels',p:'Cost-effective zone-based systems for smaller buildings.'},
-      {h:'Addressable Panels',p:'Each device has a unique address — precise fault and fire location.'},
+      {h:'Addressable Panels',p:'Each device has a unique address, precise fault and fire location.'},
       {h:'Networked Systems',p:'Multiple panels linked across large campuses or multi-site estates.'},
       {h:'Voice Evacuation',p:'Integrated PA/VA systems for clear emergency announcements.'},
       {h:'Remote Monitoring',p:'24-hour monitoring with automatic dispatch capability.'},
@@ -379,7 +379,7 @@ const indData = {
       {name:'Royal Residency',loc:'Nairobi'},
       {name:'Krishna Residency',loc:'Nairobi'},
       {name:'Samar Gardens',loc:'Nairobi'},
-      {name:'The Residences — Gen. Mathenge',loc:'Nairobi'},
+      {name:'The Residences: Gen. Mathenge',loc:'Nairobi'},
       {name:'Longonot Place',loc:'Nairobi'},
     ]
   },
@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // ── CROSS-PAGE QUOTE NAVIGATION ──
 // Book Assessment buttons live in shared modals used on Shop/Portfolio too,
-// where the Quote wizard (page-quote) doesn't exist — redirect to Home instead.
+// where the Quote wizard (page-quote) doesn't exist, redirect to Home instead.
 function goToQuote(){
   if(document.getElementById('page-quote')){
     showPage('quote');
@@ -476,7 +476,7 @@ function goToQuote(){
 }
 
 // ══════════════════════════════════════════════════════
-// COOKIE CONSENT — with real blocking of non-essential scripts
+// COOKIE CONSENT, with real blocking of non-essential scripts
 // ══════════════════════════════════════════════════════
 //
 // HOW TO GATE A SCRIPT (e.g. Google Analytics, Tawk.to, Meta Pixel):
@@ -582,7 +582,7 @@ function sendContactRequest(){
   }
 
   const waMsg = encodeURIComponent(
-    '📩 *NEW CONTACT FORM REQUEST*\n\n' +
+    'NEW CONTACT FORM REQUEST\n\n' +
     '*Name:* ' + name + '\n' +
     (company ? '*Company:* ' + company + '\n' : '') +
     '*Email:* ' + email + '\n' +
@@ -592,7 +592,7 @@ function sendContactRequest(){
   );
   window.open('https://wa.me/254777723785?text=' + waMsg, '_blank');
 
-  const subject = encodeURIComponent('New Enquiry from ' + name + ' — Reliance Fire Safety Website');
+  const subject = encodeURIComponent('New Enquiry from ' + name + ', Reliance Fire Safety Website');
   const body = encodeURIComponent(
     'Name: ' + name + '\n' +
     'Company: ' + (company || 'N/A') + '\n' +
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 
-/* ═══ MOBILE NAVIGATION — injected on all pages ═══ */
+/* ═══ MOBILE NAVIGATION, injected on all pages ═══ */
 (function initMobileNav(){
   const nav = document.querySelector('nav');
   if(!nav || document.getElementById('mobile-menu')) return;
@@ -694,7 +694,7 @@ document.addEventListener('DOMContentLoaded', function(){
   menu.id = 'mobile-menu';
   menu.innerHTML = `
     <a class="mm-link" href="index.html"${cur('index.html')}>Home</a>
-    <div class="mm-plate">Services · SYS 01–06</div>
+    <div class="mm-plate">Services · SYS 01-06</div>
     <a class="mm-sub" href="fire-detection.html"${cur('fire-detection.html')}><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
     <a class="mm-sub" href="sprinkler-systems.html"${cur('sprinkler-systems.html')}><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
     <a class="mm-sub" href="fire-suppression.html"${cur('fire-suppression.html')}><span class="nd-code">SYS·03</span>Fire Suppression</a>

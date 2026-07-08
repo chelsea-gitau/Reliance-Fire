@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shop Fire Safety Equipment | Reliance Fire Safety EA Ltd</title>
-<meta name="description" content="Buy fire safety equipment in Kenya — extinguishers, smoke detectors, fire alarm panels, signage, hose reels and first aid kits. Genuine certified products, delivered.">
+<meta name="description" content="Buy fire safety equipment in Kenya, extinguishers, smoke detectors, fire alarm panels, signage, hose reels and first aid kits. Genuine certified products, delivered.">
 <link rel="canonical" href="https://chelsea-gitau.github.io/Reliance-Fire/shop.html">
 <meta name="theme-color" content="#0D0B09">
 <link rel="icon" type="image/png" href="images/logo-nav.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reliance Fire Safety EA Ltd">
 <meta property="og:title" content="Shop Fire Safety Equipment | Reliance Fire Safety EA Ltd">
-<meta property="og:description" content="Buy fire safety equipment in Kenya — extinguishers, smoke detectors, fire alarm panels, signage, hose reels and first aid kits. Genuine certified products, delivered.">
+<meta property="og:description" content="Buy fire safety equipment in Kenya, extinguishers, smoke detectors, fire alarm panels, signage, hose reels and first aid kits. Genuine certified products, delivered.">
 <meta property="og:url" content="https://chelsea-gitau.github.io/Reliance-Fire/shop.html">
 <meta property="og:image" content="https://chelsea-gitau.github.io/Reliance-Fire/images/logo.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shop Fire Safety Equipment | Reliance Fire Safety EA Ltd">
-<meta name="twitter:description" content="Buy fire safety equipment in Kenya — extinguishers, smoke detectors, fire alarm panels, signage, hose reels and first aid kits. Genuine certified products, delivered.">
+<meta name="twitter:description" content="Buy fire safety equipment in Kenya, extinguishers, smoke detectors, fire alarm panels, signage, hose reels and first aid kits. Genuine certified products, delivered.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -76,7 +76,10 @@
         <div class="sec-tag">Fire Safety Store</div>
         <h1 class="sec-title" style="font-size:clamp(28px,3.5vw,42px);margin-bottom:0">SHOP FIRE SAFETY EQUIPMENT</h1>
       </div>
-      <input class="shop-search" type="text" placeholder="🔍  Search products..." oninput="filterProducts()" id="shop-search-input">
+      <div class="shop-search-wrap">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shop-search-icon"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input class="shop-search" type="text" placeholder="Search products..." oninput="filterProducts()" id="shop-search-input">
+      </div>
     </div>
     <div class="shop-cats">
       <button class="cat-btn active" onclick="filterCat('all',this)">All Products</button>
@@ -96,7 +99,7 @@
   <div class="ft-grid">
     <div class="ft-brand">
       <img src="images/logo-nav.png" alt="Reliance Fire Safety EA Ltd" class="ft-logo" loading="lazy" decoding="async">
-      <p class="ft-tagline">Design, supply, installation and maintenance of fire protection systems — protecting lives and businesses across Kenya and East Africa since 2012.</p>
+      <p class="ft-tagline">Design, supply, installation and maintenance of fire protection systems, protecting lives and businesses across Kenya and East Africa since 2012.</p>
       <div class="ft-iso"><span class="ft-iso-dot"></span>ISO 9001:2015 CERTIFIED</div>
     </div>
     <div class="ft-col">
@@ -121,8 +124,8 @@
       <a href="tel:+254791100310">+254 791 100 310</a>
       <a href="https://wa.me/254777723785" target="_blank" rel="noopener">WhatsApp Us</a>
       <a href="mailto:info@reliancefireea.com">info@reliancefireea.com</a>
-      <span class="ft-plain">Nairobi, Kenya</span>
-      <span class="ft-plain">Mon–Fri 8am–5pm · Sat 8am–1pm</span>
+      <span class="ft-plain">Kangundo Road, Nairobi</span>
+      <span class="ft-plain">Mon-Fri 8am-5pm · Sat 8am-1pm</span>
     </div>
   </div>
   <div class="ft-bar">
@@ -183,87 +186,75 @@
 // ── PRODUCTS DATA (shop-specific) ──
 const products=[
   // EXTINGUISHERS
-  {id:1,name:'0.5 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:1000,badge:null,desc:'Fully pressurised dry chemical powder. Ideal for vehicles and small spaces.'},
-  {id:2,name:'1 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:1900,badge:null,desc:'Compact ABC dry powder extinguisher. Suitable for offices and kitchens.'},
-  {id:3,name:'2 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:2500,badge:'Popular',desc:'Multi-purpose ABC dry powder. Ideal for workshops and general use.'},
-  {id:4,name:'4 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:3500,badge:null,desc:'4 Kg fully pressurised dry chemical powder extinguisher.'},
-  {id:5,name:'6 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:4000,badge:'Best Seller',desc:'6 Kg DCP powder — ideal for warehouses, factories and larger spaces.'},
-  {id:6,name:'9 Kg DCP Powder Extinguisher',cat:'extinguishers',icon:'🧯',price:4500,badge:null,desc:'Heavy duty 9 Kg dry powder for industrial and commercial use.'},
-  {id:7,name:'2 Kg CO2 Extinguisher',cat:'extinguishers',icon:'🧯',price:4200,badge:null,desc:'Safe for electrical fires. Leaves no residue — ideal for offices and server rooms.'},
-  {id:8,name:'5 Kg CO2 Extinguisher',cat:'extinguishers',icon:'🧯',price:6500,badge:null,desc:'5 Kg CO2 fully pressurised. Best for electrical panels and data centers.'},
-  {id:9,name:'6 Liters Foam Extinguisher',cat:'extinguishers',icon:'🧯',price:3900,badge:null,desc:'Class A & B fires. Effective on fuel and flammable liquid fires.'},
-  {id:10,name:'9 Liters Foam Extinguisher',cat:'extinguishers',icon:'🧯',price:4500,badge:null,desc:'9 Liters AFFF foam. Covers larger fuel and liquid fire risks.'},
-  // {id:11,name:'9 Liters Water Extinguisher',cat:'extinguishers',icon:'🧯',price:4000,badge:null,desc:'Class A fires — paper, wood and textiles. Fully pressurised.'}, // HIDDEN: no photo yet
-  {id:12,name:'6 Liters Wet Chemical Extinguisher',cat:'extinguishers',icon:'🧯',price:8500,badge:null,desc:'Specifically designed for commercial kitchen cooking oil fires (Class F).'},
-  // {id:13,name:'6 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:6000,badge:null,desc:'Self-actuating ceiling-mounted 68°C DCP. Activates automatically when heat threshold reached.'}, // HIDDEN: no photo yet
-  // {id:14,name:'12 Kg Automatic DCP Extinguisher',cat:'extinguishers',icon:'🧯',price:7500,badge:null,desc:'12 Kg self-actuating ceiling-mounted dry powder. For larger automatic protection areas.'}, // HIDDEN: no photo yet
-  {id:15,name:'Fire Ball 1.3 Kg (AFO)',cat:'extinguishers',icon:'🔴',price:5000,badge:null,desc:'Automatic Fire Orb — rolls into fire and self-activates within 3 seconds. No training needed.'},
-  {id:16,name:'Fire Blanket 1.2M x 1.2M',cat:'firstaid',icon:'🟥',price:2000,badge:null,desc:'Fire suppression blanket for kitchen fires and personal protection.'},
-  {id:17,name:'Fire Blanket 1.8M x 1.8M',cat:'firstaid',icon:'🟥',price:3500,badge:null,desc:'Large fire suppression blanket. Ideal for workshops and labs.'},
-  {id:18,name:'25 Kg DCP Powder Trolley',cat:'extinguishers',icon:'🧯',price:30000,badge:null,desc:'Mobile 25 Kg dry powder trolley for petrol stations and industrial areas.'},
-  {id:19,name:'25 Kg CO2 Trolley Extinguisher',cat:'extinguishers',icon:'🧯',price:48000,badge:null,desc:'Mobile 25 Kg CO2 trolley. For large electrical panels and transformer rooms.'},
+  {id:1,name:'0.5 Kg DCP Powder Extinguisher',cat:'extinguishers',price:1000,badge:null,desc:'Fully pressurised dry chemical powder. Ideal for vehicles and small spaces.'},
+  {id:2,name:'1 Kg DCP Powder Extinguisher',cat:'extinguishers',price:1900,badge:null,desc:'Compact ABC dry powder extinguisher. Suitable for offices and kitchens.'},
+  {id:3,name:'2 Kg DCP Powder Extinguisher',cat:'extinguishers',price:2500,badge:'Popular',desc:'Multi-purpose ABC dry powder. Ideal for workshops and general use.'},
+  {id:4,name:'4 Kg DCP Powder Extinguisher',cat:'extinguishers',price:3500,badge:null,desc:'4 Kg fully pressurised dry chemical powder extinguisher.'},
+  {id:5,name:'6 Kg DCP Powder Extinguisher',cat:'extinguishers',price:4000,badge:'Best Seller',desc:'6 Kg DCP powder, ideal for warehouses, factories and larger spaces.'},
+  {id:6,name:'9 Kg DCP Powder Extinguisher',cat:'extinguishers',price:4500,badge:null,desc:'Heavy duty 9 Kg dry powder for industrial and commercial use.'},
+  {id:7,name:'2 Kg CO2 Extinguisher',cat:'extinguishers',price:4200,badge:null,desc:'Safe for electrical fires. Leaves no residue, ideal for offices and server rooms.'},
+  {id:8,name:'5 Kg CO2 Extinguisher',cat:'extinguishers',price:6500,badge:null,desc:'5 Kg CO2 fully pressurised. Best for electrical panels and data centers.'},
+  {id:9,name:'6 Liters Foam Extinguisher',cat:'extinguishers',price:3900,badge:null,desc:'Class A & B fires. Effective on fuel and flammable liquid fires.'},
+  {id:10,name:'9 Liters Foam Extinguisher',cat:'extinguishers',price:4500,badge:null,desc:'9 Liters AFFF foam. Covers larger fuel and liquid fire risks.'},
+  // {id:11,name:'9 Liters Water Extinguisher',cat:'extinguishers',price:4000,badge:null,desc:'Class A fires, paper, wood and textiles. Fully pressurised.'}, // HIDDEN: no photo yet
+  {id:12,name:'6 Liters Wet Chemical Extinguisher',cat:'extinguishers',price:8500,badge:null,desc:'Specifically designed for commercial kitchen cooking oil fires (Class F).'},
+  // {id:13,name:'6 Kg Automatic DCP Extinguisher',cat:'extinguishers',price:6000,badge:null,desc:'Self-actuating ceiling-mounted 68°C DCP. Activates automatically when heat threshold reached.'}, // HIDDEN: no photo yet
+  // {id:14,name:'12 Kg Automatic DCP Extinguisher',cat:'extinguishers',price:7500,badge:null,desc:'12 Kg self-actuating ceiling-mounted dry powder. For larger automatic protection areas.'}, // HIDDEN: no photo yet
+  {id:15,name:'Fire Ball 1.3 Kg (AFO)',cat:'extinguishers',price:5000,badge:null,desc:'Automatic Fire Orb, rolls into fire and self-activates within 3 seconds. No training needed.'},
+  {id:16,name:'Fire Blanket 1.2M x 1.2M',cat:'firstaid',price:2000,badge:null,desc:'Fire suppression blanket for kitchen fires and personal protection.'},
+  {id:17,name:'Fire Blanket 1.8M x 1.8M',cat:'firstaid',price:3500,badge:null,desc:'Large fire suppression blanket. Ideal for workshops and labs.'},
+  {id:18,name:'25 Kg DCP Powder Trolley',cat:'extinguishers',price:30000,badge:null,desc:'Mobile 25 Kg dry powder trolley for petrol stations and industrial areas.'},
+  {id:19,name:'25 Kg CO2 Trolley Extinguisher',cat:'extinguishers',price:48000,badge:null,desc:'Mobile 25 Kg CO2 trolley. For large electrical panels and transformer rooms.'},
   // DETECTION
-  {id:20,name:'Conventional Smoke Detector',cat:'detection',icon:'🔴',price:3700,badge:null,desc:'Conventional optical smoke detector. EN54 compliant. Easy ceiling mount.'},
-  {id:21,name:'Conventional Heat Detector (ROR)',cat:'detection',icon:'🌡️',price:3600,badge:null,desc:'Rate-of-rise heat detector. Ideal for kitchens and boiler rooms.'},
-  {id:22,name:'Combined Smoke & Heat Detector',cat:'detection',icon:'🔴',price:3200,badge:'Popular',desc:'Conventional combined photo/thermal detector. Dual protection in one unit.'},
-  {id:23,name:'Battery Smoke Alarm Detector',cat:'detection',icon:'🔔',price:2500,badge:null,desc:'Standalone battery-operated smoke alarm. Easy install, no wiring required.'},
-  {id:24,name:'Battery Heat Alarm Detector',cat:'detection',icon:'🔔',price:2500,badge:null,desc:'Standalone battery-operated heat alarm. Suitable for kitchens and garages.'},
-  // {id:25,name:'LPG Gas Detector (12V)',cat:'detection',icon:'💨',price:4100,badge:null,desc:'12V LPG gas leak alarm detector. Essential for kitchens and generator rooms.'}, // HIDDEN: no photo yet — was showing a smoke detector image
-  {id:26,name:'Manual Call Point — Surface Mount',cat:'detection',icon:'🔘',price:2085,badge:null,desc:'Break-glass manual fire alarm trigger. Surface mount type, red housing.'},
-  {id:27,name:'Manual Call Point — Weatherproof',cat:'detection',icon:'🔘',price:3500,badge:null,desc:'Weatherproof manual call point for outdoor and industrial environments.'},
-  // {id:28,name:'Conventional Detector Base',cat:'detection',icon:'⭕',price:1200,badge:null,desc:'Standard mounting base for conventional detectors.'}, // HIDDEN: no photo yet — was showing a smoke detector image
-  {id:29,name:'Electronic Fire Alarm Sounder',cat:'detection',icon:'🚨',price:5800,badge:null,desc:'Electronic fire alarm sounder in red. High output 97dB alarm tone.'},
-  {id:30,name:'Combined Sounder & Beacon',cat:'detection',icon:'🚨',price:6500,badge:null,desc:'Electronic combined fire alarm sounder and visual strobe beacon.'},
+  {id:20,name:'Conventional Smoke Detector',cat:'detection',price:3700,badge:null,desc:'Conventional optical smoke detector. EN54 compliant. Easy ceiling mount.'},
+  {id:21,name:'Conventional Heat Detector (ROR)',cat:'detection',price:3600,badge:null,desc:'Rate-of-rise heat detector. Ideal for kitchens and boiler rooms.'},
+  {id:22,name:'Combined Smoke & Heat Detector',cat:'detection',price:3200,badge:'Popular',desc:'Conventional combined photo/thermal detector. Dual protection in one unit.'},
+  {id:23,name:'Battery Smoke Alarm Detector',cat:'detection',price:2500,badge:null,desc:'Standalone battery-operated smoke alarm. Easy install, no wiring required.'},
+  {id:24,name:'Battery Heat Alarm Detector',cat:'detection',price:2500,badge:null,desc:'Standalone battery-operated heat alarm. Suitable for kitchens and garages.'},
+  // {id:25,name:'LPG Gas Detector (12V)',cat:'detection',price:4100,badge:null,desc:'12V LPG gas leak alarm detector. Essential for kitchens and generator rooms.'}, // HIDDEN: no photo yet, was showing a smoke detector image
+  {id:26,name:'Manual Call Point: Surface Mount',cat:'detection',price:2085,badge:null,desc:'Break-glass manual fire alarm trigger. Surface mount type, red housing.'},
+  {id:27,name:'Manual Call Point: Weatherproof',cat:'detection',price:3500,badge:null,desc:'Weatherproof manual call point for outdoor and industrial environments.'},
+  // {id:28,name:'Conventional Detector Base',cat:'detection',price:1200,badge:null,desc:'Standard mounting base for conventional detectors.'}, // HIDDEN: no photo yet, was showing a smoke detector image
+  {id:29,name:'Electronic Fire Alarm Sounder',cat:'detection',price:5800,badge:null,desc:'Electronic fire alarm sounder in red. High output 97dB alarm tone.'},
+  {id:30,name:'Combined Sounder & Beacon',cat:'detection',price:6500,badge:null,desc:'Electronic combined fire alarm sounder and visual strobe beacon.'},
   // PANELS
-  {id:31,name:'2 Zone Conventional Fire Panel',cat:'panels',icon:'📟',price:35850,badge:null,desc:'2 Zone conventional fire alarm control panel. Suitable for small premises.'},
-  {id:32,name:'4 Zone Conventional Fire Panel',cat:'panels',icon:'📟',price:40560,badge:'Popular',desc:'4 Zone conventional panel. Ideal for medium-sized offices and restaurants.'},
-  {id:33,name:'8 Zone Conventional Fire Panel',cat:'panels',icon:'📟',price:78000,badge:null,desc:'8 Zone EN54 certified conventional fire alarm control panel.'},
-  {id:34,name:'16 Zone Conventional Fire Panel',cat:'panels',icon:'📟',price:108523,badge:null,desc:'16 Zone EN54 conventional panel. For large commercial buildings.'},
-  {id:35,name:'2 Loop Addressable Fire Panel',cat:'panels',icon:'🖥️',price:122069,badge:'Pro',desc:'XFP Networkable 2-Loop 32-Zone addressable fire detection and alarm panel.'},
-  {id:36,name:'4 Loop Addressable Fire Panel',cat:'panels',icon:'🖥️',price:295000,badge:null,desc:'4-Loop addressable panel for large and complex building installations.'},
-  {id:37,name:'Addressable Smoke Detector',cat:'panels',icon:'🔴',price:5300,badge:null,desc:'Addressable optical smoke detector CAP320. For use with addressable panels.'},
-  {id:38,name:'Addressable Heat Detector',cat:'panels',icon:'🌡️',price:5100,badge:null,desc:'Addressable multi-mode heat detector CAH330. Works with loop panels.'},
-  {id:39,name:'Addressable Manual Call Point',cat:'panels',icon:'🔘',price:5800,badge:null,desc:'Addressable flush-type manual call point MBG814. EN54 compliant.'},
+  {id:31,name:'2 Zone Conventional Fire Panel',cat:'panels',price:35850,badge:null,desc:'2 Zone conventional fire alarm control panel. Suitable for small premises.'},
+  {id:32,name:'4 Zone Conventional Fire Panel',cat:'panels',price:40560,badge:'Popular',desc:'4 Zone conventional panel. Ideal for medium-sized offices and restaurants.'},
+  {id:33,name:'8 Zone Conventional Fire Panel',cat:'panels',price:78000,badge:null,desc:'8 Zone EN54 certified conventional fire alarm control panel.'},
+  {id:34,name:'16 Zone Conventional Fire Panel',cat:'panels',price:108523,badge:null,desc:'16 Zone EN54 conventional panel. For large commercial buildings.'},
+  {id:35,name:'2 Loop Addressable Fire Panel',cat:'panels',price:122069,badge:'Pro',desc:'XFP Networkable 2-Loop 32-Zone addressable fire detection and alarm panel.'},
+  {id:36,name:'4 Loop Addressable Fire Panel',cat:'panels',price:295000,badge:null,desc:'4-Loop addressable panel for large and complex building installations.'},
+  {id:37,name:'Addressable Smoke Detector',cat:'panels',price:5300,badge:null,desc:'Addressable optical smoke detector CAP320. For use with addressable panels.'},
+  {id:38,name:'Addressable Heat Detector',cat:'panels',price:5100,badge:null,desc:'Addressable multi-mode heat detector CAH330. Works with loop panels.'},
+  {id:39,name:'Addressable Manual Call Point',cat:'panels',price:5800,badge:null,desc:'Addressable flush-type manual call point MBG814. EN54 compliant.'},
   // SIGNAGE
-  {id:40,name:'Fire Exit Sign — LED Illuminated',cat:'signage',icon:'🚪',price:4500,badge:'Popular',desc:'LED illuminated fire exit sign with direction arrows. BS 5499 compliant.'},
-  {id:41,name:'Fire Exit Sign — Forex Board',cat:'signage',icon:'🚪',price:1000,badge:null,desc:'Rigid forex board fire exit sign with direction arrows.'},
-  {id:42,name:'Fire Point Sign',cat:'signage',icon:'⚠️',price:1500,badge:null,desc:'Fire point assembly signage. 25cm x 15cm high-visibility red and white.'},
-  {id:43,name:'Fire Action Notice',cat:'signage',icon:'📋',price:2500,badge:null,desc:'Fire action signage showing emergency procedures for staff and visitors.'},
-  {id:44,name:'Fire Assembly Point Sign — A2',cat:'signage',icon:'🏃',price:2500,badge:null,desc:'Fire assembly point signage, size A2. For muster points and evacuation zones.'},
-  {id:45,name:'Fire Assembly Point — Standing',cat:'signage',icon:'🏃',price:5500,badge:null,desc:'Free-standing fire assembly point signage. High visibility outdoor use.'},
-  {id:46,name:'Fire Extinguisher Sign',cat:'signage',icon:'🧯',price:1100,badge:null,desc:'Wall-mounted fire extinguisher location signage.'},
-  // {id:47,name:'No Smoking Sign',cat:'signage',icon:'🚭',price:1500,badge:null,desc:'Standard No Smoking signage for offices and public spaces.'}, // HIDDEN: no photo yet
-  {id:48,name:'Fire Hose Reel Sign',cat:'signage',icon:'🔴',price:1500,badge:null,desc:'Fire hose reel location signage.'},
+  {id:40,name:'Fire Exit Sign: LED Illuminated',cat:'signage',price:4500,badge:'Popular',desc:'LED illuminated fire exit sign with direction arrows. BS 5499 compliant.'},
+  {id:41,name:'Fire Exit Sign: Forex Board',cat:'signage',price:1000,badge:null,desc:'Rigid forex board fire exit sign with direction arrows.'},
+  {id:42,name:'Fire Point Sign',cat:'signage',price:1500,badge:null,desc:'Fire point assembly signage. 25cm x 15cm high-visibility red and white.'},
+  {id:43,name:'Fire Action Notice',cat:'signage',price:2500,badge:null,desc:'Fire action signage showing emergency procedures for staff and visitors.'},
+  {id:44,name:'Fire Assembly Point Sign: A2',cat:'signage',price:2500,badge:null,desc:'Fire assembly point signage, size A2. For muster points and evacuation zones.'},
+  {id:45,name:'Fire Assembly Point: Standing',cat:'signage',price:5500,badge:null,desc:'Free-standing fire assembly point signage. High visibility outdoor use.'},
+  {id:46,name:'Fire Extinguisher Sign',cat:'signage',price:1100,badge:null,desc:'Wall-mounted fire extinguisher location signage.'},
+  // {id:47,name:'No Smoking Sign',cat:'signage',price:1500,badge:null,desc:'Standard No Smoking signage for offices and public spaces.'}, // HIDDEN: no photo yet
+  {id:48,name:'Fire Hose Reel Sign',cat:'signage',price:1500,badge:null,desc:'Fire hose reel location signage.'},
   // HOSE REELS & HYDRANT
-  {id:49,name:'Fire Hose Reel — Fixed Type',cat:'hose',icon:'🌊',price:18500,badge:null,desc:'Fixed type fire hose reel with 30M tubing. Wall-mounted installation.'},
-  {id:50,name:'Fire Hose Reel — Swing Type',cat:'hose',icon:'🌊',price:19500,badge:'Popular',desc:'Swing-arm fire hose reel for easier deployment. 30M hose included.'},
-  {id:51,name:'Hose Reel PVC Tubing 30M',cat:'hose',icon:'🔵',price:8600,badge:null,desc:'3/4 inch PVC fire hose reel tubing, 30 metres. Replacement/new install.'},
-  {id:52,name:'Sprinkler Head Unit',cat:'hose',icon:'💧',price:1500,badge:null,desc:'Standard 68°C glass bulb sprinkler head. For wet sprinkler systems.'},
-  {id:53,name:'Landing Valve — Screw Type',cat:'hose',icon:'🔧',price:14000,badge:null,desc:'Screw-type landing valve for fire hydrant systems.'},
-  {id:54,name:'Fire Hose — Canvas Red 30M',cat:'hose',icon:'🔴',price:17000,badge:null,desc:'Canvas red fire hose, 13 Bar, 65mm, 30M. For hydrant systems.'},
+  {id:49,name:'Fire Hose Reel: Fixed Type',cat:'hose',price:18500,badge:null,desc:'Fixed type fire hose reel with 30M tubing. Wall-mounted installation.'},
+  {id:50,name:'Fire Hose Reel: Swing Type',cat:'hose',price:19500,badge:'Popular',desc:'Swing-arm fire hose reel for easier deployment. 30M hose included.'},
+  {id:51,name:'Hose Reel PVC Tubing 30M',cat:'hose',price:8600,badge:null,desc:'3/4 inch PVC fire hose reel tubing, 30 metres. Replacement/new install.'},
+  {id:52,name:'Sprinkler Head Unit',cat:'hose',price:1500,badge:null,desc:'Standard 68°C glass bulb sprinkler head. For wet sprinkler systems.'},
+  {id:53,name:'Landing Valve: Screw Type',cat:'hose',price:14000,badge:null,desc:'Screw-type landing valve for fire hydrant systems.'},
+  {id:54,name:'Fire Hose: Canvas Red 30M',cat:'hose',price:17000,badge:null,desc:'Canvas red fire hose, 13 Bar, 65mm, 30M. For hydrant systems.'},
   // FIRST AID
-  {id:55,name:'First Aid Kit — Metallic Case',cat:'firstaid',icon:'🏥',price:7900,badge:null,desc:'Occupational first aid kit in a durable metallic case. Fully stocked.'},
-  {id:56,name:'First Aid Kit — Plastic Orange',cat:'firstaid',icon:'🏥',price:4500,badge:'Popular',desc:'First aid kit in bright orange plastic box. Easy to locate in an emergency.'},
-  {id:57,name:'First Aid Kit — White Plastic',cat:'firstaid',icon:'🏥',price:4500,badge:null,desc:'First aid kit in white plastic box. Suitable for offices and reception areas.'},
-  // {id:58,name:'First Aid Kit — Pouch Type',cat:'firstaid',icon:'🏥',price:3500,badge:null,desc:'Portable first aid pouch. Ideal for vehicles and field teams.'}, // HIDDEN: no photo yet
-  {id:59,name:'First Aid Kit — Small (Vehicle/Home)',cat:'firstaid',icon:'🏥',price:2800,badge:null,desc:'Compact first aid kit for vehicles and home use.'},
+  {id:55,name:'First Aid Kit: Metallic Case',cat:'firstaid',price:7900,badge:null,desc:'Occupational first aid kit in a durable metallic case. Fully stocked.'},
+  {id:56,name:'First Aid Kit: Plastic Orange',cat:'firstaid',price:4500,badge:'Popular',desc:'First aid kit in bright orange plastic box. Easy to locate in an emergency.'},
+  {id:57,name:'First Aid Kit: White Plastic',cat:'firstaid',price:4500,badge:null,desc:'First aid kit in white plastic box. Suitable for offices and reception areas.'},
+  // {id:58,name:'First Aid Kit: Pouch Type',cat:'firstaid',price:3500,badge:null,desc:'Portable first aid pouch. Ideal for vehicles and field teams.'}, // HIDDEN: no photo yet
+  {id:59,name:'First Aid Kit: Small (Vehicle/Home)',cat:'firstaid',price:2800,badge:null,desc:'Compact first aid kit for vehicles and home use.'},
 ];
 
-let currentCat='all';
-
-function renderShop(cat,search){
-  const grid=document.getElementById('shop-grid');
-  const empty=document.getElementById('shop-empty');
-  const q=(document.getElementById('shop-search-input')||{}).value||'';
-  let items=products.filter(p=>{
-    const catOk=!cat||cat==='all'?true:p.cat===cat;
-    const searchOk=!q||p.name.toLowerCase().includes(q.toLowerCase())||p.desc.toLowerCase().includes(q.toLowerCase());
-    return catOk&&searchOk;
-  });
-  if(items.length===0){grid.innerHTML='';empty.style.display='block';return;}
-  empty.style.display='none';
-  // per-product real images — fallback to category image
-  const productImgs = {
+// Real product photography, top-level so it enriches every product object,
+// which means cart items (added via {...p} spread) carry a real image too.
+const productImgs = {
     // Extinguishers
     1:  'images/EXTINGUISHERS/0.5kgdcp2.png',
     2:  'images/EXTINGUISHERS/1kgdcp2.jpg',
@@ -273,7 +264,7 @@ function renderShop(cat,search){
     6:  'images/EXTINGUISHERS/9kgdcp.jpg',
     7:  'images/EXTINGUISHERS/2kgco2.jpg',
     8:  'images/EXTINGUISHERS/CO2 extinguisher.jpeg',
-    // 9, 10 (foam): no usable photo yet — only foam-extinguisher.odg exists, which browsers can't render. Falls back to category default.
+    // 9, 10 (foam): no usable photo yet, only foam-extinguisher.odg exists, which browsers can't render. Falls back to category default.
     12: 'images/EXTINGUISHERS/wet chemical extinguisher.jpeg',
     18: 'images/EXTINGUISHERS/25kgdcp2.jpg',
     19: 'images/EXTINGUISHERS/25kgco2.jpg',
@@ -318,16 +309,31 @@ function renderShop(cat,search){
     56: 'images/FIRST-AID/first-aid-kit-plastic orange.jfif',
     57: 'images/FIRST-AID/first-aid-cabinet.jpeg',
     59: 'images/FIRST-AID/first-aid-case-closed.jpeg',
-  };
-  const catImgs = {
+};
+const catImgs = {
     extinguishers: 'images/EXTINGUISHERS/6kgdcp.jpg',
     detection:     'images/smoke-detector-optical.jpeg',
     panels:        'images/fire-alarm-control-panel.jpeg',
     signage:       'images/SIGNS/fire-exit-sign.jpeg',
     hose:          'images/fire-hose-reel.jpg',
     firstaid:      'images/FIRST-AID/first-aid-case-closed.jpeg',
-  };
-  const getProductImg = (p) => productImgs[p.id] || catImgs[p.cat] || catImgs.extinguishers;
+};
+const getProductImg = (p) => productImgs[p.id] || catImgs[p.cat] || catImgs.extinguishers;
+products.forEach(p => { p.img = getProductImg(p); delete p.icon; });
+
+let currentCat='all';
+
+function renderShop(cat,search){
+  const grid=document.getElementById('shop-grid');
+  const empty=document.getElementById('shop-empty');
+  const q=(document.getElementById('shop-search-input')||{}).value||'';
+  let items=products.filter(p=>{
+    const catOk=!cat||cat==='all'?true:p.cat===cat;
+    const searchOk=!q||p.name.toLowerCase().includes(q.toLowerCase())||p.desc.toLowerCase().includes(q.toLowerCase());
+    return catOk&&searchOk;
+  });
+  if(items.length===0){grid.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
   grid.innerHTML=items.map(p=>`
     <div class="product-card">
       <div class="product-img" style="background-image:url('${getProductImg(p)}');background-size:cover;background-position:center;font-size:0">
@@ -385,7 +391,7 @@ renderShop();
         <h4>Necessary</h4>
         <label class="cookie-toggle"><input type="checkbox" checked disabled><span class="slider"></span></label>
       </div>
-      <p>Required for the site to function — cart, navigation, security. Cannot be turned off.</p>
+      <p>Required for the site to function: cart, navigation, security. Cannot be turned off.</p>
     </div>
     <div class="cookie-cat">
       <div class="cookie-cat-head">
