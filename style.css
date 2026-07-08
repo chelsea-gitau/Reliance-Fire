@@ -839,7 +839,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   .form-row,.summary-grid,.modal-meta-grid{grid-template-columns:1fr}
   .svc-checks{grid-template-columns:1fr}
   .prop-grid{grid-template-columns:repeat(2,1fr)}
-  nav ul{display:none}
+  nav ul.nav-links{display:none}
+  .cookie-actions{flex-shrink:1;width:100%}
+  #cookie-banner{padding:18px 5%}
   .cart-sidebar{width:100%}
   /* hero mobile */
   .hero-body{flex-direction:column;align-items:flex-start;padding:0 5% 32px;gap:24px}
@@ -1147,3 +1149,13 @@ footer{display:block;background:#0B0503;border-top:1px solid rgba(232,93,4,0.28)
 .hero-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;background:rgba(13,6,4,0.75);backdrop-filter:blur(6px);border:1.5px solid rgba(255,255,255,0.4);color:#fff;padding:14px 24px 14px 18px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s,border-color 0.2s,transform 0.2s;z-index:3}
 .hero-play-btn:hover,.hero-play-btn:focus-visible{background:var(--red-dark);border-color:var(--red-light);transform:translate(-50%,-50%) scale(1.04)}
 .hero-play-btn svg{flex-shrink:0}
+
+
+/* Mobile fix: the v2 hero redesign's padding-top:150px (added for desktop
+   dead-space) was unintentionally overriding the earlier mobile-specific
+   110px rule since both share the same specificity and this one loads last. */
+@media(max-width:768px){
+  .svc-hero-split{padding-top:100px;padding-bottom:40px}
+  /* iOS Safari auto-zooms any focused input under 16px — jolting the layout */
+  input,select,textarea{font-size:16px !important}
+}

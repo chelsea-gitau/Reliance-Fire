@@ -22,6 +22,11 @@ function addToCart(id){
   else cart.push({...p,qty:1});
   saveCart();
   updateCartUI();
+  // On mobile the nav cart badge is hidden, so open the cart for visible feedback
+  if(window.matchMedia('(max-width: 768px)').matches){
+    const sb=document.getElementById('cart-sidebar');
+    if(sb && !sb.classList.contains('open')) toggleCart();
+  }
   // flash badge
   const badge=document.getElementById('cart-badge');
   badge.style.display='flex';
