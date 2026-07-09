@@ -6,6 +6,7 @@
 <title>Shop Fire Safety Equipment | Reliance Fire Safety EA Ltd</title>
 <meta name="description" content="Buy fire safety equipment in Kenya, extinguishers, smoke detectors, fire alarm panels, signage, hose reels and first aid kits. Genuine certified products, delivered.">
 <link rel="canonical" href="https://chelsea-gitau.github.io/Reliance-Fire/shop.html">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com;">
 <meta name="theme-color" content="#0D0B09">
 <link rel="icon" type="image/png" href="images/logo-nav.png">
 <meta property="og:type" content="website">
@@ -336,7 +337,7 @@ function renderShop(cat,search){
   empty.style.display='none';
   grid.innerHTML=items.map(p=>`
     <div class="product-card">
-      <div class="product-img" style="background-image:url('${getProductImg(p)}');background-size:cover;background-position:center;font-size:0">
+      <div class="product-img" style="background-image:url('${getProductImg(p)}');background-size:contain;background-repeat:no-repeat;background-position:center;font-size:0">
         ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
         <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.5))"></div>
       </div>

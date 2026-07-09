@@ -57,7 +57,7 @@ function updateCartUI(){
   if(cart.length===0){list.innerHTML='<div class="cart-empty">Your cart is empty.<br>Browse our shop to add items.</div>';return;}
   list.innerHTML=cart.map(item=>`
     <div class="cart-item">
-      <div class="cart-item-icon" style="background-image:url('${item.img||"images/EXTINGUISHERS/6kgdcp.jpg"}');background-size:cover;background-position:center"></div>
+      <div class="cart-item-icon" style="background-image:url('${item.img||"images/EXTINGUISHERS/6kgdcp.jpg"}');background-size:contain;background-repeat:no-repeat;background-position:center"></div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
         <div class="cart-item-price">KES ${discountedPrice(item).toLocaleString()} × ${item.qty} <span style="color:var(--muted);font-size:11px;text-decoration:line-through;margin-left:4px">KES ${item.price.toLocaleString()}</span></div>
@@ -757,16 +757,37 @@ document.addEventListener('DOMContentLoaded', function(){
 /* ── Click-to-play hero video (replaces autoplay to save data + avoid an
      out-of-context loop reading as unpolished on first view) ── */
 function playHeroVideo(btn){
-  const frame = btn.closest('.hero-frame');
+  const frame = btn.closest(".hero-frame");
   if(!frame) return;
-  const img = frame.querySelector('img');
-  const src = btn.getAttribute('data-src') || 'videos/extinguisher-service.mp4';
-  const video = document.createElement('video');
+  const img = frame.querySelector("img");
+  const src = btn.getAttribute("data-src") || "videos/extinguisher-service.mp4";
+  const video = document.createElement("video");
   video.src = src;
   video.controls = true;
-  video.autoplay = true;
+  video.muted = false;
   video.playsInline = true;
-  video.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:center center';
+  video.style.cssText = "width:100%;height:100%;object-fit:cover;object-position:center center";
   if(img) img.replaceWith(video); else frame.prepend(video);
   btn.remove();
+  video.play().catch(()=>{});
 }
+
+
+/* ═══ Scroll-reveal — elements slide in as they enter view. Site-wide,
+   runs once per element, respects prefers-reduced-motion. ═══ */
+(function(){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!("IntersectionObserver" in window)) return;
+  const els = document.querySelectorAll(".reveal-l, .reveal-r, .reveal-u");
+  if(!els.length) return;
+  els.forEach(el => el.classList.add("reveal-pre"));
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("reveal-in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15, rootMargin:"0px 0px -60px 0px"});
+  els.forEach(el => io.observe(el));
+})();
