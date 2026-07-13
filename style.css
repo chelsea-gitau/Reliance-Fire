@@ -270,7 +270,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   border-radius:20px;
   border:1px solid rgba(232,93,4,0.12);
   box-shadow:0 20px 40px rgba(0,0,0,0.45);
-  padding:26px 20px 12px;
+  padding:18px 20px 8px;
   transition:box-shadow 0.4s ease,border-color 0.4s ease;
 }
 .stats-panel:hover{
@@ -292,7 +292,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   display:flex;align-items:stretch;
 }
 .hero-stat{
-  flex:1;padding:32px 4% 34px;
+  flex:1;padding:20px 4% 22px;
   border-right:1px solid rgba(255,255,255,0.08);
   display:flex;flex-direction:column;align-items:flex-start;
   min-width:0;
@@ -312,27 +312,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-stat:hover .hs-divider{width:56px;box-shadow:0 0 8px rgba(232,93,4,0.6);transition:width 0.3s ease,box-shadow 0.3s ease}
 .hs-icon{
   color:var(--red-light);
-  margin-bottom:20px;
+  margin-bottom:12px;
   opacity:0;transition:opacity 0.6s ease 0.15s,transform 0.3s ease,filter 0.3s ease;
   filter:grayscale(0.1) drop-shadow(0 0 10px rgba(232,93,4,0.3));
 }
 .hero-stat.in-view .hs-icon{opacity:1}
 .hs-num{
   font-family:var(--mono);font-weight:700;
-  font-size:clamp(50px,4.8vw,83px);
+  font-size:clamp(36px,3.4vw,56px);
   color:#fff;
   line-height:1;
-  margin-bottom:6px;
+  margin-bottom:4px;
   transition:transform 0.3s ease;
   transform-origin:left center;
 }
 .hs-num sup{font-size:0.4em;color:var(--red-light);margin-left:2px}
-.hs-text{min-width:0;width:100%;margin-top:18px}
+.hs-text{min-width:0;width:100%;margin-top:10px}
 .hs-label{font-size:12.5px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:rgba(255,255,255,0.92);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hs-sub{font-size:11.5px;color:var(--muted);letter-spacing:0.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;margin-top:3px}
 .hs-divider{
   width:0;height:2px;background:var(--red);
-  flex-shrink:0;margin:16px 0 0;
+  flex-shrink:0;margin:10px 0 0;
   transition:width 1.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s ease;
 }
 .hero-stat.in-view .hs-divider{width:48px}
