@@ -140,7 +140,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 section.hero{padding:0}
 .hero-main{
   position:relative;z-index:3;
-  min-height:clamp(600px,78vh,760px);
+  min-height:clamp(600px,42vw,820px);
   overflow:hidden;
   display:flex;flex-direction:column;justify-content:center;
 }
