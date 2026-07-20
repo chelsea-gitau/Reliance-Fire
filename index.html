@@ -92,7 +92,6 @@
 
   <!-- HERO -->
   <section id="main-content" class="hero">
-    <div class="embers" id="embers"></div>
     <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.4"></canvas>
     <div class="hero-main">
       <!-- LEFT, copy panel, solid ink, full contrast -->
@@ -1042,91 +1041,6 @@ function submitQuote(){
   document.getElementById('hero-slider').addEventListener('mouseenter', ()=> clearInterval(timer));
   document.getElementById('hero-slider').addEventListener('mouseleave', ()=>{ timer = setInterval(next, 5000); });
 })();
-
-// ── SPARK PARTICLES ──
-(function(){
-  const container = document.getElementById('embers');
-  if(!container) return;
-
-  // Spark types: tiny bright white, orange, deep red, yellow-hot
-  const sparkTypes = [
-    {color:'#FFFFFF', glow:'rgba(255,255,255,0.9)', size:[1,2.5]},   // bright white hot
-    {color:'#FFE066', glow:'rgba(255,224,102,0.8)', size:[1.5,3]},   // yellow hot
-    {color:'#FF6B1A', glow:'rgba(255,107,26,0.7)', size:[2,4]},      // orange
-    {color:'#FF3A1A', glow:'rgba(255,58,26,0.6)', size:[2,5]},       // red
-    {color:'#CC2200', glow:'rgba(204,34,0,0.5)', size:[3,6]},        // deep red ember
-  ];
-
-  // Cluster sparks toward center-bottom like a real fire source
-  function getRandLeft(){
-    // bias toward center with spread
-    const center = 35 + Math.random() * 30; // 35-65%
-    const spread = (Math.random() - 0.5) * 60;
-    return Math.min(95, Math.max(5, center + spread));
-  }
-
-  for(let i = 0; i < 60; i++){
-    const e = document.createElement('div');
-    e.className = 'ember';
-    const type = sparkTypes[Math.floor(Math.random() * sparkTypes.length)];
-    const size = type.size[0] + Math.random() * (type.size[1] - type.size[0]);
-    const duration = 3 + Math.random() * 7;  // 3-10s
-    const delay = Math.random() * 10;
-    const drift1 = (Math.random() - 0.5) * 40;
-    const drift2 = drift1 + (Math.random() - 0.5) * 60;
-    const drift3 = drift2 + (Math.random() - 0.5) * 80;
-    const peakOp = 0.4 + Math.random() * 0.6;
-    const midScale = 0.6 + Math.random() * 0.4;
-    const smallScale = 0.2 + Math.random() * 0.3;
-
-    // Some sparks are elongated streaks
-    const isStreak = Math.random() > 0.7;
-    const width = isStreak ? size * 0.5 : size;
-    const height = isStreak ? size * 2.5 : size;
-
-    e.style.cssText = [
-      'left:' + getRandLeft() + '%',
-      'width:' + width + 'px',
-      'height:' + height + 'px',
-      'background:' + type.color,
-      'box-shadow:0 0 ' + (size*2) + 'px ' + size + 'px ' + type.glow,
-      '--drift1:' + drift1 + 'px',
-      '--drift2:' + drift2 + 'px',
-      '--drift3:' + drift3 + 'px',
-      '--peak-op:' + peakOp,
-      '--mid-scale:' + midScale,
-      '--small-scale:' + smallScale,
-      'animation-duration:' + duration + 's',
-      'animation-delay:' + delay + 's',
-      'border-radius:' + (isStreak ? '40%' : '50%'),
-    ].join(';');
-    container.appendChild(e);
-  }
-
-  // Add larger slow-drifting ember glows
-  for(let i = 0; i < 12; i++){
-    const e = document.createElement('div');
-    e.className = 'ember';
-    const size = 4 + Math.random() * 8;
-    e.style.cssText = [
-      'left:' + getRandLeft() + '%',
-      'width:' + size + 'px',
-      'height:' + size + 'px',
-      'background:rgba(255,80,20,0.3)',
-      'box-shadow:0 0 ' + (size*3) + 'px ' + (size*2) + 'px rgba(200,50,0,0.2)',
-      '--drift1:' + ((Math.random()-0.5)*30) + 'px',
-      '--drift2:' + ((Math.random()-0.5)*60) + 'px',
-      '--drift3:' + ((Math.random()-0.5)*90) + 'px',
-      '--peak-op:0.35',
-      '--mid-scale:0.9',
-      '--small-scale:0.4',
-      'animation-duration:' + (8 + Math.random()*6) + 's',
-      'animation-delay:' + (Math.random()*10) + 's',
-    ].join(';');
-    container.appendChild(e);
-  }
-})();
-
 
 // ── TESTIMONIALS CAROUSEL ──
 let testiCurrent = 0;
