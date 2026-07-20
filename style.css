@@ -264,14 +264,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   position:relative;
   background:transparent;
   border-top:1px solid rgba(255,255,255,0.08);
-  padding:22px 20px 4px;
+  padding:14px 20px 2px;
 }
 .hero-stats-bar{
   position:relative;
   display:flex;align-items:flex-start;
 }
 .hero-stat{
-  flex:1;padding:0 4% 22px;
+  flex:1;padding:0 3% 14px;
   border-right:1px solid rgba(255,255,255,0.08);
   display:flex;flex-direction:column;align-items:flex-start;
   min-width:0;
@@ -285,29 +285,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-stat:hover .hs-num{transform:scale(1.03)}
 .hs-icon{
   color:var(--red-light);
-  margin-bottom:10px;
+  margin-bottom:6px;
   opacity:0;transition:opacity 0.6s ease 0.15s,transform 0.3s ease,filter 0.3s ease;
   filter:grayscale(0.1) drop-shadow(0 0 10px rgba(232,93,4,0.3));
 }
 .hero-stat.in-view .hs-icon{opacity:1}
 .hs-divider{
   width:2px;height:0;background:var(--red);
-  flex-shrink:0;margin-bottom:8px;
+  flex-shrink:0;margin-bottom:5px;
   transition:height 1.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s ease;
 }
-.hero-stat.in-view .hs-divider{height:18px}
+.hero-stat.in-view .hs-divider{height:12px}
 .hero-stat:hover .hs-divider{box-shadow:0 0 8px rgba(232,93,4,0.6)}
 .hs-num{
   font-family:var(--mono);font-weight:700;
-  font-size:clamp(32px,3vw,48px);
+  font-size:clamp(22px,2vw,30px);
   color:#fff;
   line-height:1;
-  margin-bottom:6px;
+  margin-bottom:3px;
   transition:transform 0.3s ease;
   transform-origin:left center;
 }
 .hs-num sup{font-size:0.4em;color:var(--red-light);margin-left:2px}
-.hs-label{font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);display:block}
+.hs-label{font-size:10.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);display:block}
 
 /* entrance animations */
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
