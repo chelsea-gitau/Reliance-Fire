@@ -79,25 +79,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 }
 .hero-slide.active{
   opacity:1;
-  animation:kenburns 7s ease-in-out forwards;
+  animation:heroKenburns 7s ease-in-out forwards;
 }
 .hero-slide.prev{
   opacity:0;
   transition:opacity 1.5s ease-in-out;
 }
-@keyframes kenburns{
+@keyframes heroKenburns{
   0%{transform:scale(1) translate(0,0)}
-  100%{transform:scale(1.12) translate(-1%,-1%)}
+  100%{transform:scale(1.06) translate(-1%,-1%)}
 }
-.hero-slide:nth-child(2n).active{animation:kenburns2 7s ease-in-out forwards}
-.hero-slide:nth-child(3n).active{animation:kenburns3 7s ease-in-out forwards}
-@keyframes kenburns2{
-  0%{transform:scale(1.05) translate(1%,0)}
-  100%{transform:scale(1.15) translate(-1%,1%)}
+.hero-slide:nth-child(2n).active{animation:heroKenburns2 7s ease-in-out forwards}
+.hero-slide:nth-child(3n).active{animation:heroKenburns3 7s ease-in-out forwards}
+@keyframes heroKenburns2{
+  0%{transform:scale(1.02) translate(1%,0)}
+  100%{transform:scale(1.08) translate(-1%,1%)}
 }
-@keyframes kenburns3{
+@keyframes heroKenburns3{
   0%{transform:scale(1) translate(-1%,1%)}
-  100%{transform:scale(1.1) translate(1%,-1%)}
+  100%{transform:scale(1.05) translate(1%,-1%)}
 }
 /* slider dots */
 .hero-dots{
