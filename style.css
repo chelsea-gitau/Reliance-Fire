@@ -101,7 +101,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 }
 /* slider dots */
 .hero-dots{
-  position:absolute;bottom:24px;right:24px;left:auto;transform:none;
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
   z-index:6;display:flex;gap:7px;
 }
 .hero-dot{
@@ -134,23 +134,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   background:linear-gradient(90deg,#121212 0%,#121212 60%,var(--char) 80%,var(--char) 100%);
   border-bottom:1px solid var(--line,rgba(255,255,255,0.07));
 }
-/* higher-specificity than the generic section{padding:...} rules further down —
-   the full-bleed hero photo needs to reach the true section edges, not sit inset
-   inside the site-wide section padding */
-section.hero{padding:0}
+/* boxed layout restored — normal section padding applies via the generic section rule */
 .hero-main{
+  flex:1;display:grid;grid-template-columns:1fr 1.15fr;
   position:relative;z-index:3;
-  min-height:clamp(600px,42vw,820px);
-  overflow:hidden;
-  display:flex;flex-direction:column;justify-content:center;
 }
-/* full-bleed Ken Burns background — images shown unaltered, no blur applied */
-.hero-bg-slider{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero-bg-scrim{
-  position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    linear-gradient(90deg,rgba(8,4,2,0.95) 0%,rgba(8,4,2,0.88) 26%,rgba(8,4,2,0.55) 46%,rgba(8,4,2,0.18) 64%,rgba(8,4,2,0.05) 78%,transparent 92%),
-    linear-gradient(to top,rgba(5,6,10,0.8) 0%,rgba(5,6,10,0.05) 30%,transparent 55%);
+.hero-main::before{ /* fire-glow bridging dark left side into the photo on the right */
+  content:'';position:absolute;z-index:0;pointer-events:none;
+  top:0;left:20%;width:70%;height:100%;
+  background:radial-gradient(ellipse at 60% 50%,rgba(204,34,0,0.24) 0%,rgba(204,34,0,0.10) 35%,transparent 68%);
+  filter:blur(60px);
 }
 .hero-main::after{display:none}
 
@@ -158,8 +151,7 @@ section.hero{padding:0}
 .hero-left{
   position:relative;z-index:2;
   display:flex;flex-direction:column;justify-content:flex-start;
-  padding:120px 4% 40px 5%;
-  max-width:680px;
+  padding:8px 4% 18px 5%;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:9px;width:fit-content;
@@ -240,23 +232,23 @@ section.hero{padding:0}
   padding:8px 5% 18px 3%;
 }
 .hero-frame{
-  position:relative;width:100%;aspect-ratio:4/5;max-height:560px;
+  position:relative;width:100%;aspect-ratio:4/5;max-height:640px;
   border:1px solid rgba(255,255,255,0.14);
   overflow:hidden;background:var(--ash);
   box-shadow:0 40px 90px -20px rgba(0,0,0,0.7);
   animation:fadeSlideLeft 0.8s 0.35s both;
 }
 .hero-frame-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(5,6,10,0.92) 0%,rgba(5,6,10,0.1) 38%,transparent 60%),linear-gradient(to bottom,rgba(5,6,10,0.6) 0%,transparent 22%)}
-.hero-frame-label{position:absolute;left:auto;right:24px;bottom:52px;z-index:6;width:280px;text-align:right}
-.hero-frame-label .fl-top{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-bottom:6px}
+.hero-frame-label{position:absolute;left:24px;right:24px;bottom:20px;z-index:6}
+.hero-frame-label .fl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .hero-frame-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;color:#fff}
 .hero-frame-sub{font-size:11px;color:var(--text-muted);letter-spacing:0.3px}
 .rec-dot{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 6px var(--red);animation:pulse 1.8s infinite}
 
-/* ISO plate — top-right corner of the full-bleed hero photo */
+/* ISO plate — top of frame, inside bracket corners */
 .hero-iso-pill{
-  position:absolute;top:24px;right:24px;left:auto;z-index:6;
-  display:flex;align-items:center;justify-content:flex-end;gap:14px;
+  position:absolute;top:24px;left:24px;right:24px;z-index:6;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
 }
 .hero-iso-pill .iso-l{display:flex;align-items:center;gap:8px}
 .iso-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;box-shadow:0 0 8px rgba(203,154,62,0.9)}
@@ -343,17 +335,10 @@ section.hero{padding:0}
 .stats-row{display:none}
 
 @media(max-width:900px){
-  .hero-left{padding:110px 6% 24px;max-width:none}
-  .hero-frame{aspect-ratio:16/10;max-height:340px}
-  .hero-bg-scrim{
-    background:
-      linear-gradient(rgba(6,3,2,0.85),rgba(6,3,2,0.85)),
-      linear-gradient(to top,rgba(5,6,10,0.85) 0%,rgba(5,6,10,0.1) 30%,transparent 55%);
-  }
-  .hero-iso-pill{top:16px;right:16px}
-  .iso-pill-text{display:none}
-  .hero-frame-label{display:none}
-  .hero-dots{bottom:16px;right:16px}
+  .hero-main{grid-template-columns:1fr}
+  .hero-left{padding:100px 6% 24px}
+  .hero-right{padding:0 6% 40px}
+  .hero-frame{aspect-ratio:16/10;max-height:380px}
   .hero-stats-bar{flex-wrap:wrap}
   .hero-stat{min-width:50%;border-bottom:1px solid var(--line,rgba(255,255,255,0.07))}
 }

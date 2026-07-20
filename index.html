@@ -92,29 +92,10 @@
 
   <!-- HERO -->
   <section id="main-content" class="hero">
-    <div class="hero-main hero-fullbleed">
-      <!-- Full-bleed Ken Burns photo background, images shown unaltered -->
-      <div id="hero-slider" class="hero-bg-slider">
-        <div class="hero-slide active" style="background-image:url('images/hero-crops/tech-installation-scaffold-1-wide.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('images/hero-crops/tech-extinguisher-1-wide.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('images/hero-crops/tech-installation-scaffold-2-wide.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('images/hero-crops/fire-blanket-demo-wide.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('images/hero-crops/tech-installation-scaffold-3-wide.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('images/hero-crops/tech-installation-2-wide.jpg')"></div>
-        <div class="hero-slide" style="background-image:url('images/hero-crops/hose-reel-wide.jpg')"></div>
-      </div>
-      <div class="hero-bg-scrim"></div>
-      <div class="embers" id="embers"></div>
-      <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.4"></canvas>
-      <div class="corners"><i></i><i></i><i></i><i></i></div>
-
-      <!-- ISO plate, top-right -->
-      <div class="hero-iso-pill">
-        <div class="iso-l"><span class="iso-dot"></span><span class="iso-pill-text">ISO 9001:2015 CERTIFIED</span></div>
-        <span class="plate-code">REL·FS·01</span>
-      </div>
-
-      <!-- LEFT, copy panel, over the photo with a dark scrim behind it -->
+    <div class="embers" id="embers"></div>
+    <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.4"></canvas>
+    <div class="hero-main">
+      <!-- LEFT, copy panel, solid ink, full contrast -->
       <div class="hero-left">
         <div class="hero-badge"><span class="pulse">●</span> Est. 2012 · Nairobi, Kenya</div>
         <h1>
@@ -145,22 +126,45 @@
         </div>
       </div>
 
-      <!-- Frame label + slider dots, bottom-right over the photo -->
-      <div class="hero-frame-label">
-        <div class="fl-top">
-          <div class="hero-frame-title">Field Operations</div>
-          <span class="rec-dot" title="Live"></span>
+      <!-- RIGHT, framed field-photo plate (rating-plate signature) -->
+      <div class="hero-right">
+        <div class="hero-frame">
+          <div id="hero-slider" style="position:absolute;inset:0;z-index:0;overflow:hidden">
+            <div class="hero-slide active" style="background-image:url('images/hero-crops/tech-installation-scaffold-1-wide.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/hero-crops/tech-extinguisher-1-wide.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/hero-crops/tech-installation-scaffold-2-wide.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/hero-crops/fire-blanket-demo-wide.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/hero-crops/tech-installation-scaffold-3-wide.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/hero-crops/tech-installation-2-wide.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('images/hero-crops/hose-reel-wide.jpg')"></div>
+          </div>
+          <div class="hero-frame-overlay"></div>
+          <div class="corners"><i></i><i></i><i></i><i></i></div>
+
+          <!-- ISO plate, inside top bracket -->
+          <div class="hero-iso-pill">
+            <div class="iso-l"><span class="iso-dot"></span><span class="iso-pill-text">ISO 9001:2015 CERTIFIED</span></div>
+            <span class="plate-code">REL·FS·01</span>
+          </div>
+
+          <!-- Frame label + slider dots -->
+          <div class="hero-frame-label">
+            <div class="fl-top">
+              <div class="hero-frame-title">Field Operations</div>
+              <span class="rec-dot" title="Live"></span>
+            </div>
+            <div class="hero-frame-sub">Certified technicians on active installation &amp; service sites</div>
+          </div>
+          <div class="hero-dots" id="hero-dots">
+            <button class="hero-dot active" onclick="goSlide(0)"></button>
+            <button class="hero-dot" onclick="goSlide(1)"></button>
+            <button class="hero-dot" onclick="goSlide(2)"></button>
+            <button class="hero-dot" onclick="goSlide(3)"></button>
+            <button class="hero-dot" onclick="goSlide(4)"></button>
+            <button class="hero-dot" onclick="goSlide(5)"></button>
+            <button class="hero-dot" onclick="goSlide(6)"></button>
+          </div>
         </div>
-        <div class="hero-frame-sub">Certified technicians on active installation &amp; service sites</div>
-      </div>
-      <div class="hero-dots" id="hero-dots">
-        <button class="hero-dot active" onclick="goSlide(0)"></button>
-        <button class="hero-dot" onclick="goSlide(1)"></button>
-        <button class="hero-dot" onclick="goSlide(2)"></button>
-        <button class="hero-dot" onclick="goSlide(3)"></button>
-        <button class="hero-dot" onclick="goSlide(4)"></button>
-        <button class="hero-dot" onclick="goSlide(5)"></button>
-        <button class="hero-dot" onclick="goSlide(6)"></button>
       </div>
     </div>
 
