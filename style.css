@@ -123,7 +123,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .corners i:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
 .corners i:nth-child(3){bottom:0;left:0;border-right:none;border-top:none}
 .corners i:nth-child(4){bottom:0;right:0;border-left:none;border-top:none}
-.hero-frame:hover .corners i,.showroom-slider:hover .corners i,.corners:hover i,.port-card:hover .corners i,.svc-hero-frame:hover .corners i,.stats-panel:hover .corners i{width:28px;height:28px;opacity:1;filter:drop-shadow(0 0 8px rgba(232,93,4,0.7))}
+.hero-frame:hover .corners i,.showroom-slider:hover .corners i,.corners:hover i,.port-card:hover .corners i,.svc-hero-frame:hover .corners i,.stats-panel:hover .corners i,.brands-panel:hover .corners i{width:28px;height:28px;opacity:1;filter:drop-shadow(0 0 8px rgba(232,93,4,0.7))}
 .plate-code{font-family:var(--mono);font-size:10px;letter-spacing:2.5px;color:var(--red-light);text-transform:uppercase}
 
 /* ── HERO — split layout: solid ink panel + framed field-photo plate ── */
@@ -308,6 +308,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 }
 .hs-num sup{font-size:0.4em;color:var(--red-light);margin-left:2px}
 .hs-label{font-size:10.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);display:block}
+.brand-tile{
+  background:#fff;border-radius:10px;
+  padding:14px 24px;
+  display:flex;align-items:center;justify-content:center;
+  height:64px;min-width:140px;
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
+}
+.brand-tile:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.35)}
+.brand-tile img{max-width:100%;max-height:100%;object-fit:contain}
+@media(max-width:600px){
+  .brand-tile{min-width:120px;height:52px;padding:10px 16px}
+}
 
 /* entrance animations */
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
