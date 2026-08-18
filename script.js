@@ -76,6 +76,54 @@ function toggleCart(){
   document.getElementById('cart-overlay').classList.toggle('open');
 }
 
+// ── PRODUCT DETAIL MODAL ──
+let modalProductId=null;
+let modalQty=1;
+
+function openProdModal(id){
+  const p=products.find(x=>x.id===id);
+  if(!p)return;
+  modalProductId=id;
+  modalQty=1;
+  document.getElementById('prod-modal-cat').textContent=p.cat;
+  document.getElementById('prod-modal-title').textContent=p.name;
+  document.getElementById('prod-modal-desc').textContent=p.desc;
+  document.getElementById('prod-modal-img').style.backgroundImage=`url('${getProductImg(p)}')`;
+  document.getElementById('prod-modal-orig').textContent='KES '+p.price.toLocaleString();
+  document.getElementById('prod-modal-price').textContent='KES '+discountedPrice(p).toLocaleString();
+  document.getElementById('prod-modal-qty-num').textContent='1';
+  document.getElementById('prod-modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeProdModal(e){
+  if(e && e.target!==document.getElementById('prod-modal-overlay'))return;
+  document.getElementById('prod-modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function changeModalQty(delta){
+  modalQty=Math.max(1,modalQty+delta);
+  document.getElementById('prod-modal-qty-num').textContent=modalQty;
+}
+
+function addToCartFromModal(){
+  if(modalProductId===null)return;
+  const p=products.find(x=>x.id===modalProductId);
+  const ex=cart.find(x=>x.id===modalProductId);
+  if(ex)ex.qty+=modalQty;
+  else cart.push({...p,qty:modalQty});
+  saveCart();
+  updateCartUI();
+  closeProdModal();
+  if(window.matchMedia('(max-width: 768px)').matches){
+    const sb=document.getElementById('cart-sidebar');
+    if(sb && !sb.classList.contains('open')) toggleCart();
+  } else {
+    toggleCart();
+  }
+}
+
 function orderViaWhatsApp(){
   if(cart.length===0)return;
   const subtotal=cart.reduce((s,x)=>s+(discountedPrice(x)*x.qty),0);
@@ -90,7 +138,7 @@ function orderViaWhatsApp(){
 // ── ESCAPE KEY CLOSES ANY MODAL ──
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){
-    ['svc-modal-overlay','ind-modal-overlay','port-modal'].forEach(id=>{
+    ['svc-modal-overlay','ind-modal-overlay','port-modal','prod-modal-overlay'].forEach(id=>{
       document.getElementById(id)?.classList.remove('open');
     });
     document.body.style.overflow='';
