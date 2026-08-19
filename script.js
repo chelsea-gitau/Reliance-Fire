@@ -10,9 +10,12 @@ function saveCart(){ try{ localStorage.setItem('reliance_cart', JSON.stringify(c
 const DISCOUNT = 0.10; // 10% discount
 const VAT = 0.16;      // 16% VAT
 
-function discountedPrice(p){ return Math.round(p.price * (1 - DISCOUNT)); }
-function vatAmount(p){ return Math.round(discountedPrice(p) * VAT); }
-function finalPrice(p){ return discountedPrice(p) + vatAmount(p); }
+// grossPrice = the real, VAT-inclusive price a customer would pay with no discount
+function grossPrice(p){ return Math.round(p.price * (1 + VAT)); }
+// discountedPrice = the final, VAT-inclusive price after the 10% discount — this is what the customer actually pays
+function discountedPrice(p){ return Math.round(grossPrice(p) * (1 - DISCOUNT)); }
+// vatIncludedIn = informational only: how much of a given VAT-inclusive amount is VAT
+function vatIncludedIn(amountInclVat){ return amountInclVat - Math.round(amountInclVat / (1 + VAT)); }
 
 // ── CART ──
 function addToCart(id){
@@ -43,15 +46,14 @@ function changeQty(id,delta){
 }
 
 function updateCartUI(){
-  const subtotal=cart.reduce((s,x)=>s+(discountedPrice(x)*x.qty),0);
-  const vat=Math.round(subtotal*VAT);
-  const total=subtotal+vat;
+  const total=cart.reduce((s,x)=>s+(discountedPrice(x)*x.qty),0);
+  const vatIncluded=cart.reduce((s,x)=>s+(vatIncludedIn(discountedPrice(x))*x.qty),0);
   const count=cart.reduce((s,x)=>s+x.qty,0);
   const badge=document.getElementById('cart-badge');
   badge.textContent=count;
   badge.style.display=count>0?'flex':'none';
-  document.getElementById('cart-subtotal').textContent='KES '+subtotal.toLocaleString();
-  document.getElementById('cart-vat').textContent='KES '+vat.toLocaleString();
+  document.getElementById('cart-subtotal').textContent='KES '+total.toLocaleString();
+  document.getElementById('cart-vat').textContent='KES '+vatIncluded.toLocaleString();
   document.getElementById('cart-total').textContent='KES '+total.toLocaleString();
   const list=document.getElementById('cart-items-list');
   if(cart.length===0){list.innerHTML='<div class="cart-empty">Your cart is empty.<br>Browse our shop to add items.</div>';return;}
@@ -60,7 +62,7 @@ function updateCartUI(){
       <div class="cart-item-icon" style="background-image:url('${item.img||"images/EXTINGUISHERS/6kgdcp.jpg"}');background-size:contain;background-repeat:no-repeat;background-position:center"></div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-price">KES ${discountedPrice(item).toLocaleString()} × ${item.qty} <span style="color:var(--muted);font-size:11px;text-decoration:line-through;margin-left:4px">KES ${item.price.toLocaleString()}</span></div>
+        <div class="cart-item-price">KES ${discountedPrice(item).toLocaleString()} × ${item.qty} <span style="color:var(--muted);font-size:11px;text-decoration:line-through;margin-left:4px">KES ${grossPrice(item).toLocaleString()}</span></div>
         <div class="cart-item-qty">
           <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
           <span class="qty-num">${item.qty}</span>
@@ -89,7 +91,7 @@ function openProdModal(id){
   document.getElementById('prod-modal-title').textContent=p.name;
   document.getElementById('prod-modal-desc').textContent=p.desc;
   document.getElementById('prod-modal-img').style.backgroundImage=`url('${getProductImg(p)}')`;
-  document.getElementById('prod-modal-orig').textContent='KES '+p.price.toLocaleString();
+  document.getElementById('prod-modal-orig').textContent='KES '+grossPrice(p).toLocaleString();
   document.getElementById('prod-modal-price').textContent='KES '+discountedPrice(p).toLocaleString();
   document.getElementById('prod-modal-qty-num').textContent='1';
   document.getElementById('prod-modal-overlay').classList.add('open');
@@ -126,11 +128,10 @@ function addToCartFromModal(){
 
 function orderViaWhatsApp(){
   if(cart.length===0)return;
-  const subtotal=cart.reduce((s,x)=>s+(discountedPrice(x)*x.qty),0);
-  const vat=Math.round(subtotal*VAT);
-  const total=subtotal+vat;
+  const total=cart.reduce((s,x)=>s+(discountedPrice(x)*x.qty),0);
+  const vatIncluded=cart.reduce((s,x)=>s+(vatIncludedIn(discountedPrice(x))*x.qty),0);
   let lines=cart.map(item=>`• ${item.qty}x ${item.name}, KES ${(discountedPrice(item)*item.qty).toLocaleString()}`).join('%0A');
-  const msg=`Hello Reliance Fire Safety!%0A%0AI'd like to place the following order:%0A%0A${lines}%0A%0ASubtotal (after 10% discount): KES ${subtotal.toLocaleString()}%0AVAT (16%): KES ${vat.toLocaleString()}%0A*Total: KES ${total.toLocaleString()}*%0A%0APlease confirm availability and send payment details. Thank you!`;
+  const msg=`Hello Reliance Fire Safety!%0A%0AI'd like to place the following order:%0A%0A${lines}%0A%0A*Total (incl. 10% discount, VAT included): KES ${total.toLocaleString()}*%0A(of which VAT: KES ${vatIncluded.toLocaleString()})%0A%0APlease confirm availability and send payment details. Thank you!`;
   window.open(`https://wa.me/254777723785?text=${msg}`,'_blank');
 }
 
