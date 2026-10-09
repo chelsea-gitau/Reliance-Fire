@@ -6,7 +6,7 @@
 <title>Contact Us | Reliance Fire Safety EA Ltd</title>
 <meta name="description" content="Contact Reliance Fire Safety EA Ltd for a free fire safety consultation, site assessment or quotation. Call +254 791 100 310 or WhatsApp us. We respond within 24 hours.">
 <link rel="canonical" href="https://chelsea-gitau.github.io/Reliance-Fire/contact.html">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'self' https://api.web3forms.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com;">
 <meta name="theme-color" content="#0D0B09">
 <link rel="icon" type="image/png" href="images/logo-nav.png">
 <meta property="og:type" content="website">
@@ -112,8 +112,10 @@
       <div class="form-group form-row"><input type="email" id="cf-email" placeholder="Email Address" aria-label="Email address" autocomplete="email" required><input type="tel" id="cf-phone" placeholder="Phone Number" aria-label="Phone number" autocomplete="tel" required></div>
       <div class="form-group"><select id="cf-service" aria-label="Service required"><option value="" disabled selected>Service Required</option><option>Fire Detection System</option><option>Sprinkler System</option><option>Fire Suppression System</option><option>Fire Alarm System</option><option>Maintenance Contract</option><option>Fire Risk Assessment</option><option>Shop / Product Enquiry</option><option>Other</option></select></div>
       <div class="form-group"><textarea id="cf-message" placeholder="Tell us about your project or requirements..." aria-label="Your message"></textarea></div>
-      <button class="btn-primary" style="width:100%;justify-content:center" onclick="sendContactRequest()">Send Request →</button>
-      <p id="cf-sent" style="display:none;text-align:center;color:#25D366;font-size:13px;margin-top:12px;font-weight:600"><span style="display:inline-flex;vertical-align:-4px;margin-right:4px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>Message sent! We'll be in touch within 24 hours.</p>
+      <input type="checkbox" id="cf-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none">
+      <button type="button" id="cf-submit" class="btn-primary" style="width:100%;justify-content:center" onclick="sendContactRequest()">Send Request →</button>
+      <p id="cf-error" role="alert" style="display:none;text-align:center;color:#ff7a6b;font-size:13px;margin-top:12px;font-weight:600"></p>
+      <p id="cf-sent" role="status" aria-live="polite" style="display:none;text-align:center;color:#25D366;font-size:13px;margin-top:12px;font-weight:600"><span style="display:inline-flex;vertical-align:-4px;margin-right:4px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>Message sent! We'll be in touch within 24 hours.</p>
     </div>
   </div>
 </section>

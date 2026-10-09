@@ -6,7 +6,7 @@
 <title>Reliance Fire Safety EA Ltd | Kenya's Fire Protection Specialists</title>
 <meta name="description" content="Reliance Fire Safety EA Ltd, fire protection specialists in Nairobi, Kenya. Fire alarms, detection, suppression, sprinklers, extinguishers, risk assessments and maintenance across East Africa.">
 <link rel="canonical" href="https://chelsea-gitau.github.io/Reliance-Fire/">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'self' https://api.web3forms.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com;">
 <meta name="theme-color" content="#0D0B09">
 <link rel="icon" type="image/png" href="images/logo-nav.png">
 <meta property="og:type" content="website">
@@ -92,7 +92,6 @@
 
   <!-- HERO -->
   <section id="main-content" class="hero">
-    <canvas id="hero-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.4"></canvas>
     <div class="hero-main">
       <!-- LEFT, copy panel, solid ink, full contrast -->
       <div class="hero-left">
@@ -150,18 +149,18 @@
           <div class="hero-frame-label">
             <div class="fl-top">
               <div class="hero-frame-title">Field Operations</div>
-              <span class="rec-dot" title="Live"></span>
+              <span class="rec-dot" aria-hidden="true"></span>
             </div>
             <div class="hero-frame-sub">Certified technicians on active installation &amp; service sites</div>
           </div>
           <div class="hero-dots" id="hero-dots">
-            <button class="hero-dot active" onclick="goSlide(0)"></button>
-            <button class="hero-dot" onclick="goSlide(1)"></button>
-            <button class="hero-dot" onclick="goSlide(2)"></button>
-            <button class="hero-dot" onclick="goSlide(3)"></button>
-            <button class="hero-dot" onclick="goSlide(4)"></button>
-            <button class="hero-dot" onclick="goSlide(5)"></button>
-            <button class="hero-dot" onclick="goSlide(6)"></button>
+            <button type="button" class="hero-dot active" onclick="goSlide(0)" aria-label="Show photo 1"></button>
+            <button type="button" class="hero-dot" onclick="goSlide(1)" aria-label="Show photo 2"></button>
+            <button type="button" class="hero-dot" onclick="goSlide(2)" aria-label="Show photo 3"></button>
+            <button type="button" class="hero-dot" onclick="goSlide(3)" aria-label="Show photo 4"></button>
+            <button type="button" class="hero-dot" onclick="goSlide(4)" aria-label="Show photo 5"></button>
+            <button type="button" class="hero-dot" onclick="goSlide(5)" aria-label="Show photo 6"></button>
+            <button type="button" class="hero-dot" onclick="goSlide(6)" aria-label="Show photo 7"></button>
           </div>
         </div>
       </div>
@@ -174,7 +173,7 @@
           <div class="hero-stat">
             <div class="hs-icon"><img src="images/ICONS/icons8-award-48.png" alt="" aria-hidden="true" style="width:16px;height:16px;object-fit:contain" decoding="async"></div>
             <div class="hs-divider"></div>
-            <div class="hs-num"><span class="hs-count" data-target="12">0</span><sup>+</sup></div>
+            <div class="hs-num"><span class="hs-count" data-target="14">0</span><sup>+</sup></div>
             <span class="hs-label">Years</span>
           </div>
           <div class="hero-stat">
@@ -291,7 +290,7 @@
       <div class="reveal-l">
         <div class="sec-tag">Why Choose Us</div>
         <h2 class="sec-title">THE GO-TO NAME IN FIRE SAFETY</h2>
-        <p class="sec-sub">Reliance has built an unbeaten track record with major companies across East Africa since 2012.</p>
+        <p class="sec-sub">Reliance has built an proven track record with major companies across East Africa since 2012.</p>
         <div class="reasons">
           <div class="reason"><div class="reason-num">01</div><div><h4>Industry Qualified Personnel</h4><p>All work carried out by RFSEA certified engineers and specialist subcontractors, never untrained staff.</p></div></div>
           <div class="reason"><div class="reason-num">02</div><div><h4>End-to-End Accountability</h4><p>From design through commissioning to after-service, we own every stage of your project.</p></div></div>
@@ -323,12 +322,12 @@
 
       <div class="ind-card reveal-u" onclick="openIndModal('hotel')">
         <div class="ind-card-img" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=90')"></div>
-        <div class="ind-card-info"><h3>Hotels & Hospitality</h3><p>Holiday Inn, Safari Park Hotel, Java House +more</p><span class="ind-card-arrow">Explore →</span></div>
+        <div class="ind-card-info"><h3>Hotels & Hospitality</h3><p>Holiday Inn, Safari Park Hotel, Kutana Lounge +more</p><span class="ind-card-arrow">Explore →</span></div>
       </div>
 
       <div class="ind-card reveal-u" onclick="openIndModal('commercial')">
         <div class="ind-card-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=90')"></div>
-        <div class="ind-card-info"><h3>Commercial Buildings</h3><p>Tulip House, Arbor House, Pioneer Holdings +more</p><span class="ind-card-arrow">Explore →</span></div>
+        <div class="ind-card-info"><h3>Commercial Buildings</h3><p>Tulip House, Arbor House, Longonot Place +more</p><span class="ind-card-arrow">Explore →</span></div>
       </div>
 
       <div class="ind-card reveal-u" onclick="openIndModal('education')">
@@ -343,7 +342,7 @@
 
       <div class="ind-card reveal-u" onclick="openIndModal('retail')">
         <div class="ind-card-img" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=90')"></div>
-        <div class="ind-card-info"><h3>Retail & F&B</h3><p>Java House, Glovo, Thika Bazaar, Prosel +more</p><span class="ind-card-arrow">Explore →</span></div>
+        <div class="ind-card-info"><h3>Retail & F&B</h3><p>Java House, Glovo, Thika Bazaar, Prosels +more</p><span class="ind-card-arrow">Explore →</span></div>
       </div>
 
       <div class="ind-card reveal-u" onclick="openIndModal('healthcare')">
@@ -418,7 +417,7 @@
           <p class="testi-text">Reliance Fire Safety carried out a full fire safety upgrade across our campus buildings and student residences during the term break, so classes were never disrupted. Their team was professional throughout, and every system was certified ahead of the new semester.</p>
           <div class="testi-author">
             <div class="testi-avatar" style="background:var(--red)">PK</div>
-            <div><div class="testi-name">Paul Koyo</div><div class="testi-role">Facilities Manager · Nazarene University</div></div>
+            <div><div class="testi-name">Paul Koyo</div><div class="testi-role">Facilities Manager · Africa Nazarene University</div></div>
             <div class="testi-badge">EDUCATION</div>
           </div>
         </div>
@@ -426,8 +425,8 @@
       <!-- DOTS -->
       <div style="display:flex;justify-content:center;gap:8px;margin-top:28px" id="testi-dots"></div>
       <!-- ARROWS -->
-      <button onclick="moveTestiBy(-1)" style="position:absolute;left:0;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">‹</button>
-      <button onclick="moveTestiBy(1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">›</button>
+      <button type="button" aria-label="Previous testimonial" onclick="moveTestiBy(-1)" style="position:absolute;left:0;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">‹</button>
+      <button type="button" aria-label="Next testimonial" onclick="moveTestiBy(1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">›</button>
     </div>
 
     <!-- CLIENT LOGOS STRIP -->
@@ -494,7 +493,7 @@
         <div style="height:1px;width:60px;background:var(--red);opacity:0.6"></div>
       </div>
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:18px">
-        <div class="brand-tile"><img src="images/cooper-safety.png" alt="Cooper Safety Fire Systems" loading="lazy" decoding="async"></div>
+        <div class="brand-tile" role="img" aria-label="Eaton, Cooper Safety"><span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:18px;color:#222;letter-spacing:.3px">Eaton <span style="font-weight:400;color:#666">| Cooper Safety</span></span></div>
         <div class="brand-tile"><img src="images/c-tec.png" alt="C-TEC" loading="lazy" decoding="async"></div>
         <div class="brand-tile"><img src="images/morley-ias-honeywell.png" alt="Morley-IAS Fire Systems by Honeywell" loading="lazy" decoding="async"></div>
         <div class="brand-tile"><img src="images/zeta-alarm-systems.png" alt="Zeta Alarm Systems" loading="lazy" decoding="async"></div>
@@ -525,12 +524,14 @@
         </button>
       </div>
       <div>
-        <div class="form-group form-row"><input type="text" id="cf-name" placeholder="Full Name"><input type="text" id="cf-company" placeholder="Company Name"></div>
-        <div class="form-group form-row"><input type="email" id="cf-email" placeholder="Email Address"><input type="tel" id="cf-phone" placeholder="Phone Number"></div>
-        <div class="form-group"><select id="cf-service"><option value="" disabled selected>Service Required</option><option>Fire Detection System</option><option>Sprinkler System</option><option>Fire Suppression System</option><option>Fire Alarm System</option><option>Maintenance Contract</option><option>Fire Risk Assessment</option><option>Other</option></select></div>
-        <div class="form-group"><textarea id="cf-message" placeholder="Tell us about your project or requirements..."></textarea></div>
-        <button class="btn-primary" style="width:100%;justify-content:center" onclick="sendContactRequest()">Send Request →</button>
-        <p id="cf-sent" style="display:none;text-align:center;color:#25D366;font-size:13px;margin-top:12px;font-weight:600"><span style="display:inline-flex;vertical-align:-4px;margin-right:4px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>Message sent! We'll be in touch within 24 hours.</p>
+        <div class="form-group form-row"><input type="text" id="cf-name" placeholder="Full Name" aria-label="Full name" autocomplete="name" required><input type="text" id="cf-company" placeholder="Company Name" aria-label="Company name" autocomplete="organization"></div>
+        <div class="form-group form-row"><input type="email" id="cf-email" placeholder="Email Address" aria-label="Email address" autocomplete="email" required><input type="tel" id="cf-phone" placeholder="Phone Number" aria-label="Phone number" autocomplete="tel" required></div>
+        <div class="form-group"><select id="cf-service" aria-label="Service required"><option value="" disabled selected>Service Required</option><option>Fire Detection System</option><option>Sprinkler System</option><option>Fire Suppression System</option><option>Fire Alarm System</option><option>Maintenance Contract</option><option>Fire Risk Assessment</option><option>Other</option></select></div>
+        <div class="form-group"><textarea id="cf-message" placeholder="Tell us about your project or requirements..." aria-label="Your message"></textarea></div>
+        <input type="checkbox" id="cf-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none">
+        <button type="button" id="cf-submit" class="btn-primary" style="width:100%;justify-content:center" onclick="sendContactRequest()">Send Request →</button>
+        <p id="cf-error" role="alert" style="display:none;text-align:center;color:#ff7a6b;font-size:13px;margin-top:12px;font-weight:600"></p>
+        <p id="cf-sent" role="status" aria-live="polite" style="display:none;text-align:center;color:#25D366;font-size:13px;margin-top:12px;font-weight:600"><span style="display:inline-flex;vertical-align:-4px;margin-right:4px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>Message sent! We'll be in touch within 24 hours.</p>
       </div>
     </div>
   </section>
@@ -634,8 +635,8 @@
       </div>
 
       <div class="form-group form-row">
-        <div><label style="font-size:12px;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px">Property / Building Name *</label><input type="text" id="q-propname" placeholder="e.g. Westgate Mall, Aga Khan Hospital"></div>
-        <div><label style="font-size:12px;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px">Location / Town *</label><input type="text" id="q-proploc" placeholder="e.g. Westlands, Nairobi"></div>
+        <div><label style="font-size:12px;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px">Property / Building Name *</label><input type="text" id="q-propname" oninput="checkStep1()" placeholder="e.g. Westgate Mall, Aga Khan Hospital"></div>
+        <div><label style="font-size:12px;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px">Location / Town *</label><input type="text" id="q-proploc" oninput="checkStep1()" placeholder="e.g. Westlands, Nairobi"></div>
       </div>
       <div class="form-group form-row">
         <div><label style="font-size:12px;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px">Approximate Floor Area</label><input type="text" id="q-area" placeholder="e.g. 2,000 m² (rough estimate is fine)"></div>
@@ -765,16 +766,17 @@
         </div>
       </div>
 
+      <p id="quote-error" role="alert" style="display:none;color:#ff7a6b;font-size:13px;font-weight:600;margin:12px 0 0"></p>
       <div class="quote-nav" style="margin-top:16px">
         <button class="btn-back" onclick="nextStep(3)">← Back</button>
-        <button class="btn-primary" onclick="submitQuote()" style="min-width:200px" id="submit-btn">Submit & Notify Team →</button>
+        <button class="btn-primary" onclick="submitQuote()" style="min-width:200px" id="submit-btn">Submit Request →</button>
       </div>
 
       <!-- SUCCESS -->
       <div class="success-screen" id="quote-success">
         <div class="success-icon"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
         <h2>REQUEST RECEIVED!</h2>
-        <p>Thank you! Our team has been notified via WhatsApp and will call you within <strong>24 hours</strong> to confirm your free site visit booking.</p>
+        <p>Thank you! Your request has been emailed to our team. We will call you within <strong>24 hours</strong> to confirm your free site visit booking.</p>
         <div style="background:var(--ash);border-radius:8px;padding:16px;margin:20px 0;text-align:left">
           <div style="font-size:12px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">What happens next</div>
           <div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.8">1. Our team calls you to confirm site visit<br>2. Technician visits your property, free of charge<br>3. Formal written quote sent within 3 working days<br>4. You review, approve, and we begin work</div>
@@ -948,20 +950,21 @@ function nextStep(n){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function submitQuote(){
-  const name=document.getElementById('q-name').value.trim();
-  const company=document.getElementById('q-company').value.trim();
-  const email=document.getElementById('q-email').value.trim();
-  const phone=document.getElementById('q-phone').value.trim();
-  if(!name||!company||!email||!phone){alert('Please fill in your name, company, email and phone number.');return;}
+async function submitQuote(){
+  const val=id=>document.getElementById(id).value.trim();
+  const name=val('q-name'), company=val('q-company'), email=val('q-email'), phone=val('q-phone');
+  const errEl=document.getElementById('quote-error');
+  const showErr=(html)=>{errEl.innerHTML=html;errEl.style.display='block';};
+  errEl.style.display='none';
+  if(!name||!company||!email||!phone){showErr('Please fill in your name, company, email and phone number.');return;}
+  if(!isValidEmail(email)){showErr('Please enter a valid email address.');return;}
   const role=document.getElementById('q-role').value||'Not specified';
   const calltime=document.getElementById('q-calltime').value||'Anytime';
 
-  // Build WhatsApp message to the TEAM
   const msg=[
     'NEW QUOTE REQUEST, Reliance Fire Safety Website',
     '',
-    '*CLIENT DETAILS*',
+    'CLIENT DETAILS',
     `Name: ${name}`,
     `Role: ${role}`,
     `Company: ${company}`,
@@ -969,7 +972,7 @@ function submitQuote(){
     `Email: ${email}`,
     `Best time to call: ${calltime}`,
     '',
-    '*PROPERTY DETAILS*',
+    'PROPERTY DETAILS',
     `Type: ${quoteData.prop}`,
     `Name: ${quoteData.propName}`,
     `Location: ${quoteData.propLoc}`,
@@ -977,37 +980,42 @@ function submitQuote(){
     `Floors: ${quoteData.floors}`,
     `Building Status: ${quoteData.buildingStatus}`,
     '',
-    '*SERVICES REQUIRED*',
-    quoteData.services.map(s=>`• ${s}`).join('\n'),
+    'SERVICES REQUIRED',
+    quoteData.services.map(x=>`- ${x}`).join('\n'),
     '',
-    '*EXISTING SYSTEMS*',
+    'EXISTING SYSTEMS',
     quoteData.existing,
     quoteData.existingDetail?`Details: ${quoteData.existingDetail}`:'',
     '',
-    '*PROJECT INFO*',
+    'PROJECT INFO',
     `Urgency: ${quoteData.urgency}`,
     `Budget: ${quoteData.budget||'Not specified'}`,
     quoteData.notes?`Notes: ${quoteData.notes}`:'',
     '',
-    'Please call client to book site visit ASAP.'
-  ].filter(l=>l!==undefined).join('\n');
+    'Please call client to book site visit.'
+  ].join('\n');
 
-  const encoded=encodeURIComponent(msg);
-  window.open(`https://wa.me/254777723785?text=${encoded}`,'_blank');
+  const btn=document.getElementById('submit-btn');
+  const label=btn.textContent;
+  btn.disabled=true;btn.textContent='Sending…';
+  try{
+    await submitToInbox({subject:`Quote request: ${company} (${quoteData.prop})`,from_name:name,email:email,phone:phone,message:msg});
+  }catch(e){
+    btn.disabled=false;btn.textContent=label;
+    showErr('We could not send your request just now. Please <a href="https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg)+'" target="_blank" rel="noopener" style="color:#25D366;text-decoration:underline">send it to us on WhatsApp</a> or call +254 791 100 310.');
+    return;
+  }
 
-  // Show success
   document.querySelector('#q-step-4 .q-step-title').style.display='none';
   document.querySelector('#q-step-4 .q-step-sub').style.display='none';
   document.querySelectorAll('#q-step-4 .form-group, #q-step-4 .quote-nav, #q-step-4 > div:not(#quote-success)').forEach(el=>{
     if(el.id!=='quote-success')el.style.display='none';
   });
+  errEl.style.display='none';
   document.getElementById('quote-success').style.display='block';
   document.getElementById('step-ind-4').classList.remove('active');
   document.getElementById('step-ind-4').classList.add('done');
 }
-
-
-
 
 // ── KEN BURNS HERO SLIDER ──
 (function(){
@@ -1017,10 +1025,11 @@ function submitQuote(){
   let timer;
 
   function goSlide(n){
-    slides[current].classList.remove('active');
-    slides[current].classList.add('prev');
-    dots[current].classList.remove('active');
-    setTimeout(()=>{ slides[current].classList.remove('prev'); }, 1600);
+    const prevIdx = current;
+    slides[prevIdx].classList.remove('active');
+    slides[prevIdx].classList.add('prev');
+    dots[prevIdx].classList.remove('active');
+    setTimeout(()=>{ slides[prevIdx].classList.remove('prev'); }, 1600);
     current = (n !== undefined) ? n : (current + 1) % slides.length;
     slides[current].classList.add('active');
     dots[current].classList.add('active');
@@ -1054,6 +1063,8 @@ function initTesti(){
   for(let i=0;i<testiTotal;i++){
     const d = document.createElement('button');
     d.className = 'testi-dot' + (i===0?' active':'');
+    d.type = 'button';
+    d.setAttribute('aria-label','Show testimonial '+(i+1));
     d.onclick = ()=>goTesti(i);
     dotsWrap.appendChild(d);
   }
@@ -1075,56 +1086,14 @@ function resetTestiTimer(){ clearInterval(testiTimer); startTestiTimer(); }
 
 
 
-// ── CONTACT FORM ──
-function sendContactRequest(){
-  const name = document.getElementById('cf-name').value.trim();
-  const company = document.getElementById('cf-company').value.trim();
-  const email = document.getElementById('cf-email').value.trim();
-  const phone = document.getElementById('cf-phone').value.trim();
-  const service = document.getElementById('cf-service').value;
-  const message = document.getElementById('cf-message').value.trim();
-
-  if(!name || !email || !phone){
-    alert('Please fill in your name, email and phone number.');
-    return;
-  }
-
-  // 1. Open WhatsApp with pre-filled message
-  const waMsg = encodeURIComponent(
-    'NEW CONTACT FORM REQUEST\n\n' +
-    '*Name:* ' + name + '\n' +
-    (company ? '*Company:* ' + company + '\n' : '') +
-    '*Email:* ' + email + '\n' +
-    '*Phone:* ' + phone + '\n' +
-    (service ? '*Service:* ' + service + '\n' : '') +
-    (message ? '*Message:* ' + message : '')
-  );
-  window.open('https://wa.me/254777723785?text=' + waMsg, '_blank');
-
-  // 2. Open email client with pre-filled email
-  const subject = encodeURIComponent('New Enquiry from ' + name + ', Reliance Fire Safety Website');
-  const body = encodeURIComponent(
-    'Name: ' + name + '\n' +
-    'Company: ' + (company || 'N/A') + '\n' +
-    'Email: ' + email + '\n' +
-    'Phone: ' + phone + '\n' +
-    'Service Required: ' + (service || 'N/A') + '\n\n' +
-    'Message:\n' + (message || 'N/A')
-  );
-  setTimeout(()=>{
-    window.location.href = 'mailto:info@reliancefireea.com?subject=' + subject + '&body=' + body;
-  }, 800);
-
-  // 3. Show success message
-  document.getElementById('cf-sent').style.display = 'block';
-  // clear form
-  ['cf-name','cf-company','cf-email','cf-phone','cf-message'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('cf-service').selectedIndex = 0;
-}
-
-
 // ── CROSS-PAGE ARRIVAL HANDLING ──
 document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.ind-card').forEach(c=>{
+    c.setAttribute('role','button'); c.setAttribute('tabindex','0');
+    c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); } });
+  });
+  const logos=document.querySelectorAll('.logo-track .logo-item');
+  logos.forEach((el,i)=>{ if(i>=logos.length/2) el.setAttribute('aria-hidden','true'); });
   initTesti();
   initScrollAnimations();
   if(new URLSearchParams(window.location.search).get('openQuote')==='1'){ showPage('quote'); }

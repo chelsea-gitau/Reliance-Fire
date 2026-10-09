@@ -2,6 +2,26 @@
 // SHARED SCRIPT, loaded on every page
 // ═══════════════════════════════════════
 
+// ── SITE CONFIG ──
+const WA_NUMBER = '254777723785';
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+const FORM_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_KEY'; // public key from web3forms.com (set recipient to info@reliancefireea.com)
+
+function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); }
+
+// Sends a form submission to the inbox. Throws on any failure so callers never show a false success.
+async function submitToInbox(fields){
+  const res = await fetch(FORM_ENDPOINT,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(Object.assign({access_key:FORM_ACCESS_KEY,botcheck:false},fields))
+  });
+  let data = {};
+  try{ data = await res.json(); }catch(e){}
+  if(!res.ok || !data.success) throw new Error(data.message || 'Send failed');
+  return data;
+}
+
 // ── CART (persisted via localStorage) ──
 let cart=[];
 try{ const saved = localStorage.getItem('reliance_cart'); if(saved) cart = JSON.parse(saved); }catch(e){ cart=[]; }
@@ -32,9 +52,11 @@ function addToCart(id){
   }
   // flash badge
   const badge=document.getElementById('cart-badge');
-  badge.style.display='flex';
-  badge.style.transform='scale(1.4)';
-  setTimeout(()=>badge.style.transform='scale(1)',200);
+  if(badge){
+    badge.style.display='flex';
+    badge.style.transform='scale(1.4)';
+    setTimeout(()=>badge.style.transform='scale(1)',200);
+  }
 }
 
 function removeFromCart(id){cart=cart.filter(x=>x.id!==id);saveCart();updateCartUI();}
@@ -46,6 +68,7 @@ function changeQty(id,delta){
 }
 
 function updateCartUI(){
+  if(!document.getElementById('cart-badge') || !document.getElementById('cart-items-list')) return;
   const total=cart.reduce((s,x)=>s+(discountedPrice(x)*x.qty),0);
   const vatIncluded=cart.reduce((s,x)=>s+(vatIncludedIn(discountedPrice(x))*x.qty),0);
   const count=cart.reduce((s,x)=>s+x.qty,0);
@@ -74,6 +97,7 @@ function updateCartUI(){
 }
 
 function toggleCart(){
+  if(!document.getElementById('cart-sidebar') || !document.getElementById('cart-overlay')){ window.location.href='shop.html'; return; }
   document.getElementById('cart-sidebar').classList.toggle('open');
   document.getElementById('cart-overlay').classList.toggle('open');
 }
@@ -622,46 +646,44 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 // ── CONTACT FORM (shared across index.html and contact.html) ──
-function sendContactRequest(){
-  const name = document.getElementById('cf-name').value.trim();
-  const company = document.getElementById('cf-company').value.trim();
-  const email = document.getElementById('cf-email').value.trim();
-  const phone = document.getElementById('cf-phone').value.trim();
+async function sendContactRequest(){
+  const val = id => document.getElementById(id).value.trim();
+  const name = val('cf-name'), company = val('cf-company'), email = val('cf-email'),
+        phone = val('cf-phone'), message = val('cf-message');
   const service = document.getElementById('cf-service').value;
-  const message = document.getElementById('cf-message').value.trim();
+  const errEl = document.getElementById('cf-error');
+  const sentEl = document.getElementById('cf-sent');
+  const btn = document.getElementById('cf-submit');
+  const showErr = html => { errEl.innerHTML = html; errEl.style.display = 'block'; sentEl.style.display = 'none'; };
+  errEl.style.display = 'none'; sentEl.style.display = 'none';
 
-  if(!name || !email || !phone){
-    alert('Please fill in your name, email and phone number.');
-    return;
-  }
+  if(!name || !email || !phone){ showErr('Please fill in your name, email and phone number.'); return; }
+  if(!isValidEmail(email)){ showErr('Please enter a valid email address.'); return; }
 
-  const waMsg = encodeURIComponent(
-    'NEW CONTACT FORM REQUEST\n\n' +
-    '*Name:* ' + name + '\n' +
-    (company ? '*Company:* ' + company + '\n' : '') +
-    '*Email:* ' + email + '\n' +
-    '*Phone:* ' + phone + '\n' +
-    (service ? '*Service:* ' + service + '\n' : '') +
-    (message ? '*Message:* ' + message : '')
-  );
-  window.open('https://wa.me/254777723785?text=' + waMsg, '_blank');
+  // Honeypot: bots tick the hidden box, humans never see it
+  const hp = document.getElementById('cf-botcheck');
+  if(hp && hp.checked){ sentEl.style.display = 'block'; return; }
 
-  const subject = encodeURIComponent('New Enquiry from ' + name + ', Reliance Fire Safety Website');
-  const body = encodeURIComponent(
+  const text =
     'Name: ' + name + '\n' +
     'Company: ' + (company || 'N/A') + '\n' +
     'Email: ' + email + '\n' +
     'Phone: ' + phone + '\n' +
     'Service Required: ' + (service || 'N/A') + '\n\n' +
-    'Message:\n' + (message || 'N/A')
-  );
-  setTimeout(()=>{
-    window.location.href = 'mailto:info@reliancefireea.com?subject=' + subject + '&body=' + body;
-  }, 800);
+    'Message:\n' + (message || 'N/A');
 
-  document.getElementById('cf-sent').style.display = 'block';
-  ['cf-name','cf-company','cf-email','cf-phone','cf-message'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('cf-service').selectedIndex = 0;
+  const label = btn ? btn.textContent : '';
+  if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+  try{
+    await submitToInbox({subject:'New enquiry from ' + name + ' (website)', from_name:name, email:email, phone:phone, message:text});
+    sentEl.style.display = 'block';
+    ['cf-name','cf-company','cf-email','cf-phone','cf-message'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('cf-service').selectedIndex = 0;
+  }catch(e){
+    showErr('We could not send your message just now. Please <a href="https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text) + '" target="_blank" rel="noopener" style="color:#25D366;text-decoration:underline">send it on WhatsApp</a> or call +254 791 100 310.');
+  }finally{
+    if(btn){ btn.disabled = false; btn.textContent = label; }
+  }
 }
 
 // ── STATS COUNT-UP ANIMATION ──
