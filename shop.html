@@ -38,12 +38,12 @@
     <li class="nav-drop-wrap" id="services-drop-wrap">
       <a href="#" onclick="event.preventDefault();toggleServicesDrop()">Services <span style="font-size:9px;opacity:0.7">▾</span></a>
       <div class="nav-drop" id="services-drop">
-        <a href="fire-detection.html"><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
-        <a href="sprinkler-systems.html"><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
-        <a href="fire-suppression.html"><span class="nd-code">SYS·03</span>Fire Suppression</a>
-        <a href="fire-alarm.html"><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
-        <a href="maintenance.html"><span class="nd-code">SYS·05</span>Maintenance &amp; Service</a>
-        <a href="fire-risk-assessment.html"><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+        <a href="fire-detection.html">Fire Detection Systems</a>
+        <a href="sprinkler-systems.html">Sprinkler Systems</a>
+        <a href="fire-suppression.html">Fire Suppression</a>
+        <a href="fire-alarm.html">Fire Alarm Systems</a>
+        <a href="maintenance.html">Maintenance &amp; Service</a>
+        <a href="fire-risk-assessment.html">Fire Risk Assessment</a>
       </div>
     </li>
     <li><a href="shop.html" id="nav-shop" class="active">Shop</a></li>
@@ -90,6 +90,7 @@
       <button class="cat-btn" onclick="filterCat('signage',this)">Safety Signage</button>
       <button class="cat-btn" onclick="filterCat('hose',this)">Hose & Hydrant</button>
       <button class="cat-btn" onclick="filterCat('firstaid',this)">First Aid</button>
+      <button class="cat-btn" onclick="filterCat('refills',this)">First Aid Refills</button>
     </div>
   </div>
   <div style="padding:2px 5% 80px;background:var(--char)">
@@ -281,6 +282,26 @@ const products=[
   {id:57,name:'First Aid Kit: White Plastic',cat:'firstaid',price:4500,badge:null,desc:'First aid kit in white plastic box. Suitable for offices and reception areas.'},
   // {id:58,name:'First Aid Kit: Pouch Type',cat:'firstaid',price:3500,badge:null,desc:'Portable first aid pouch. Ideal for vehicles and field teams.'}, // HIDDEN: no photo yet
   {id:59,name:'First Aid Kit: Small (Vehicle/Home)',cat:'firstaid',price:2800,badge:null,desc:'Compact first aid kit for vehicles and home use.'},
+  // FIRST AID REFILLS
+  {id:60,name:'Gauze Squares: Medium (Pack of 10)',cat:'refills',price:10,badge:null,desc:'Medium-size gauze squares, pack of 10.'},
+  {id:61,name:'Gauze Squares: Large (Pack of 10)',cat:'refills',price:15,badge:null,desc:'Large-size gauze squares, pack of 10.'},
+  {id:62,name:'Antiseptic Solution: 1 Litre',cat:'refills',price:400,badge:null,desc:'1 litre antiseptic solution for first aid kit refills.'},
+  {id:63,name:'Adhesive Sterile Eye Pad 96 x 65 mm',cat:'refills',price:90,badge:null,desc:'Adhesive sterile eye pad, 96 mm x 65 mm.'},
+  {id:64,name:'Adhesive Strips: Standard (Pack of 100)',cat:'refills',price:300,badge:null,desc:'Standard-size adhesive strips, pack of 100.'},
+  {id:65,name:'Triangular Bandage: Standard',cat:'refills',price:250,badge:null,desc:'Standard-size triangular bandage.'},
+  {id:66,name:'Crepe Bandage 5 cm x 4.5 m (Pack of 3)',cat:'refills',price:20,badge:null,desc:'Crepe bandages, 5 cm x 4.5 m, pack of 3.'},
+  {id:67,name:'Crepe Bandage 7.5 cm x 4.5 m (Pack of 3)',cat:'refills',price:40,badge:null,desc:'Crepe bandages, 7.5 cm x 4.5 m, pack of 3.'},
+  {id:68,name:'Crepe Bandage 10 cm x 4.5 m (Pack of 2)',cat:'refills',price:60,badge:null,desc:'Crepe bandages, 10 cm x 4.5 m, pack of 2.'},
+  {id:69,name:'Sterile Dressings: Medium (Pack of 100)',cat:'refills',price:270,badge:null,desc:'Medium sterile, un-medicated dressings, pack of 100.'},
+  {id:70,name:'Sterile Dressings: Large (Pack of 100)',cat:'refills',price:370,badge:null,desc:'Large sterile, un-medicated dressings, pack of 100.'},
+  {id:71,name:'Safety Pins: Medium (Pack of 50)',cat:'refills',price:250,badge:null,desc:'Medium-size safety pins, pack of 50.'},
+  {id:72,name:'First Aid Scissors',cat:'refills',price:600,badge:null,desc:'A pair of scissors for first aid use.'},
+  {id:73,name:'Sterile Gloves: Small',cat:'refills',price:450,badge:null,desc:'Sterile gloves, small size.'},
+  {id:74,name:'Lubricating Eye Drops: 10 ml',cat:'refills',price:500,badge:null,desc:'Lubricating eye drop solution, 10 ml bottle.'},
+  {id:75,name:'Resuscitation Mask',cat:'refills',price:300,badge:null,desc:'Resuscitation mask for first aid kits.'},
+  {id:76,name:'Thermal Blanket',cat:'refills',price:400,badge:null,desc:'Standard-size thermal blanket for first aid.'},
+  {id:77,name:'Whistle',cat:'refills',price:50,badge:null,desc:'Emergency whistle for first aid kits.'},
+  {id:78,name:'Torch',cat:'refills',price:250,badge:null,desc:'Torch / source of light for first aid kits.'},
 ];
 
 // Real product photography, top-level so it enriches every product object,
@@ -341,6 +362,26 @@ const productImgs = {
     56: 'images/FIRST-AID/first-aid-kit-plastic orange.jfif',
     57: 'images/nobg/first-aid-cabinet.png',
     59: 'images/nobg/first-aid-case-closed.png',
+    // First Aid Refills (real photos; adhesive strips, torch and medium/large dressings still use drawn placeholders)
+    60: 'images/refills/gauze-medium.jpg',
+    61: 'images/refills/gauze-large.jpg',
+    62: 'images/refills/antiseptic.jpg',
+    63: 'images/refills/eye-pad.jpg',
+    64: 'images/refills/adhesive-strips.svg',
+    65: 'images/refills/triangular-bandage.jpg',
+    66: 'images/refills/crepe-5cm.jpg',
+    67: 'images/refills/crepe-7cm.jpg',
+    68: 'images/refills/crepe-10cm.jpg',
+    69: 'images/refills/dressing-medium.svg',
+    70: 'images/refills/dressing-large.svg',
+    71: 'images/refills/safety-pins.jpg',
+    72: 'images/refills/scissors.jpg',
+    73: 'images/refills/gloves-sterile.jpg',
+    74: 'images/refills/eye-drops.jpg',
+    75: 'images/refills/resus-mask.jpg',
+    76: 'images/refills/thermal-blanket.jpg',
+    77: 'images/refills/whistle.jpg',
+    78: 'images/refills/torch.svg',
 };
 const catImgs = {
     extinguishers: 'images/nobg/6kgdcp.png',
@@ -349,6 +390,7 @@ const catImgs = {
     signage:       'images/nobg/fire-exit-sign.png',
     hose:          'images/nobg/fire-hose-reel.png',
     firstaid:      'images/nobg/first-aid-case-closed.png',
+    refills:       'images/nobg/first-aid-case-closed.png',
 };
 const getProductImg = (p) => productImgs[p.id] || catImgs[p.cat] || catImgs.extinguishers;
 products.forEach(p => { p.img = getProductImg(p); delete p.icon; });
