@@ -911,3 +911,12 @@ function updateContactBtn(){
 }
 document.addEventListener('input',e=>{ if(e.target&&/^cf-/.test(e.target.id||'')) updateContactBtn(); });
 document.addEventListener('DOMContentLoaded',updateContactBtn);
+
+// Flag a required box as soon as the client leaves it empty
+document.addEventListener('focusout',e=>{
+  const el=e.target;
+  if(!el||!el.matches||!el.matches('input[required],textarea[required]')) return;
+  if(!el.value.trim()) flagField(el,'This field is required.');
+  else if(el.type==='email'&&!isValidEmail(el.value.trim())) flagField(el,"That email address doesn't look right.");
+  if(typeof updateBtns==='function') updateBtns();
+});
