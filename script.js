@@ -10,6 +10,38 @@ const FORM_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_KEY'; // public key from web3for
 function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); }
 
 // Sends a form submission to the inbox. Throws on any failure so callers never show a false success.
+
+// ── FIELD VALIDATION HELPERS ──
+function _fv(t){return typeof t==='string'?document.getElementById(t):t;}
+function clearField(t){
+  const el=_fv(t); if(!el) return;
+  el.classList.remove('field-invalid'); el.removeAttribute('aria-invalid');
+  document.querySelectorAll('.field-msg').forEach(m=>{ if(m._for===el) m.remove(); });
+}
+function flagField(t,msg){
+  const el=_fv(t); if(!el) return null;
+  clearField(el);
+  el.classList.add('field-invalid'); el.setAttribute('aria-invalid','true');
+  const m=document.createElement('div');
+  m.className='field-msg'; m.setAttribute('role','alert'); m.textContent=msg; m._for=el;
+  const row=(el.parentElement&&el.parentElement.classList.contains('form-row'))?el.parentElement:null;
+  (row||el).insertAdjacentElement('afterend',m);
+  return el;
+}
+document.addEventListener('input',e=>{ if(e.target&&e.target.classList&&e.target.classList.contains('field-invalid')) clearField(e.target); });
+document.addEventListener('change',e=>{ if(e.target&&e.target.tagName==='SELECT'&&e.target.classList.contains('field-invalid')) clearField(e.target); });
+// bad = [[idOrEl,message],...]; returns true when nothing is wrong
+function flagAll(bad){
+  if(!bad.length) return true;
+  let first=null;
+  bad.forEach(b=>{const el=flagField(b[0],b[1]); if(!first) first=el;});
+  if(first){
+    first.scrollIntoView({behavior:'smooth',block:'center'});
+    if(first.focus&&/^(INPUT|SELECT|TEXTAREA)$/.test(first.tagName)) setTimeout(()=>first.focus({preventScroll:true}),250);
+  }
+  return false;
+}
+
 async function submitToInbox(fields){
   const res = await fetch(FORM_ENDPOINT,{
     method:'POST',
@@ -500,7 +532,7 @@ function openIndModal(key){
   document.getElementById('ind-modal-title').textContent = d.title;
   document.getElementById('ind-modal-desc').textContent = d.desc;
   document.getElementById('ind-company-grid').innerHTML = d.companies.map((c,i)=>{
-    return `<div class="client-box"><span class="cb-idx">C·${String(i+1).padStart(2,'0')}</span><p>${c.name}</p><span>${c.loc}</span></div>`;
+    return `<div class="client-box"><p>${c.name}</p><span>${c.loc}</span></div>`;
   }).join('');
   document.getElementById('ind-modal-overlay').classList.add('open');
   document.body.style.overflow='hidden';
@@ -657,8 +689,12 @@ async function sendContactRequest(){
   const showErr = html => { errEl.innerHTML = html; errEl.style.display = 'block'; sentEl.style.display = 'none'; };
   errEl.style.display = 'none'; sentEl.style.display = 'none';
 
-  if(!name || !email || !phone){ showErr('Please fill in your name, email and phone number.'); return; }
-  if(!isValidEmail(email)){ showErr('Please enter a valid email address.'); return; }
+  let bad=[];
+  if(!name) bad.push(['cf-name','Please enter your name.']);
+  if(!email) bad.push(['cf-email','Please enter your email address.']);
+  else if(!isValidEmail(email)) bad.push(['cf-email','That email address doesn\'t look right.']);
+  if(!phone) bad.push(['cf-phone','Please enter a phone number.']);
+  if(!flagAll(bad)) return;
 
   // Honeypot: bots tick the hidden box, humans never see it
   const hp = document.getElementById('cf-botcheck');
@@ -770,13 +806,13 @@ document.addEventListener('DOMContentLoaded', function(){
   menu.id = 'mobile-menu';
   menu.innerHTML = `
     <a class="mm-link" href="index.html"${cur('index.html')}>Home</a>
-    <div class="mm-plate">Services · SYS 01-06</div>
-    <a class="mm-sub" href="fire-detection.html"${cur('fire-detection.html')}><span class="nd-code">SYS·01</span>Fire Detection Systems</a>
-    <a class="mm-sub" href="sprinkler-systems.html"${cur('sprinkler-systems.html')}><span class="nd-code">SYS·02</span>Sprinkler Systems</a>
-    <a class="mm-sub" href="fire-suppression.html"${cur('fire-suppression.html')}><span class="nd-code">SYS·03</span>Fire Suppression</a>
-    <a class="mm-sub" href="fire-alarm.html"${cur('fire-alarm.html')}><span class="nd-code">SYS·04</span>Fire Alarm Systems</a>
-    <a class="mm-sub" href="maintenance.html"${cur('maintenance.html')}><span class="nd-code">SYS·05</span>Maintenance & Service</a>
-    <a class="mm-sub" href="fire-risk-assessment.html"${cur('fire-risk-assessment.html')}><span class="nd-code">SYS·06</span>Fire Risk Assessment</a>
+    <div class="mm-plate">Services</div>
+    <a class="mm-sub" href="fire-detection.html"${cur('fire-detection.html')}>Fire Detection Systems</a>
+    <a class="mm-sub" href="sprinkler-systems.html"${cur('sprinkler-systems.html')}>Sprinkler Systems</a>
+    <a class="mm-sub" href="fire-suppression.html"${cur('fire-suppression.html')}>Fire Suppression</a>
+    <a class="mm-sub" href="fire-alarm.html"${cur('fire-alarm.html')}>Fire Alarm Systems</a>
+    <a class="mm-sub" href="maintenance.html"${cur('maintenance.html')}>Maintenance & Service</a>
+    <a class="mm-sub" href="fire-risk-assessment.html"${cur('fire-risk-assessment.html')}>Fire Risk Assessment</a>
     <div class="mm-plate">Explore</div>
     <a class="mm-link" href="shop.html"${cur('shop.html')}>Shop</a>
     <a class="mm-link" href="portfolio.html"${cur('portfolio.html')}>Portfolio</a>

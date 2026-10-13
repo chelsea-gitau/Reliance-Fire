@@ -606,7 +606,7 @@
       <div class="q-step-sub">Tell us about the building or facility that needs fire protection.</div>
 
       <div style="margin-bottom:20px">
-        <div class="q-group-label">Property Type <span class="req" aria-hidden="true">*</span></div>
+        <div class="q-group-label" id="g-prop">Property Type <span class="req" aria-hidden="true">*</span></div>
         <div class="prop-grid">
           <div class="prop-card" onclick="selectProp(this,'Commercial Office')"><div class="prop-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></div><h4>Commercial Office</h4><p>Office blocks & business parks</p></div>
           <div class="prop-card" onclick="selectProp(this,'Hotel / Hospitality')"><div class="prop-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M12 4v6"/><path d="M2 18h20"/></svg></div><h4>Hotel / Hospitality</h4><p>Hotels, lodges & restaurants</p></div>
@@ -620,16 +620,16 @@
       </div>
 
       <div class="form-group form-row">
-        <div><label class="q-label">Property / Building Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-propname" required aria-required="true" oninput="checkStep1()" placeholder="e.g. Westgate Mall, Aga Khan Hospital"></div>
-        <div><label class="q-label">Location / Town <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-proploc" required aria-required="true" autocomplete="address-level2" oninput="checkStep1()" placeholder="e.g. Westlands, Nairobi"><div class="q-help"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Free site visits within <strong>Nairobi</strong>. Outside Nairobi? We agree transport costs before any visit is booked.</span></div></div>
+        <div><label class="q-label">Property / Building Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-propname" required aria-required="true" oninput="clearField(this)" placeholder="e.g. Westgate Mall, Aga Khan Hospital"></div>
+        <div><label class="q-label">Location / Town <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-proploc" required aria-required="true" autocomplete="address-level2" oninput="clearField(this)" placeholder="e.g. Westlands, Nairobi"><div class="q-help"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Free site visits within <strong>Nairobi</strong>. Outside Nairobi? We agree transport costs before any visit is booked.</span></div></div>
       </div>
       <div class="form-group form-row">
-        <div><label class="q-label">Approximate Floor Area</label><input type="text" id="q-area" placeholder="e.g. 2,000 m² (rough estimate is fine)"></div>
-        <div><label class="q-label">Number of Floors</label><input type="text" id="q-floors" placeholder="e.g. 5 floors"></div>
+        <div><label class="q-label">Approximate Floor Area <span class="q-opt">(optional)</span></label><input type="text" id="q-area" placeholder="e.g. 2,000 m² (rough estimate is fine)"></div>
+        <div><label class="q-label">Number of Floors <span class="q-opt">(optional)</span></label><input type="text" id="q-floors" placeholder="e.g. 5 floors"></div>
       </div>
 
       <div style="margin-bottom:20px">
-        <div class="q-group-label">Building Status <span class="req" aria-hidden="true">*</span></div>
+        <div class="q-group-label" id="g-status">Building Status <span class="req" aria-hidden="true">*</span></div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <div class="prop-card" style="flex:1;min-width:140px;padding:14px" onclick="selectBuildingStatus(this,'New Build: no systems installed yet')"><div class="prop-icon" style="font-size:22px"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg></div><h4>New Build</h4><p>No systems installed yet</p></div>
           <div class="prop-card" style="flex:1;min-width:140px;padding:14px" onclick="selectBuildingStatus(this,'Existing Building: upgrading or replacing old systems')"><div class="prop-icon" style="font-size:22px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg></div><h4>Existing Building</h4><p>Upgrading / replacing systems</p></div>
@@ -637,10 +637,10 @@
         </div>
       </div>
 
-      <p class="q-hint" id="q-hint-1" aria-live="polite">Still needed: property type, building status, building name and location.</p>
+      <p class="q-hint" id="q-hint-1" aria-live="polite"></p>
       <div class="quote-nav">
         <div></div>
-        <button class="btn-primary" onclick="goStep1to2()" id="btn-next-1" disabled style="opacity:0.4">Continue →</button>
+        <button class="btn-primary" onclick="goStep1to2()" id="btn-next-1">Continue →</button>
       </div>
     </div>
 
@@ -649,7 +649,7 @@
       <div class="q-step-title">SERVICES REQUIRED</div>
       <div class="q-step-sub">Select all services you think you need. The technician will advise further during the site visit.</div>
 
-      <div class="q-group-label">Services Needed <span class="req" aria-hidden="true">*</span></div>
+      <div class="q-group-label" id="g-svc">Services Needed <span class="req" aria-hidden="true">*</span></div>
       <div class="svc-checks">
         <div class="svc-check" onclick="toggleService(this,'Fire Detection System')"><div class="svc-check-icon"><img src="images/ICONS/icons8-shield-50.png" alt="" aria-hidden="true" style="width:20px;height:20px;object-fit:contain"></div><div><h4>Fire Detection</h4><p>Smoke & heat sensors, control panels</p></div><div class="check-mark">✓</div></div>
         <div class="svc-check" onclick="toggleService(this,'Sprinkler System')"><div class="svc-check-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69 17.66 8.35a8 8 0 1 1-11.31 0z"/></svg></div><div><h4>Sprinkler System</h4><p>Wet, dry or pre-action systems</p></div><div class="check-mark">✓</div></div>
@@ -662,7 +662,7 @@
       </div>
 
       <div style="margin-top:24px;margin-bottom:20px">
-        <div class="q-group-label">Existing Fire Systems?</div>
+        <div class="q-group-label" id="g-exist">Existing Fire Systems? <span class="req" aria-hidden="true">*</span></div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
           <div class="prop-card" style="flex:1;min-width:120px;padding:12px" onclick="selectExisting(this,'No existing fire systems')"><div class="prop-icon" style="font-size:18px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></div><h4 style="font-size:12px">None</h4></div>
           <div class="prop-card" style="flex:1;min-width:120px;padding:12px" onclick="selectExisting(this,'Yes: some existing systems')"><div class="prop-icon" style="font-size:18px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div><h4 style="font-size:12px">Yes, some</h4></div>
@@ -671,10 +671,10 @@
         <input type="text" id="q-existing-detail" placeholder="If yes, what systems and how old? (optional)" style="width:100%;background:var(--ash);border:1px solid rgba(255,255,255,0.09);color:#fff;padding:11px 14px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none">
       </div>
 
-      <p class="q-hint" id="q-hint-2" aria-live="polite">Still needed: at least one service, and whether you have existing systems.</p>
+      <p class="q-hint" id="q-hint-2" aria-live="polite"></p>
       <div class="quote-nav">
         <button class="btn-back" onclick="nextStep(1)">← Back</button>
-        <button class="btn-primary" onclick="goStep2to3()" id="btn-next-2" disabled style="opacity:0.4">Continue →</button>
+        <button class="btn-primary" onclick="goStep2to3()" id="btn-next-2">Continue →</button>
       </div>
     </div>
 
@@ -684,7 +684,7 @@
       <div class="q-step-sub">A few more details to help our team prepare for the site visit.</div>
 
       <div style="margin-bottom:20px">
-        <div class="q-group-label">How Urgent Is This? <span class="req" aria-hidden="true">*</span></div>
+        <div class="q-group-label" id="g-urg">How Urgent Is This? <span class="req" aria-hidden="true">*</span></div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <div class="prop-card" style="flex:1;min-width:130px;padding:14px" onclick="selectUrgency(this,'Urgent: within 2 weeks')"><div class="prop-icon" style="font-size:22px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4>Urgent</h4><p>Within 2 weeks</p></div>
           <div class="prop-card" style="flex:1;min-width:130px;padding:14px" onclick="selectUrgency(this,'Soon: within 1-2 months')"><div class="prop-icon" style="font-size:22px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></div><h4>Soon</h4><p>Within 1-2 months</p></div>
@@ -705,14 +705,14 @@
       </div>
 
       <div class="form-group">
-        <label class="q-label">Additional Notes</label>
+        <label class="q-label">Additional Notes <span class="q-opt">(optional)</span></label>
         <textarea id="q-notes" placeholder="Anything else the technician should know before the visit? Special requirements, access restrictions, regulatory deadlines..."></textarea>
       </div>
 
-      <p class="q-hint" id="q-hint-3" aria-live="polite">Still needed: how urgent this is.</p>
+      <p class="q-hint" id="q-hint-3" aria-live="polite"></p>
       <div class="quote-nav">
         <button class="btn-back" onclick="nextStep(2)">← Back</button>
-        <button class="btn-primary" onclick="goStep3to4()" id="btn-next-3" disabled style="opacity:0.4">Continue →</button>
+        <button class="btn-primary" onclick="goStep3to4()" id="btn-next-3">Continue →</button>
       </div>
     </div>
 
@@ -722,16 +722,16 @@
       <div class="q-step-sub">Last step: we'll use these to call you and confirm the site visit booking.</div>
 
       <div class="form-group form-row">
-        <div><label class="q-label">Full Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-name" required aria-required="true" autocomplete="name" placeholder="Your full name"></div>
-        <div><label class="q-label">Your Role / Title</label><input type="text" id="q-role" autocomplete="organization-title" placeholder="e.g. Facility Manager, MD, Procurement Officer"></div>
+        <div><label class="q-label">Full Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-name" oninput="clearField(this)" required aria-required="true" autocomplete="name" placeholder="Your full name"></div>
+        <div><label class="q-label">Your Role / Title <span class="q-opt">(optional)</span></label><input type="text" id="q-role" autocomplete="organization-title" placeholder="e.g. Facility Manager, MD, Procurement Officer"></div>
       </div>
       <div class="form-group form-row">
-        <div><label class="q-label">Company Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-company" required aria-required="true" autocomplete="organization" placeholder="Your company or organisation"></div>
-        <div><label class="q-label">Email Address <span class="req" aria-hidden="true">*</span></label><input type="email" id="q-email" required aria-required="true" autocomplete="email" inputmode="email" placeholder="your@email.com"></div>
+        <div><label class="q-label">Company Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-company" oninput="clearField(this)" required aria-required="true" autocomplete="organization" placeholder="Your company or organisation"></div>
+        <div><label class="q-label">Email Address <span class="req" aria-hidden="true">*</span></label><input type="email" id="q-email" oninput="clearField(this)" required aria-required="true" autocomplete="email" inputmode="email" placeholder="your@email.com"></div>
       </div>
       <div class="form-group form-row">
-        <div><label class="q-label">Phone / WhatsApp <span class="req" aria-hidden="true">*</span> <span style="color:var(--green);font-size:11px">(preferred)</span></label><input type="tel" id="q-phone" required aria-required="true" autocomplete="tel" placeholder="+254 7XX XXX XXX"></div>
-        <div><label class="q-label">Best Time to Call</label>
+        <div><label class="q-label">Phone / WhatsApp <span class="req" aria-hidden="true">*</span> <span style="color:var(--green);font-size:11px">(preferred)</span></label><input type="tel" id="q-phone" oninput="clearField(this)" required aria-required="true" autocomplete="tel" placeholder="+254 7XX XXX XXX"></div>
+        <div><label class="q-label">Best Time to Call <span class="q-opt">(optional)</span></label>
           <select id="q-calltime" style="width:100%;background:var(--ash);border:1px solid rgba(255,255,255,0.09);color:#fff;padding:11px 14px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none">
             <option value="" disabled selected>Select preferred time</option>
             <option>Morning (8am - 12pm)</option>
@@ -861,41 +861,31 @@ function selectProp(el,name){
   document.querySelectorAll('#q-step-1 .prop-grid .prop-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   quoteData.prop=name;
-  checkStep1();
+  clearField('g-prop');
 }
 function selectBuildingStatus(el,name){
   document.querySelectorAll('#q-step-1 .prop-card[onclick*="selectBuildingStatus"]').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   quoteData.buildingStatus=name;
-  checkStep1();
-}
-function setHint(n,missing){
-  const el=document.getElementById('q-hint-'+n); if(!el) return;
-  el.textContent=missing.length?('Still needed: '+missing.join(', ')+'.'):'';
-  el.style.display=missing.length?'block':'none';
+  clearField('g-status');
 }
 function checkStep1(){
-  const btn=document.getElementById('btn-next-1');
-  const name=document.getElementById('q-propname').value.trim(), loc=document.getElementById('q-proploc').value.trim();
-  const missing=[];
-  if(!quoteData.prop)missing.push('property type');
-  if(!name)missing.push('building name');
-  if(!loc)missing.push('location');
-  if(!quoteData.buildingStatus)missing.push('building status');
-  const ok=missing.length===0;
-  btn.disabled=!ok;btn.style.opacity=ok?'1':'0.4';
-  setHint(1,missing);
+  const v=id=>document.getElementById(id).value.trim();
+  let bad=[];
+  if(!quoteData.prop)bad.push(['g-prop','Please choose a property type.']);
+  if(!v('q-propname'))bad.push(['q-propname','Please enter the building name.']);
+  if(!v('q-proploc'))bad.push(['q-proploc','Please enter the location or town.']);
+  if(!quoteData.buildingStatus)bad.push(['g-status','Please choose the building status.']);
+  return flagAll(bad);
 }
 function checkStep2(){
-  const btn=document.getElementById('btn-next-2');
-  const missing=[];
-  if(!quoteData.services.length)missing.push('at least one service');
-  if(!quoteData.existing)missing.push('whether you have existing systems');
-  const ok=missing.length===0;
-  btn.disabled=!ok;btn.style.opacity=ok?'1':'0.4';
-  setHint(2,missing);
+  let bad=[];
+  if(!quoteData.services.length)bad.push(['g-svc','Please select at least one service.']);
+  if(!quoteData.existing)bad.push(['g-exist','Please tell us if you have existing fire systems.']);
+  return flagAll(bad);
 }
 function goStep1to2(){
+  if(!checkStep1())return;
   quoteData.propName=document.getElementById('q-propname').value;
   quoteData.propLoc=document.getElementById('q-proploc').value;
   quoteData.area=document.getElementById('q-area').value||'Not specified';
@@ -907,15 +897,16 @@ function toggleService(el,name){
   el.classList.toggle('selected');
   if(el.classList.contains('selected')){quoteData.services.push(name);}
   else{quoteData.services=quoteData.services.filter(s=>s!==name);}
-  checkStep2();
+  if(quoteData.services.length)clearField('g-svc');
 }
 function selectExisting(el,name){
   document.querySelectorAll('#q-step-2 .prop-card[onclick*="selectExisting"]').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   quoteData.existing=name;
-  checkStep2();
+  clearField('g-exist');
 }
 function goStep2to3(){
+  if(!checkStep2())return;
   quoteData.existingDetail=document.getElementById('q-existing-detail').value||'';
   nextStep(3);
 }
@@ -924,9 +915,7 @@ function selectUrgency(el,name){
   document.querySelectorAll('#q-step-3 .prop-card[onclick*="selectUrgency"]').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   quoteData.urgency=name;
-  const btn=document.getElementById('btn-next-3');
-  btn.disabled=false;btn.style.opacity='1';
-  setHint(3,[]);
+  clearField('g-urg');
 }
 function selectBudget(el,name){
   document.querySelectorAll('#q-step-3 .prop-card[onclick*="selectBudget"]').forEach(c=>c.classList.remove('selected'));
@@ -934,6 +923,7 @@ function selectBudget(el,name){
   quoteData.budget=name;
 }
 function goStep3to4(){
+  if(!quoteData.urgency){flagAll([['g-urg','Please tell us how urgent this is.']]);return;}
   quoteData.notes=document.getElementById('q-notes').value||'';
   // populate summary
   document.getElementById('sum-prop').textContent=quoteData.prop;
@@ -970,8 +960,13 @@ async function submitQuote(){
   const errEl=document.getElementById('quote-error');
   const showErr=(html)=>{errEl.innerHTML=html;errEl.style.display='block';};
   errEl.style.display='none';
-  if(!name||!company||!email||!phone){showErr('Please fill in your name, company, email and phone number.');return;}
-  if(!isValidEmail(email)){showErr('Please enter a valid email address.');return;}
+  let bad=[];
+  if(!name)bad.push(['q-name','Please enter your full name.']);
+  if(!company)bad.push(['q-company','Please enter your company name.']);
+  if(!email)bad.push(['q-email','Please enter your email address.']);
+  else if(!isValidEmail(email))bad.push(['q-email','That email address doesn\'t look right.']);
+  if(!phone)bad.push(['q-phone','Please enter a phone or WhatsApp number.']);
+  if(!flagAll(bad))return;
   const role=document.getElementById('q-role').value||'Not specified';
   const calltime=document.getElementById('q-calltime').value||'Anytime';
 
@@ -1116,7 +1111,7 @@ document.addEventListener('DOMContentLoaded', function(){
       c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); c.click(); } });
     });
     qp.addEventListener('click',()=>setTimeout(sync,0));
-    checkStep1(); checkStep2();
+    
   }
   const logos=document.querySelectorAll('.logo-track .logo-item');
   logos.forEach((el,i)=>{ if(i>=logos.length/2) el.setAttribute('aria-hidden','true'); });

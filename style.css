@@ -1294,3 +1294,10 @@ footer{display:block;background:#0B0503;border-top:1px solid rgba(204,34,0,0.28)
   .q-hint{text-align:left}
   .svc-checks{grid-template-columns:1fr}
 }
+
+/* FIELD VALIDATION */
+.field-invalid{border-color:#ff5a47 !important;box-shadow:0 0 0 3px rgba(255,90,71,.18) !important}
+.field-msg{color:#ff7a6b;font-size:12.5px;font-weight:600;margin-top:6px;line-height:1.4}
+.field-msg::before{content:"⚠ "}
+.q-group-label.field-invalid{box-shadow:none !important;color:#ff7a6b}
+.q-opt{color:rgba(255,255,255,.45);font-size:11px;font-weight:400}
