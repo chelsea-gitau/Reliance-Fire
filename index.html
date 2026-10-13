@@ -861,29 +861,54 @@ function selectProp(el,name){
   document.querySelectorAll('#q-step-1 .prop-grid .prop-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   quoteData.prop=name;
-  clearField('g-prop');
+  clearField('g-prop');updateBtns();
 }
 function selectBuildingStatus(el,name){
   document.querySelectorAll('#q-step-1 .prop-card[onclick*="selectBuildingStatus"]').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   quoteData.buildingStatus=name;
-  clearField('g-status');
+  clearField('g-status');updateBtns();
 }
-function checkStep1(){
-  const v=id=>document.getElementById(id).value.trim();
-  let bad=[];
-  if(!quoteData.prop)bad.push(['g-prop','Please choose a property type.']);
-  if(!v('q-propname'))bad.push(['q-propname','Please enter the building name.']);
-  if(!v('q-proploc'))bad.push(['q-proploc','Please enter the location or town.']);
-  if(!quoteData.buildingStatus)bad.push(['g-status','Please choose the building status.']);
-  return flagAll(bad);
+const _v=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
+function missing1(){
+  const b=[];
+  if(!quoteData.prop)b.push(['g-prop','Please choose a property type.']);
+  if(!_v('q-propname'))b.push(['q-propname','Please enter the building name.']);
+  if(!_v('q-proploc'))b.push(['q-proploc','Please enter the location or town.']);
+  if(!quoteData.buildingStatus)b.push(['g-status','Please choose the building status.']);
+  return b;
 }
-function checkStep2(){
-  let bad=[];
-  if(!quoteData.services.length)bad.push(['g-svc','Please select at least one service.']);
-  if(!quoteData.existing)bad.push(['g-exist','Please tell us if you have existing fire systems.']);
-  return flagAll(bad);
+function missing2(){
+  const b=[];
+  if(!quoteData.services.length)b.push(['g-svc','Please select at least one service.']);
+  if(!quoteData.existing)b.push(['g-exist','Please tell us if you have existing fire systems.']);
+  return b;
 }
+function missing3(){
+  return quoteData.urgency?[]:[['g-urg','Please tell us how urgent this is.']];
+}
+function missing4(){
+  const b=[],email=_v('q-email');
+  if(!_v('q-name'))b.push(['q-name','Please enter your full name.']);
+  if(!_v('q-company'))b.push(['q-company','Please enter your company name.']);
+  if(!email)b.push(['q-email','Please enter your email address.']);
+  else if(!isValidEmail(email))b.push(['q-email','That email address doesn\'t look right.']);
+  if(!_v('q-phone'))b.push(['q-phone','Please enter a phone or WhatsApp number.']);
+  return b;
+}
+const _miss={1:missing1,2:missing2,3:missing3,4:missing4};
+const _btn={1:'btn-next-1',2:'btn-next-2',3:'btn-next-3',4:'submit-btn'};
+// Buttons look inactive until the step is complete; clicking one early flags every empty field.
+function updateBtns(){
+  for(let n=1;n<=4;n++){
+    const el=document.getElementById(_btn[n]); if(!el) continue;
+    const ok=_miss[n]().length===0;
+    el.classList.toggle('is-inactive',!ok);
+    el.setAttribute('aria-disabled',ok?'false':'true');
+  }
+}
+function checkStep(n){ const ok=flagAll(_miss[n]()); updateBtns(); return ok; }
+function checkStep1(){return checkStep(1);} function checkStep2(){return checkStep(2);}
 function goStep1to2(){
   if(!checkStep1())return;
   quoteData.propName=document.getElementById('q-propname').value;
@@ -897,13 +922,13 @@ function toggleService(el,name){
   el.classList.toggle('selected');
   if(el.classList.contains('selected')){quoteData.services.push(name);}
   else{quoteData.services=quoteData.services.filter(s=>s!==name);}
-  if(quoteData.services.length)clearField('g-svc');
+  if(quoteData.services.length)clearField('g-svc');updateBtns();
 }
 function selectExisting(el,name){
   document.querySelectorAll('#q-step-2 .prop-card[onclick*="selectExisting"]').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   quoteData.existing=name;
-  clearField('g-exist');
+  clearField('g-exist');updateBtns();
 }
 function goStep2to3(){
   if(!checkStep2())return;
@@ -915,7 +940,7 @@ function selectUrgency(el,name){
   document.querySelectorAll('#q-step-3 .prop-card[onclick*="selectUrgency"]').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   quoteData.urgency=name;
-  clearField('g-urg');
+  clearField('g-urg');updateBtns();
 }
 function selectBudget(el,name){
   document.querySelectorAll('#q-step-3 .prop-card[onclick*="selectBudget"]').forEach(c=>c.classList.remove('selected'));
@@ -923,7 +948,7 @@ function selectBudget(el,name){
   quoteData.budget=name;
 }
 function goStep3to4(){
-  if(!quoteData.urgency){flagAll([['g-urg','Please tell us how urgent this is.']]);return;}
+  if(!checkStep(3))return;
   quoteData.notes=document.getElementById('q-notes').value||'';
   // populate summary
   document.getElementById('sum-prop').textContent=quoteData.prop;
@@ -960,13 +985,8 @@ async function submitQuote(){
   const errEl=document.getElementById('quote-error');
   const showErr=(html)=>{errEl.innerHTML=html;errEl.style.display='block';};
   errEl.style.display='none';
-  let bad=[];
-  if(!name)bad.push(['q-name','Please enter your full name.']);
-  if(!company)bad.push(['q-company','Please enter your company name.']);
-  if(!email)bad.push(['q-email','Please enter your email address.']);
-  else if(!isValidEmail(email))bad.push(['q-email','That email address doesn\'t look right.']);
-  if(!phone)bad.push(['q-phone','Please enter a phone or WhatsApp number.']);
-  if(!flagAll(bad))return;
+  for(const n of [1,2,3]){ if(_miss[n]().length){ nextStep(n); checkStep(n); return; } }
+  if(!checkStep(4))return;
   const role=document.getElementById('q-role').value||'Not specified';
   const calltime=document.getElementById('q-calltime').value||'Anytime';
 
@@ -1115,6 +1135,8 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   const logos=document.querySelectorAll('.logo-track .logo-item');
   logos.forEach((el,i)=>{ if(i>=logos.length/2) el.setAttribute('aria-hidden','true'); });
+  updateBtns();
+  const qpg=document.getElementById('page-quote'); if(qpg) qpg.addEventListener('input',updateBtns);
   initTesti();
   initScrollAnimations();
   if(new URLSearchParams(window.location.search).get('openQuote')==='1'){ showPage('quote'); }

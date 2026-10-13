@@ -16,12 +16,14 @@ function _fv(t){return typeof t==='string'?document.getElementById(t):t;}
 function clearField(t){
   const el=_fv(t); if(!el) return;
   el.classList.remove('field-invalid'); el.removeAttribute('aria-invalid');
+  if(el._grp){ el._grp.classList.remove('group-outline'); el._grp=null; }
   document.querySelectorAll('.field-msg').forEach(m=>{ if(m._for===el) m.remove(); });
 }
 function flagField(t,msg){
   const el=_fv(t); if(!el) return null;
   clearField(el);
   el.classList.add('field-invalid'); el.setAttribute('aria-invalid','true');
+  if(el.classList.contains('q-group-label')){ let g=el.nextElementSibling; while(g&&g.classList.contains('field-msg')) g=g.nextElementSibling; if(g){ g.classList.add('group-outline'); el._grp=g; } }
   const m=document.createElement('div');
   m.className='field-msg'; m.setAttribute('role','alert'); m.textContent=msg; m._for=el;
   const row=(el.parentElement&&el.parentElement.classList.contains('form-row'))?el.parentElement:null;
@@ -898,3 +900,14 @@ function playHeroVideo(btn){
   }, {threshold:0.15, rootMargin:"0px 0px -60px 0px"});
   els.forEach(el => io.observe(el));
 })();
+
+// Contact form: Send button looks inactive until required fields are valid
+function updateContactBtn(){
+  const b=document.getElementById('cf-submit'); if(!b) return;
+  const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
+  const ok=g('cf-name')&&g('cf-phone')&&isValidEmail(g('cf-email'));
+  b.classList.toggle('is-inactive',!ok);
+  b.setAttribute('aria-disabled',ok?'false':'true');
+}
+document.addEventListener('input',e=>{ if(e.target&&/^cf-/.test(e.target.id||'')) updateContactBtn(); });
+document.addEventListener('DOMContentLoaded',updateContactBtn);
