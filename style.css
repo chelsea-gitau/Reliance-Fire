@@ -1242,3 +1242,55 @@ footer{display:block;background:#0B0503;border-top:1px solid rgba(204,34,0,0.28)
 /* photo: full-bleed, no frame border, no darkening overlay — shown exactly as-is */
 .hero.hero-light .hero-frame{border:none;box-shadow:none;background:transparent}
 .hero.hero-light .hero-frame-overlay{display:none}
+
+/* ══════════════════════════════
+   BOOK A FREE ASSESSMENT — UX REFRESH
+══════════════════════════════ */
+.quote-page{padding:44px 5% 130px}
+.q-head{margin-bottom:26px}
+.q-head .sec-sub{margin-bottom:16px;max-width:620px}
+.q-trust{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px;padding:0;margin:0}
+.q-trust li{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--text-secondary)}
+.q-trust li svg{color:var(--status-live);flex-shrink:0}
+.q-progress{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 0 12px;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:14px;font-size:12px;letter-spacing:1.2px;text-transform:uppercase}
+#q-progress-text{color:#fff;font-weight:600}
+.q-progress-time{color:var(--muted);text-transform:none;letter-spacing:0;font-size:12px}
+.quote-page .quote-steps{margin-bottom:30px}
+.quote-page .step-circle{width:28px;height:28px;font-size:12px;margin-bottom:6px}
+.quote-page .step-item:not(:last-child)::after{top:14px;left:calc(50% + 18px);right:calc(-50% + 18px)}
+.quote-page .q-step-title{font-size:34px;margin-bottom:4px}
+.quote-page .q-step-sub{margin-bottom:26px;font-size:15px;color:var(--text-secondary)}
+
+.q-group-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.q-label{font-size:13px;color:rgba(255,255,255,0.7);display:block;margin-bottom:6px}
+.req{color:var(--red-light);margin-left:2px}
+.quote-page input[type=text],.quote-page input[type=email],.quote-page input[type=tel],.quote-page select,.quote-page textarea{min-height:46px;font-size:15px}
+.quote-page input:focus,.quote-page select:focus,.quote-page textarea:focus{border-color:var(--red-light)!important;box-shadow:0 0 0 3px rgba(204,34,0,0.2);outline:none}
+.q-help{display:flex;gap:8px;align-items:flex-start;margin-top:8px;font-size:12px;line-height:1.5;color:rgba(232,160,32,0.9)}
+.q-help svg{flex-shrink:0;margin-top:2px}
+.q-help strong{color:var(--gold)}
+
+.prop-grid{grid-template-columns:repeat(4,1fr);gap:10px}
+.prop-card{position:relative;padding:18px 10px 16px}
+.prop-card .prop-icon{width:48px;height:48px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--red-light);transition:all .2s;font-size:inherit}
+.prop-card[style*="padding:12px"] .prop-icon,.prop-card[style*="padding:14px"] .prop-icon{width:38px;height:38px;margin-bottom:8px}
+.prop-card:hover .prop-icon{border-color:rgba(255,58,26,0.5)}
+.prop-card.selected .prop-icon{background:var(--red);border-color:var(--red);color:#fff}
+.prop-card p{color:rgba(255,255,255,0.5)}
+.prop-card.selected::after{content:'✓';position:absolute;top:8px;right:8px;width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;line-height:18px;text-align:center}
+.prop-card:focus-visible,.svc-check:focus-visible{outline:2px solid var(--red-light);outline-offset:2px}
+.svc-check p{color:rgba(255,255,255,0.5)}
+
+.q-hint{display:none;margin:4px 0 12px;font-size:13px;color:var(--gold);text-align:right}
+.btn-primary:disabled{cursor:not-allowed;box-shadow:none;filter:grayscale(.4)}
+.q-assure{display:flex;gap:8px;align-items:center;margin:16px 0 0;font-size:12px;color:var(--muted)}
+.q-assure svg{flex-shrink:0}
+.q-assure a{color:var(--red-light);text-decoration:underline}
+
+@media(max-width:768px){
+  .prop-grid{grid-template-columns:repeat(2,1fr)}
+  .quote-page .q-step-title{font-size:28px}
+  .quote-page .step-label{font-size:10px;letter-spacing:.4px}
+  .q-hint{text-align:left}
+  .svc-checks{grid-template-columns:1fr}
+}
