@@ -625,8 +625,8 @@
         <div><label class="q-label">Location / Town <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-proploc" required aria-required="true" autocomplete="address-level2" oninput="clearField(this)" placeholder="e.g. Westlands, Nairobi"><div class="q-help"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Free site visits within <strong>Nairobi</strong>. Outside Nairobi? We agree transport costs before any visit is booked.</span></div></div>
       </div>
       <div class="form-group form-row">
-        <div><label class="q-label">Approximate Floor Area <span class="q-opt">(optional)</span></label><input type="text" id="q-area" placeholder="e.g. 2,000 m² (rough estimate is fine)"></div>
-        <div><label class="q-label">Number of Floors <span class="q-opt">(optional)</span></label><input type="text" id="q-floors" placeholder="e.g. 5 floors"></div>
+        <div><label class="q-label">Approximate Floor Area <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-area" required oninput="clearField(this)" placeholder="e.g. 2,000 m² (rough estimate is fine)"></div>
+        <div><label class="q-label">Number of Floors <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-floors" required oninput="clearField(this)" placeholder="e.g. 5 floors"></div>
       </div>
 
       <div style="margin-bottom:20px">
@@ -669,7 +669,7 @@
           <div class="prop-card" style="flex:1;min-width:120px;padding:12px" onclick="selectExisting(this,'Yes: some existing systems')"><div class="prop-icon" style="font-size:18px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div><h4 style="font-size:12px">Yes, some</h4></div>
           <div class="prop-card" style="flex:1;min-width:120px;padding:12px" onclick="selectExisting(this,'Not sure about existing systems')"><div class="prop-icon" style="font-size:18px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div><h4 style="font-size:12px">Not sure</h4></div>
         </div>
-        <input type="text" id="q-existing-detail" placeholder="If yes, what systems and how old? (optional)" style="width:100%;background:var(--ash);border:1px solid rgba(255,255,255,0.09);color:#fff;padding:11px 14px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none">
+        <input type="text" id="q-existing-detail" placeholder="If yes, what systems and how old?" style="width:100%;background:var(--ash);border:1px solid rgba(255,255,255,0.09);color:#fff;padding:11px 14px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none">
       </div>
 
       <p class="q-hint" id="q-hint-2" aria-live="polite"></p>
@@ -695,7 +695,7 @@
       </div>
 
       <div style="margin-bottom:20px">
-        <div class="q-group-label">Budget Range (Optional)</div>
+        <div class="q-group-label" id="g-budget">Budget Range <span class="req" aria-hidden="true">*</span></div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <div class="prop-card" style="flex:1;min-width:130px;padding:12px" onclick="selectBudget(this,'Below KES 500K')"><h4 style="font-size:12px">Below KES 500K</h4></div>
           <div class="prop-card" style="flex:1;min-width:130px;padding:12px" onclick="selectBudget(this,'KES 500K - 2M')"><h4 style="font-size:12px">KES 500K - 2M</h4></div>
@@ -706,8 +706,8 @@
       </div>
 
       <div class="form-group">
-        <label class="q-label">Additional Notes <span class="q-opt">(optional)</span></label>
-        <textarea id="q-notes" placeholder="Anything else the technician should know before the visit? Special requirements, access restrictions, regulatory deadlines..."></textarea>
+        <label class="q-label">Additional Notes <span class="req" aria-hidden="true">*</span></label>
+        <textarea id="q-notes" required placeholder="Anything the technician should know before the visit? Special requirements, access restrictions, deadlines. Write 'None' if nothing."></textarea>
       </div>
 
       <p class="q-hint" id="q-hint-3" aria-live="polite"></p>
@@ -724,7 +724,7 @@
 
       <div class="form-group form-row">
         <div><label class="q-label">Full Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-name" oninput="clearField(this)" required aria-required="true" autocomplete="name" placeholder="Your full name"></div>
-        <div><label class="q-label">Your Role / Title <span class="q-opt">(optional)</span></label><input type="text" id="q-role" autocomplete="organization-title" placeholder="e.g. Facility Manager, MD, Procurement Officer"></div>
+        <div><label class="q-label">Your Role / Title <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-role" required oninput="clearField(this)" autocomplete="organization-title" placeholder="e.g. Facility Manager, MD, Procurement Officer"></div>
       </div>
       <div class="form-group form-row">
         <div><label class="q-label">Company Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="q-company" oninput="clearField(this)" required aria-required="true" autocomplete="organization" placeholder="Your company or organisation"></div>
@@ -732,8 +732,8 @@
       </div>
       <div class="form-group form-row">
         <div><label class="q-label">Phone / WhatsApp <span class="req" aria-hidden="true">*</span> <span style="color:var(--green);font-size:11px">(preferred)</span></label><input type="tel" id="q-phone" oninput="clearField(this)" required aria-required="true" autocomplete="tel" placeholder="+254 7XX XXX XXX"></div>
-        <div><label class="q-label">Best Time to Call <span class="q-opt">(optional)</span></label>
-          <select id="q-calltime" style="width:100%;background:var(--ash);border:1px solid rgba(255,255,255,0.09);color:#fff;padding:11px 14px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none">
+        <div><label class="q-label">Best Time to Call <span class="req" aria-hidden="true">*</span></label>
+          <select id="q-calltime" required style="width:100%;background:var(--ash);border:1px solid rgba(255,255,255,0.09);color:#fff;padding:11px 14px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none">
             <option value="" disabled selected>Select preferred time</option>
             <option>Morning (8am - 12pm)</option>
             <option>Afternoon (12pm - 5pm)</option>
@@ -758,6 +758,7 @@
       <p class="q-assure"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>We only use your details to arrange this visit. See our <a href="privacy.html">Privacy Policy</a>.</span></p>
       <p class="q-hint" id="q-hint-4" aria-live="polite"></p>
       <p id="quote-error" role="alert" style="display:none;color:#ff7a6b;font-size:13px;font-weight:600;margin:12px 0 0"></p>
+      <p style="text-align:right;font-size:10px;color:rgba(255,255,255,.25);margin:10px 0 0" id="q-build">Form build 14-Oct-b · all fields required</p>
       <div class="quote-nav" style="margin-top:16px">
         <button class="btn-back" onclick="nextStep(3)">← Back</button>
         <button class="btn-primary" onclick="submitQuote()" style="min-width:200px" id="submit-btn">Submit Request →</button>
@@ -915,6 +916,8 @@ function missing1(){
   if(!quoteData.prop)b.push(['g-prop','Please choose a property type.']);
   if(!_v('q-propname'))b.push(['q-propname','Please enter the building name.']);
   if(!_v('q-proploc'))b.push(['q-proploc','Please enter the location or town.']);
+  if(!_v('q-area'))b.push(['q-area','Please enter an approximate floor area.']);
+  if(!_v('q-floors'))b.push(['q-floors','Please enter the number of floors.']);
   if(!quoteData.buildingStatus)b.push(['g-status','Please choose the building status.']);
   return b;
 }
@@ -922,18 +925,25 @@ function missing2(){
   const b=[];
   if(!quoteData.services.length)b.push(['g-svc','Please select at least one service.']);
   if(!quoteData.existing)b.push(['g-exist','Please tell us if you have existing fire systems.']);
+  if(/^Yes/.test(quoteData.existing)&&!_v('q-existing-detail'))b.push(['q-existing-detail','Please tell us which systems you have and how old they are.']);
   return b;
 }
 function missing3(){
-  return quoteData.urgency?[]:[['g-urg','Please tell us how urgent this is.']];
+  const b=[];
+  if(!quoteData.urgency)b.push(['g-urg','Please tell us how urgent this is.']);
+  if(!quoteData.budget)b.push(['g-budget','Please choose a budget range (or "Prefer not to say").']);
+  if(!_v('q-notes'))b.push(['q-notes','Please add a note, or write "None".']);
+  return b;
 }
 function missing4(){
   const b=[],email=_v('q-email');
   if(!_v('q-name'))b.push(['q-name','Please enter your full name.']);
+  if(!_v('q-role'))b.push(['q-role','Please enter your role or title.']);
   if(!_v('q-company'))b.push(['q-company','Please enter your company name.']);
   if(!email)b.push(['q-email','Please enter your email address.']);
   else if(!isValidEmail(email))b.push(['q-email','That email address doesn\'t look right.']);
   if(!_v('q-phone'))b.push(['q-phone','Please enter a phone or WhatsApp number.']);
+  if(!_v('q-calltime'))b.push(['q-calltime','Please choose the best time to call.']);
   return b;
 }
 const _miss={1:missing1,2:missing2,3:missing3,4:missing4};
@@ -946,7 +956,7 @@ function updateBtns(){
     el.classList.toggle('is-inactive',!ok);
     el.setAttribute('aria-disabled',ok?'false':'true');
     const h=document.getElementById('q-hint-'+n);
-    if(h){ const names={'g-prop':'property type','q-propname':'building name','q-proploc':'location','g-status':'building status','g-svc':'a service','g-exist':'existing systems','g-urg':'urgency','q-name':'full name','q-company':'company','q-email':'a valid email','q-phone':'phone'};
+    if(h){ const names={'g-prop':'property type','q-propname':'building name','q-proploc':'location','g-status':'building status','g-svc':'a service','g-exist':'existing systems','g-urg':'urgency','q-name':'full name','q-company':'company','q-email':'a valid email','q-phone':'phone','q-area':'floor area','q-floors':'number of floors','q-existing-detail':'existing system details','g-budget':'budget range','q-notes':'notes','q-role':'role','q-calltime':'best time to call'};
       const m=_miss[n]().map(x=>names[x[0]]); h.textContent=m.length?'Still needed: '+m.join(', ')+'.':''; h.style.display=m.length?'block':'none'; }
   }
 }
@@ -989,6 +999,7 @@ function selectBudget(el,name){
   document.querySelectorAll('#q-step-3 .prop-card[onclick*="selectBudget"]').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   quoteData.budget=name;
+  clearField('g-budget');updateBtns();
 }
 function goStep3to4(){
   if(!checkStep(3))return;
