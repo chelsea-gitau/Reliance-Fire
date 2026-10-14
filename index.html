@@ -21,7 +21,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261013b">
+<style>.field-invalid{border-color:#ff5a47 !important;box-shadow:0 0 0 3px rgba(255,90,71,.18) !important}.field-msg{color:#ff7a6b;font-size:12.5px;font-weight:600;margin-top:6px;line-height:1.4}.group-outline{outline:2px solid #ff5a47;outline-offset:4px;border-radius:10px}.q-group-label.field-invalid{color:#ff7a6b;box-shadow:none !important}.btn-primary.is-inactive{opacity:.45;cursor:not-allowed;box-shadow:none;filter:grayscale(.4)}.q-hint{display:none;margin:4px 0 12px;font-size:13px;color:#ffb84d;text-align:right}.form-row>.fw{min-width:0}.fw input{width:100%}.q-group-label + .field-msg{margin:6px 0 14px}</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -522,10 +523,10 @@
         </button>
       </div>
       <div>
-        <div class="form-group form-row"><input type="text" id="cf-name" placeholder="Full Name" aria-label="Full name" autocomplete="name" required><input type="text" id="cf-company" placeholder="Company Name" aria-label="Company name" autocomplete="organization"></div>
-        <div class="form-group form-row"><input type="email" id="cf-email" placeholder="Email Address" aria-label="Email address" autocomplete="email" required><input type="tel" id="cf-phone" placeholder="Phone Number" aria-label="Phone number" autocomplete="tel" required></div>
-        <div class="form-group"><select id="cf-service" aria-label="Service required"><option value="" disabled selected>Service Required</option><option>Fire Detection System</option><option>Sprinkler System</option><option>Fire Suppression System</option><option>Fire Alarm System</option><option>Maintenance Contract</option><option>Fire Risk Assessment</option><option>Other</option></select></div>
-        <div class="form-group"><textarea id="cf-message" placeholder="Tell us about your project or requirements..." aria-label="Your message"></textarea></div>
+        <div class="form-group form-row"><div class="fw"><input type="text" id="cf-name" placeholder="Full Name" aria-label="Full name" autocomplete="name" required></div><div class="fw"><input type="text" id="cf-company" placeholder="Company Name" aria-label="Company name" autocomplete="organization" required></div></div>
+        <div class="form-group form-row"><div class="fw"><input type="email" id="cf-email" placeholder="Email Address" aria-label="Email address" autocomplete="email" required></div><div class="fw"><input type="tel" id="cf-phone" placeholder="Phone Number" aria-label="Phone number" autocomplete="tel" required></div></div>
+        <div class="form-group"><select id="cf-service" required aria-label="Service required"><option value="" disabled selected>Service Required</option><option>Fire Detection System</option><option>Sprinkler System</option><option>Fire Suppression System</option><option>Fire Alarm System</option><option>Maintenance Contract</option><option>Fire Risk Assessment</option><option>Other</option></select></div>
+        <div class="form-group"><textarea id="cf-message" required placeholder="Tell us about your project or requirements..." aria-label="Your message"></textarea></div>
         <input type="checkbox" id="cf-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none">
         <button type="button" id="cf-submit" class="btn-primary" style="width:100%;justify-content:center" onclick="sendContactRequest()">Send Request →</button>
         <p id="cf-error" role="alert" style="display:none;text-align:center;color:#ff7a6b;font-size:13px;margin-top:12px;font-weight:600"></p>
@@ -543,12 +544,12 @@
     </div>
     <div class="ft-col">
       <div class="ft-head">Systems</div>
-      <a href="fire-detection.html"><span class="ft-code">01</span>Fire Detection</a>
-      <a href="sprinkler-systems.html"><span class="ft-code">02</span>Sprinkler Systems</a>
-      <a href="fire-suppression.html"><span class="ft-code">03</span>Fire Suppression</a>
-      <a href="fire-alarm.html"><span class="ft-code">04</span>Fire Alarms</a>
-      <a href="maintenance.html"><span class="ft-code">05</span>Maintenance</a>
-      <a href="fire-risk-assessment.html"><span class="ft-code">06</span>Risk Assessment</a>
+      <a href="fire-detection.html">Fire Detection</a>
+      <a href="sprinkler-systems.html">Sprinkler Systems</a>
+      <a href="fire-suppression.html">Fire Suppression</a>
+      <a href="fire-alarm.html">Fire Alarms</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="fire-risk-assessment.html">Risk Assessment</a>
     </div>
     <div class="ft-col">
       <div class="ft-head">Company</div>
@@ -841,7 +842,45 @@
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261013b"></script>
+<script>
+// ── FIELD VALIDATION HELPERS ──
+function _fv(t){return typeof t==='string'?document.getElementById(t):t;}
+function clearField(t){
+  const el=_fv(t); if(!el) return;
+  el.classList.remove('field-invalid'); el.removeAttribute('aria-invalid');
+  if(el._grp){ el._grp.classList.remove('group-outline'); el._grp=null; }
+  document.querySelectorAll('.field-msg').forEach(m=>{ if(m._for===el) m.remove(); });
+}
+function flagField(t,msg){
+  const el=_fv(t); if(!el) return null;
+  clearField(el);
+  el.classList.add('field-invalid'); el.setAttribute('aria-invalid','true');
+  if(el.classList.contains('q-group-label')){ let g=el.nextElementSibling; while(g&&g.classList.contains('field-msg')) g=g.nextElementSibling; if(g){ g.classList.add('group-outline'); el._grp=g; } }
+  const m=document.createElement('div');
+  m.className='field-msg'; m.setAttribute('role','alert'); m.textContent=msg; m._for=el;
+  const row=(el.parentElement&&el.parentElement.classList.contains('form-row'))?el.parentElement:null;
+  (row||el).insertAdjacentElement('afterend',m);
+  return el;
+}
+if(!window.__fvL){window.__fvL=1;
+document.addEventListener('input',e=>{ if(e.target&&e.target.classList&&e.target.classList.contains('field-invalid')) clearField(e.target); });
+document.addEventListener('change',e=>{ if(e.target&&e.target.tagName==='SELECT'&&e.target.classList.contains('field-invalid')) clearField(e.target); });
+}
+// bad = [[idOrEl,message],...]; returns true when nothing is wrong
+function flagAll(bad){
+  if(!bad.length) return true;
+  let first=null;
+  bad.forEach(b=>{const el=flagField(b[0],b[1]); if(!first) first=el;});
+  if(first){
+    first.scrollIntoView({behavior:'smooth',block:'center'});
+    if(first.focus&&/^(INPUT|SELECT|TEXTAREA)$/.test(first.tagName)) setTimeout(()=>first.focus({preventScroll:true}),250);
+  }
+  return false;
+}
+
+</script>
+
 <script>
 // ── PAGE NAVIGATION (home/quote only, Shop & Portfolio are separate files now) ──
 function showPage(name){

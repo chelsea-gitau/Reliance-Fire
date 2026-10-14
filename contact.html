@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261013b">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -107,10 +107,10 @@
     </div>
 
     <div>
-      <div class="form-group form-row"><input type="text" id="cf-name" placeholder="Full Name" aria-label="Full name" autocomplete="name" required><input type="text" id="cf-company" placeholder="Company Name" aria-label="Company name" autocomplete="organization"></div>
-      <div class="form-group form-row"><input type="email" id="cf-email" placeholder="Email Address" aria-label="Email address" autocomplete="email" required><input type="tel" id="cf-phone" placeholder="Phone Number" aria-label="Phone number" autocomplete="tel" required></div>
-      <div class="form-group"><select id="cf-service" aria-label="Service required"><option value="" disabled selected>Service Required</option><option>Fire Detection System</option><option>Sprinkler System</option><option>Fire Suppression System</option><option>Fire Alarm System</option><option>Maintenance Contract</option><option>Fire Risk Assessment</option><option>Shop / Product Enquiry</option><option>Other</option></select></div>
-      <div class="form-group"><textarea id="cf-message" placeholder="Tell us about your project or requirements..." aria-label="Your message"></textarea></div>
+      <div class="form-group form-row"><div class="fw"><input type="text" id="cf-name" placeholder="Full Name" aria-label="Full name" autocomplete="name" required></div><div class="fw"><input type="text" id="cf-company" placeholder="Company Name" aria-label="Company name" autocomplete="organization" required></div></div>
+      <div class="form-group form-row"><div class="fw"><input type="email" id="cf-email" placeholder="Email Address" aria-label="Email address" autocomplete="email" required></div><div class="fw"><input type="tel" id="cf-phone" placeholder="Phone Number" aria-label="Phone number" autocomplete="tel" required></div></div>
+      <div class="form-group"><select id="cf-service" required aria-label="Service required"><option value="" disabled selected>Service Required</option><option>Fire Detection System</option><option>Sprinkler System</option><option>Fire Suppression System</option><option>Fire Alarm System</option><option>Maintenance Contract</option><option>Fire Risk Assessment</option><option>Shop / Product Enquiry</option><option>Other</option></select></div>
+      <div class="form-group"><textarea id="cf-message" required placeholder="Tell us about your project or requirements..." aria-label="Your message"></textarea></div>
       <input type="checkbox" id="cf-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none">
       <button type="button" id="cf-submit" class="btn-primary" style="width:100%;justify-content:center" onclick="sendContactRequest()">Send Request →</button>
       <p id="cf-error" role="alert" style="display:none;text-align:center;color:#ff7a6b;font-size:13px;margin-top:12px;font-weight:600"></p>
@@ -129,12 +129,12 @@
     </div>
     <div class="ft-col">
       <div class="ft-head">Systems</div>
-      <a href="fire-detection.html"><span class="ft-code">01</span>Fire Detection</a>
-      <a href="sprinkler-systems.html"><span class="ft-code">02</span>Sprinkler Systems</a>
-      <a href="fire-suppression.html"><span class="ft-code">03</span>Fire Suppression</a>
-      <a href="fire-alarm.html"><span class="ft-code">04</span>Fire Alarms</a>
-      <a href="maintenance.html"><span class="ft-code">05</span>Maintenance</a>
-      <a href="fire-risk-assessment.html"><span class="ft-code">06</span>Risk Assessment</a>
+      <a href="fire-detection.html">Fire Detection</a>
+      <a href="sprinkler-systems.html">Sprinkler Systems</a>
+      <a href="fire-suppression.html">Fire Suppression</a>
+      <a href="fire-alarm.html">Fire Alarms</a>
+      <a href="maintenance.html">Maintenance</a>
+      <a href="fire-risk-assessment.html">Risk Assessment</a>
     </div>
     <div class="ft-col">
       <div class="ft-head">Company</div>
@@ -203,6 +203,6 @@
 </div>
 
 
-<script src="script.js"></script>
+<script src="script.js?v=20261013b"></script>
 </body>
 </html>

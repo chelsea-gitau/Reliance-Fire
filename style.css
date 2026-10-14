@@ -1304,3 +1304,6 @@ footer{display:block;background:#0B0503;border-top:1px solid rgba(204,34,0,0.28)
 
 .btn-primary.is-inactive{opacity:.45;cursor:not-allowed;box-shadow:none;filter:grayscale(.4)}
 .group-outline{outline:2px solid #ff5a47;outline-offset:4px;border-radius:10px}
+
+.form-row>.fw{min-width:0}.fw input{width:100%}
+.q-group-label + .field-msg{margin:6px 0 14px}

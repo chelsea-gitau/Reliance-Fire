@@ -30,8 +30,10 @@ function flagField(t,msg){
   (row||el).insertAdjacentElement('afterend',m);
   return el;
 }
+if(!window.__fvL){window.__fvL=1;
 document.addEventListener('input',e=>{ if(e.target&&e.target.classList&&e.target.classList.contains('field-invalid')) clearField(e.target); });
 document.addEventListener('change',e=>{ if(e.target&&e.target.tagName==='SELECT'&&e.target.classList.contains('field-invalid')) clearField(e.target); });
+}
 // bad = [[idOrEl,message],...]; returns true when nothing is wrong
 function flagAll(bad){
   if(!bad.length) return true;
@@ -693,9 +695,12 @@ async function sendContactRequest(){
 
   let bad=[];
   if(!name) bad.push(['cf-name','Please enter your name.']);
+  if(!company) bad.push(['cf-company','Please enter your company name.']);
   if(!email) bad.push(['cf-email','Please enter your email address.']);
   else if(!isValidEmail(email)) bad.push(['cf-email','That email address doesn\'t look right.']);
   if(!phone) bad.push(['cf-phone','Please enter a phone number.']);
+  if(!service) bad.push(['cf-service','Please choose the service you need.']);
+  if(!message) bad.push(['cf-message','Please tell us a little about your project.']);
   if(!flagAll(bad)) return;
 
   // Honeypot: bots tick the hidden box, humans never see it
@@ -905,7 +910,7 @@ function playHeroVideo(btn){
 function updateContactBtn(){
   const b=document.getElementById('cf-submit'); if(!b) return;
   const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
-  const ok=g('cf-name')&&g('cf-phone')&&isValidEmail(g('cf-email'));
+  const ok=g('cf-name')&&g('cf-company')&&g('cf-phone')&&isValidEmail(g('cf-email'))&&g('cf-service')&&g('cf-message');
   b.classList.toggle('is-inactive',!ok);
   b.setAttribute('aria-disabled',ok?'false':'true');
 }
@@ -913,10 +918,10 @@ document.addEventListener('input',e=>{ if(e.target&&/^cf-/.test(e.target.id||'')
 document.addEventListener('DOMContentLoaded',updateContactBtn);
 
 // Flag a required box as soon as the client leaves it empty
-document.addEventListener('focusout',e=>{
+if(!window.__fvF){window.__fvF=1;document.addEventListener('focusout',e=>{
   const el=e.target;
   if(!el||!el.matches||!el.matches('input[required],textarea[required]')) return;
   if(!el.value.trim()) flagField(el,'This field is required.');
   else if(el.type==='email'&&!isValidEmail(el.value.trim())) flagField(el,"That email address doesn't look right.");
   if(typeof updateBtns==='function') updateBtns();
-});
+});}
