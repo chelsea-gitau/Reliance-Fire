@@ -151,6 +151,7 @@ function openProdModal(id){
   document.getElementById('prod-modal-title').textContent=p.name;
   document.getElementById('prod-modal-desc').textContent=p.desc;
   document.getElementById('prod-modal-img').style.backgroundImage=`url('${getProductImg(p)}')`;
+  document.getElementById('prod-modal-img').style.backgroundBlendMode=(p.cat==='refills'||p.cat==='panels')?'multiply':'normal';
   document.getElementById('prod-modal-orig').textContent='KES '+grossPrice(p).toLocaleString();
   document.getElementById('prod-modal-price').textContent='KES '+discountedPrice(p).toLocaleString();
   document.getElementById('prod-modal-qty-num').textContent='1';

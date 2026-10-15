@@ -335,9 +335,9 @@ const productImgs = {
     29: 'images/nobg/sounder-cas381.png',
     30: 'images/nobg/sounder-beacon-casb383.png',
     // Panels
-    31: 'images/nobg/fire-alarm-panel-eaton.png',
-    32: 'images/nobg/fire-alarm-panel-eaton.png',
-    33: 'images/nobg/fire-alarm-panel-eaton.png',
+    31: 'images/panels/panel-2-zone.jpg',
+    32: 'images/panels/panel-4-zone-eaton.jpg',
+    33: 'images/panels/panel-8-zone.jpg',
     34: 'images/nobg/fire-alarm-panel-eaton.png',
     35: 'images/nobg/addressable-panel-white.png',
     36: 'images/nobg/addressable-panel-box.png',
@@ -410,7 +410,7 @@ function renderShop(cat,search){
   empty.style.display='none';
   grid.innerHTML=items.map(p=>`
     <div class="product-card" onclick="openProdModal(${p.id})">
-      <div class="product-img" style="background-image:url('${getProductImg(p)}');background-size:contain;${p.cat==='refills'?'background-blend-mode:multiply;':''}background-repeat:no-repeat;background-position:center;font-size:0">
+      <div class="product-img" style="background-image:url('${getProductImg(p)}');background-size:contain;${(p.cat==='refills'||p.cat==='panels')?'background-blend-mode:multiply;':''}background-repeat:no-repeat;background-position:center;font-size:0">
         ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
       </div>
       <div class="product-info">
