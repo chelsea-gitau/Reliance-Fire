@@ -63,11 +63,11 @@ let cart=[];
 try{ const saved = localStorage.getItem('reliance_cart'); if(saved) cart = JSON.parse(saved); }catch(e){ cart=[]; }
 function saveCart(){ try{ localStorage.setItem('reliance_cart', JSON.stringify(cart)); }catch(e){} }
 
-const DISCOUNT = 0.10; // 10% discount
+const DISCOUNT = 0;    // no discount: shop shows the client's price-list price as the final, VAT-inclusive price
 const VAT = 0.16;      // 16% VAT
 
 // grossPrice = the real, VAT-inclusive price a customer would pay with no discount
-function grossPrice(p){ return Math.round(p.price * (1 + VAT)); }
+function grossPrice(p){ return Math.round(p.price); } // price-list price already treated as VAT-inclusive
 // discountedPrice = the final, VAT-inclusive price after the 10% discount — this is what the customer actually pays
 function discountedPrice(p){ return Math.round(grossPrice(p) * (1 - DISCOUNT)); }
 // vatIncludedIn = informational only: how much of a given VAT-inclusive amount is VAT
@@ -121,7 +121,7 @@ function updateCartUI(){
       <div class="cart-item-icon" style="background-image:url('${item.img||"images/EXTINGUISHERS/6kgdcp.jpg"}');background-size:contain;background-repeat:no-repeat;background-position:center"></div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-price">KES ${discountedPrice(item).toLocaleString()} × ${item.qty} <span style="color:var(--muted);font-size:11px;text-decoration:line-through;margin-left:4px">KES ${grossPrice(item).toLocaleString()}</span></div>
+        <div class="cart-item-price">KES ${discountedPrice(item).toLocaleString()} × ${item.qty} ${DISCOUNT>0?`<span style="color:var(--muted);font-size:11px;text-decoration:line-through;margin-left:4px">KES ${grossPrice(item).toLocaleString()}</span>`:''}</div>
         <div class="cart-item-qty">
           <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
           <span class="qty-num">${item.qty}</span>
@@ -151,8 +151,8 @@ function openProdModal(id){
   document.getElementById('prod-modal-title').textContent=p.name;
   document.getElementById('prod-modal-desc').textContent=p.desc;
   document.getElementById('prod-modal-img').style.backgroundImage=`url('${getProductImg(p)}')`;
-  document.getElementById('prod-modal-img').style.backgroundBlendMode=(p.cat==='refills'||p.cat==='panels')?'multiply':'normal';
-  document.getElementById('prod-modal-orig').textContent='KES '+grossPrice(p).toLocaleString();
+  document.getElementById('prod-modal-img').style.backgroundBlendMode='multiply';
+  document.getElementById('prod-modal-orig').textContent=DISCOUNT>0?'KES '+grossPrice(p).toLocaleString():'';
   document.getElementById('prod-modal-price').textContent='KES '+discountedPrice(p).toLocaleString();
   document.getElementById('prod-modal-qty-num').textContent='1';
   document.getElementById('prod-modal-overlay').classList.add('open');
@@ -192,7 +192,7 @@ function orderViaWhatsApp(){
   const total=cart.reduce((s,x)=>s+(discountedPrice(x)*x.qty),0);
   const vatIncluded=cart.reduce((s,x)=>s+(vatIncludedIn(discountedPrice(x))*x.qty),0);
   let lines=cart.map(item=>`• ${item.qty}x ${item.name}, KES ${(discountedPrice(item)*item.qty).toLocaleString()}`).join('%0A');
-  const msg=`Hello Reliance Fire Safety!%0A%0AI'd like to place the following order:%0A%0A${lines}%0A%0A*Total (incl. 10% discount, VAT included): KES ${total.toLocaleString()}*%0A(of which VAT: KES ${vatIncluded.toLocaleString()})%0A%0APlease confirm availability and send payment details. Thank you!`;
+  const msg=`Hello Reliance Fire Safety!%0A%0AI'd like to place the following order:%0A%0A${lines}%0A%0A*Total (VAT included): KES ${total.toLocaleString()}*%0A(of which VAT: KES ${vatIncluded.toLocaleString()})%0A%0APlease confirm availability and send payment details. Thank you!`;
   window.open(`https://wa.me/254777723785?text=${msg}`,'_blank');
 }
 
