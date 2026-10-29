@@ -5,7 +5,7 @@
 // ── SITE CONFIG ──
 const WA_NUMBER = '254777723785';
 const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
-const FORM_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_KEY'; // public key from web3forms.com (set recipient to info@reliancefireea.com)
+const FORM_ACCESS_KEY = '4677898f-9a8e-4b8a-a803-b8f80ef865a2'; // public key from web3forms.com (set recipient to info@reliancefireea.com)
 
 function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); }
 
