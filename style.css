@@ -1312,3 +1312,33 @@ footer{display:block;background:#0B0503;border-top:1px solid rgba(204,34,0,0.28)
 
 /* prevent sideways scroll on phones from off-screen reveal animations */
 html,body{overflow-x:clip}
+
+/* ═══ VISUAL REFRESH 30-Oct: contrast, stats, light section, photos, cookie bar ═══ */
+:root{--text-secondary:rgba(240,237,232,0.84);--text-muted:rgba(240,237,232,0.62);--muted:#b8b8b8}
+/* stats band: larger numbers, lifted background strip, readable labels */
+.stats-panel{background:linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.02));border-top:1px solid rgba(204,34,0,0.35);border-radius:0 0 10px 10px;padding:26px 24px 12px}
+.hs-num{font-size:clamp(34px,4.2vw,58px);letter-spacing:-0.5px}
+.hs-num sup{font-size:0.45em}
+.hs-label{font-size:12px;letter-spacing:1.6px;color:rgba(240,237,232,0.78)}
+.hs-divider{width:3px}
+.hero-stat.in-view .hs-divider{height:16px}
+/* service photos: show their real colour */
+.svc-icon{filter:brightness(1.04) saturate(1.1)}
+.svc-icon::after{background:linear-gradient(to bottom,transparent 70%,rgba(0,0,0,0.4) 100%)}
+.svc-card p{color:#cfcfcf}
+.hero-frame-overlay{background:linear-gradient(to top,rgba(5,6,10,0.85) 0%,rgba(5,6,10,0.05) 32%,transparent 55%),linear-gradient(to bottom,rgba(5,6,10,0.45) 0%,transparent 18%)}
+/* one light section: Brands We Supply */
+.brands-light{background:#F5F2EE !important}
+.brands-light .brands-panel{border:1px solid rgba(0,0,0,0.09) !important;background:#fff}
+.brands-light .brands-panel>div:nth-child(2) div:nth-child(2){color:rgba(20,20,20,0.62) !important}
+.brands-light .brand-tile{background:#fff;border:1px solid #e7e2da;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+.brands-light .brand-tile:hover{box-shadow:0 10px 22px rgba(0,0,0,0.14)}
+.brands-light .brand-word{color:#1a1a1a}
+.brands-light .corners i{border-color:var(--red)}
+/* slim cookie bar */
+#cookie-banner{padding:10px 5%;gap:14px;border-top-width:2px}
+#cookie-banner p{font-size:12px;line-height:1.45;max-width:760px;color:#cfcfcf}
+.cookie-btn{padding:7px 14px;font-size:11.5px}
+@media(max-width:700px){#cookie-banner{padding:10px 5%}.cookie-actions{gap:6px}.cookie-btn{padding:7px 10px;font-size:11px;flex:1}}
+.brands-light .corners{box-shadow:none !important}
+.brands-light .brands-panel{box-shadow:0 6px 24px rgba(0,0,0,0.06)}
